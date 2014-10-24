@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  yair_id: 
+  site: MyString
+  status: MyString
+  how_long: MyString
+  body: MyText
+
+two:
+  yair_id: 
+  site: MyString
+  status: MyString
+  how_long: MyString
+  body: MyText

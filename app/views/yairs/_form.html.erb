@@ -1,0 +1,32 @@
+<%= form_for @yair do |f| %>
+
+  <% if @yair.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@yair.errors.count, "error") %> prohibited this yair from being saved:</h2>
+      <ul>
+        <% @yair.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :party %><br>
+    <%= f.text_field :party %>
+  </p>
+ 
+  <p>
+    <%= f.label :field %><br>
+    <%= f.text_field :field %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

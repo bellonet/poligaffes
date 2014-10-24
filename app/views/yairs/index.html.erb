@@ -1,0 +1,31 @@
+<h1>Listing Yairs</h1>
+
+<%= form_tag yairs_path, method: "get" do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Party</th>
+    <th>Field</th>
+  </tr>
+ 
+  <% @yairs.each do |yair| %>
+    <tr>
+      <td><%= yair.name %></td>
+      <td><%= yair.party %></td>
+      <td><%= yair.field %></td>
+
+      <td><%= link_to 'Show', yair_path(yair) %></td>
+      <td><%= link_to 'Edit', edit_yair_path(yair) %></td>
+      <td><%= link_to 'Delete', yair_path(yair),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Yair', new_yair_path %>

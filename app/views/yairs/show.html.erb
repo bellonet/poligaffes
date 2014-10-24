@@ -1,0 +1,29 @@
+<p>
+  <strong>Name:</strong>
+  <%= @yair.name %>
+</p>
+ 
+<p>
+  <strong>Party:</strong>
+  <%= @yair.party %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @yair.field %>
+</p>
+
+<br>
+
+<h2>Comments:</h2>
+<%= render @yair.comments %>
+
+<br>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
+<br>
+
+<%= link_to 'Back', yairs_path %>
+<%= link_to 'Edit', edit_yair_path(@yair) %>

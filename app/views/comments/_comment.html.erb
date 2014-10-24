@@ -1,0 +1,23 @@
+<p>
+  <strong>Site:</strong>
+  <%= comment.site %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= comment.status %>
+</p>
+<p>
+  <strong>How Long:</strong>
+  <%= comment.how_long %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%= comment.body %>
+</p>
+
+<p>
+  <%= link_to 'Delete Comment', [comment.yair, comment],
+               method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<br>
