@@ -7,25 +7,5 @@
 <% end %>
 
 <% if @yairs %>
-	<table>
-	  <tr>
-	    <th>Name</th>
-	    <th>Party</th>
-	    <th>Field</th>
-	  </tr>
-	 
-	  <% @yairs.each do |yair| %>
-	    <tr>
-	      <td><%= yair.name %></td>
-	      <td><%= yair.party %></td>
-	      <td><%= yair.field %></td>
-
-	      <td><%= link_to 'Show', yair_path(yair) %></td>
-	      <td><%= link_to 'Edit', edit_yair_path(yair) %></td>
-	      <td><%= link_to 'Delete', yair_path(yair),
-	                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-	    </tr>
-	  <% end %>
-	</table>
+	<%= render "yairs/table" %>
 <% end %>
