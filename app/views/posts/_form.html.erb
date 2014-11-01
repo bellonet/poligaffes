@@ -1,4 +1,4 @@
-<%= form_for([@yair, @yair.comments.build]) do |f| %>
+<%= form_for([@yair, @yair.posts.build]) do |f| %>
   <p>
     <%= f.label :site %><br>
     <%= f.text_field :site %>
@@ -8,8 +8,8 @@
     <%= f.text_field :status %>
   </p>
   <p>
-    <%= f.label :how_long %><br>
-    <%= f.text_field :how_long %>
+    <%= f.label :duration %><br>
+    <%= f.text_field :duration %>
   </p>
   <p>
     <%= f.label :body %><br>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :yairs do
-    resources :comments
+    resources :posts
   end
 
   resources :users

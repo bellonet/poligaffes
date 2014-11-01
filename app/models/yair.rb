@@ -1,5 +1,5 @@
 class Yair < ActiveRecord::Base
-	has_many :comments, dependent: :destroy
+	has_many :posts, dependent: :destroy
 	validates :name, presence: true,
                     length: { minimum: 3 }
 end

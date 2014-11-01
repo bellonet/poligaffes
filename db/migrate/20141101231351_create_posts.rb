@@ -1,10 +1,10 @@
-class CreateComments < ActiveRecord::Migration
+class CreatePosts < ActiveRecord::Migration
   def change
-    create_table :comments do |t|
+    create_table :posts do |t|
       t.references :yair, index: true
       t.string :site
       t.string :status
-      t.string :how_long
+      t.string :duration
       t.text :body
 
       t.timestamps
