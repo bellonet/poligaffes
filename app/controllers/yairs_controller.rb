@@ -1,5 +1,7 @@
 class YairsController < ApplicationController
 
+	before_filter :authorize, only: [:new, :edit, :destroy]
+
 	def index
 		if params[:search]
 			@yairs = Yair.where('name LIKE ?', "%#{params[:search]}%")
@@ -7,6 +9,11 @@ class YairsController < ApplicationController
   		@yairs = Yair.all
   	end
 	end
+
+	def by_letter
+  	@yairs = Yair.where('name LIKE ?', "#{params[:letter]}%")
+  	render 'index'
+  end
 
 	def new 
 		@yair = Yair.new

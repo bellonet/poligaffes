@@ -6,4 +6,8 @@
   <%= submit_tag "Search", name: nil %>
 <% end %>
 
+<% ('A'..'Z').each do |letter| %>
+	<%= link_to letter.to_s, "/byletter/#{letter}" %>
+<% end %>
+
 <%= render 'table' %>

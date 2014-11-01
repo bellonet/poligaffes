@@ -40,6 +40,17 @@
 
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
+
+        <div id="user_header">
+          <% if current_user %>
+            Logged in as <%= current_user.email %>
+            <%= link_to "Log out!", logout_path %>
+          <% else %>
+            <%= link_to "Sign up!", signup_path %> or 
+            <%= link_to "Log in!", login_path %>
+          <% end %>
+        </div>
+
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
