@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101231351) do
+ActiveRecord::Schema.define(version: 20141102003606) do
 
   create_table "contacts", force: true do |t|
     t.datetime "created_at"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141101231351) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "timestamp"
   end
 
   add_index "posts", ["yair_id"], name: "index_posts_on_yair_id"

@@ -8,4 +8,25 @@
 
 <% if @yairs %>
 	<%= render "yairs/table" %>
+<% else %>
+	<h2>Latest Posts</h2>
+	<table>
+	  <tr>
+	    <th>Yair:</th>
+	    <th>Site:</th>
+	    <th>Timestamp</tr>
+	    <th>Duration:</th>
+	    <th>Body:</th>
+	  </tr>
+	 
+	  <% @posts.each do |post| %>
+	    <tr>
+	      <td><%= post.yair.name %></td>
+	      <td><%= post.site %></td>
+	      <td><%= post.timestamp %></td>
+	      <td><%= post.duration %></td>
+	      <td><%= post.body %></td>
+	    </tr>
+	  <% end %>
+	</table>
 <% end %>
