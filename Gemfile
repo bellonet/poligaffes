@@ -9,6 +9,8 @@ gem 'mail_form'
 gem 'simple_form'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
+gem 'will_paginate'
+
 ####
 
 
