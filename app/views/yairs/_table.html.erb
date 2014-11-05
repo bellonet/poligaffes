@@ -7,6 +7,7 @@
  
   <% @yairs.each do |yair| %>
     <tr>
+      <td><%= image_tag yair.photo.url(:thumb) %></td>
       <td><%= yair.name %></td>
       <td><%= yair.party %></td>
       <td><%= yair.field %></td>

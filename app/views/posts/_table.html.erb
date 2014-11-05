@@ -1,0 +1,20 @@
+<h2>Latest Posts</h2>
+ 
+<% @posts.each do |post| %>
+	<div class="post">
+     	<a style="float: left;"><%= image_tag post.yair.photo.url(:thumb) %></a>
+      	<div class="post_content">
+      		<div class="post_title">
+	      		<a><%= post.yair.name %></a>
+	      		<%= post.yair.party %>
+	    	</div>
+	    	<p><%= post.body %></p>
+	    	<div class="post_byline">
+	      		<p>Posted on <%= post.site %> at <%= post.timestamp %> for <%= post.duration %></p>
+	     	</div>
+      	</div>
+    </div>
+    <br><br>
+<% end %>
+
+<%= will_paginate @posts %>

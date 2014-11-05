@@ -1,4 +1,4 @@
-<%= form_for @yair do |f| %>
+<%= form_for(@yair, :html => {:multipart => true }) do |f| %>
 
   <% if @yair.errors.any? %>
     <div id="error_explanation">
@@ -24,6 +24,11 @@
   <p>
     <%= f.label :field %><br>
     <%= f.text_field :field %>
+  </p>
+
+  <p>
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo %>
   </p>
 
   <p>

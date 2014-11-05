@@ -56,6 +56,6 @@ class YairsController < ApplicationController
 
 	private
   	def yair_params
-    	params.require(:yair).permit(:name, :party, :field)
+    	params.require(:yair).permit(:name, :party, :field, :photo)
   	end
 end

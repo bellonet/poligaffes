@@ -13,11 +13,15 @@
   <%= @yair.field %>
 </p>
 
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @yair.photo.url(:thumb) %>
+</p>
+
 <br>
 
 <h2>Posts:</h2>
 <%= render @yair.posts %>
-
 <br>
 
 <h2>Add a post:</h2>
