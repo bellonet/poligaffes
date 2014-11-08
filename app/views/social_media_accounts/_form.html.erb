@@ -1,0 +1,13 @@
+<%= form_for([@yair, @yair.social_media_accounts.build]) do |f| %>
+  <p>
+    <%= f.label :site %><br>
+    <%= f.text_field :site %>
+  </p>
+  <p>
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

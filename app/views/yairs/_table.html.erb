@@ -1,24 +1,23 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Party</th>
-    <th>Field</th>
-  </tr>
- 
-  <% @yairs.each do |yair| %>
-    <tr>
-      <td><%= image_tag yair.photo.url(:thumb) %></td>
-      <td><%= yair.name %></td>
-      <td><%= yair.party %></td>
-      <td><%= yair.field %></td>
-
-      <td><%= link_to 'Show', yair_path(yair) %></td>
-      <td><%= link_to 'Edit', edit_yair_path(yair) %></td>
-      <td><%= link_to 'Delete', yair_path(yair),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-    </tr>
-  <% end %>
+<table class="table table-striped">
+  <tbody>
+    <% @yairs.each do |yair| %>
+      <tr>
+        <td class="photo"><%= image_tag yair.photo.url(:thumb) %></td>
+        <td><%= link_to yair.name, yair_path(yair) %></td>
+        <td><%= yair.party %></td>
+        <td><%= yair.field %></td>
+        <% if current_user %> 
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_yair_path(yair), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        yair_path(yair),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<%= link_to 'New Yair', new_yair_path %>

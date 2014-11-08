@@ -6,7 +6,10 @@ class PostsController < ApplicationController
   
 	def create
     @yair = Yair.find(params[:yair_id])
-    @post = @yair.posts.create(post_params)
+    social_media_account = SocialMediaAccount.find(params[:post][:social_media_account_id])
+    
+    social_media_account.posts.create(post_params)
+    # @post = @yair.posts.create(post_params)
     redirect_to yair_path(@yair)
   end
  
@@ -19,6 +22,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:site, :status, :timestamp, :duration, :body)
+      params.require(:post).permit(:social_media_account, :status, :timestamp, :duration, :body)
     end
 end

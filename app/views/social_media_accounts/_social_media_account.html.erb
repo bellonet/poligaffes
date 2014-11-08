@@ -1,0 +1,15 @@
+<p>
+  <strong>Site:</strong>
+  <%= social_media_account.site %>
+</p>
+<p>
+  <strong>Link:</strong>
+  <%= social_media_account.link %>
+</p>
+
+<p>
+  <%= link_to 'Delete account', [social_media_account.yair, social_media_account],
+               method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<br>

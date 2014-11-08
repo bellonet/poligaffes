@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  yair_id: 
+  site: MyString
+  link: MyString
+
+two:
+  yair_id: 
+  site: MyString
+  link: MyString

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :yairs do
+    resources :social_media_accounts do
+      resources :posts
+    end
     resources :posts
   end
 

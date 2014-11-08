@@ -1,3 +1,7 @@
+<div class="page-header">
+  <h1> Yair: </h1>
+</div>
+   
 <p>
   <strong>Name:</strong>
   <%= @yair.name %>
@@ -20,14 +24,28 @@
 
 <br>
 
+<h2>Accounts:</h2>
+<%= render @yair.social_media_accounts %>
+
 <h2>Posts:</h2>
 <%= render @yair.posts %>
 <br>
 
+<!-- JUST FOR NOW !!!!!! -->
+
+<h2>Add an account:</h2>
+<%= render "social_media_accounts/form" %>
+
 <h2>Add a post:</h2>
 <%= render "posts/form" %>
-
 <br>
 
-<%= link_to 'Back', yairs_path %>
-<%= link_to 'Edit', edit_yair_path(@yair) %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              yairs_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_yair_path(@yair), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              yair_path(@yair),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

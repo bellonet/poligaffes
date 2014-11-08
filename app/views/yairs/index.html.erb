@@ -1,4 +1,6 @@
-<h1>Listing Yairs</h1>
+<div class="page-header">
+  <h1>Yairs</h1>
+</div>
 
 <%= form_tag yairs_path, method: "get" do %>
   <%= label_tag(:search, "Search for:") %>
@@ -6,8 +8,16 @@
   <%= submit_tag "Search", name: nil %>
 <% end %>
 
+<br>
+
 <% ('A'..'Z').each do |letter| %>
-	<%= link_to letter.to_s, "/byletter/#{letter}" %>
+  <%= link_to letter.to_s, "/byletter/#{letter}" %>
 <% end %>
 
+<br><br><br>
+
 <%= render 'table' %>
+
+<% if current_user %>
+  <%= link_to 'new', new_yair_path, :class => 'btn btn-primary' %>
+<% end %>
