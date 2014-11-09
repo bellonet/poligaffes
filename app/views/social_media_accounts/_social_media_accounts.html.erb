@@ -1,0 +1,20 @@
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">All</a></li>
+    <% @yair.social_media_accounts.each_with_index do |s, i| %>
+      <li><a href=<%= "##{i}" %> data-toggle="tab"><%= s.link %></a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p>Posts from all accounts:</p>
+    </div>
+    <% @yair.social_media_accounts.each_with_index do |s, i| %>
+      <div class="tab-pane" id=<%= i %>>
+        <p>INFO ABOUT THE ACCOUNT</p>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
+

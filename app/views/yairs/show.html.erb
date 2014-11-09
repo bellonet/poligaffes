@@ -1,9 +1,9 @@
+
 <div class="page-header">
   <h1> Yair: </h1>
 </div>
 
-<h2>Accounts:</h2>
-<%= render @yair.social_media_accounts %>
+<%= render 'social_media_accounts/social_media_accounts' %>
 
 <h2>Posts:</h2>
 <%= render @yair.posts %>
@@ -16,7 +16,7 @@
 
 <h2>Add a post:</h2>
 <%= render "posts/form" %>
-<br>
+<br> 
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               yairs_path, :class => 'btn btn-default'  %>
