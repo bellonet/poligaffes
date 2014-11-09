@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141109014923) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20141109014923) do
     t.integer  "social_media_account_id"
   end
 
-  add_index "posts", ["social_media_account_id"], name: "index_posts_on_social_media_account_id"
+  add_index "posts", ["social_media_account_id"], name: "index_posts_on_social_media_account_id", using: :btree
 
   create_table "social_media_accounts", force: true do |t|
     t.integer  "yair_id"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141109014923) do
     t.datetime "photo_updated_at"
   end
 
-  add_index "social_media_accounts", ["yair_id"], name: "index_social_media_accounts_on_yair_id"
+  add_index "social_media_accounts", ["yair_id"], name: "index_social_media_accounts_on_yair_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
