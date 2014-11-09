@@ -2,25 +2,6 @@
   <h1> Yair: </h1>
 </div>
 
-<p><%= image_tag @yair.social_media_accounts.first.photo.url(:thumb) %></p>
-  
-<p>
-  <strong>Name:</strong>
-  <%= @yair.name %>
-</p>
- 
-<p>
-  <strong>Party:</strong>
-  <%= @yair.party %>
-</p>
-
-<p>
-  <strong>Field:</strong>
-  <%= @yair.field %>
-</p>
-
-<br>
-
 <h2>Accounts:</h2>
 <%= render @yair.social_media_accounts %>
 

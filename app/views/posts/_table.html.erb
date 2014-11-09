@@ -4,7 +4,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td class="photo"><%= image_tag post.yair.photo.url(:thumb) %></td>
+        <td class="photo"><%= image_tag post.social_media_account.photo.url(:thumb) %></td>
         <div class="post_content">
       		<div class="post_title">
         		<td><%= post.yair.name %></td>

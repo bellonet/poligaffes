@@ -6,6 +6,7 @@
         <td><%= link_to yair.name, yair_path(yair) %></td>
         <td><%= yair.party %></td>
         <td><%= yair.field %></td>
+        
         <% if current_user %> 
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
