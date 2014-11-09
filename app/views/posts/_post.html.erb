@@ -1,27 +1,20 @@
-<p>
-  <strong>Account:</strong>
-  <%= post.social_media_account.id %>
-</p>
-<p>
-  <strong>Status:</strong>
-  <%= post.status %>
-</p>
-<p>
-  <strong>Timestamp:</strong>
-  <%= post.timestamp %>
-</p>
-<p>
-  <strong>Duration:</strong>
-  <%= post.duration %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= post.body %>
-</p>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td class="photo"><%= image_tag post.social_media_account.photo.url(:thumb) %></td>
+      <div class="post_content">
+        <div class="post_title">
+          <td><%= post.yair.name %></td>
+          <td><%= post.yair.party %></td>
+        </div>
+    <td><%= post.body %></td>         
+    <div class="post_byline">
+      <td>Posted on <%= post.social_media_account.site %> at <%= post.timestamp %> for <%= post.duration %></td>
+    </div>
+    <%= link_to 'Delete post', [post.yair, post],
+             method: :delete, data: { confirm: 'Are you sure?' } %>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <%= link_to 'Delete post', [post.yair, post],
-               method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
 
-<br>
