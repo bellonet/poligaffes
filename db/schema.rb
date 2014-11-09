@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108000652) do
+ActiveRecord::Schema.define(version: 20141109014923) do
 
   create_table "contacts", force: true do |t|
     t.datetime "created_at"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 20141108000652) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "social_media_accounts", ["yair_id"], name: "index_social_media_accounts_on_yair_id"

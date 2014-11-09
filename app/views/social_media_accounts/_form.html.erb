@@ -8,6 +8,11 @@
     <%= f.text_field :link %>
   </p>
   <p>
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo, input_html: { hidden: true }, label: 'Upload Attachment' %>
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

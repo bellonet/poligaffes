@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1> Yair: </h1>
 </div>
-   
+
+<p><%= image_tag @yair.social_media_accounts.first.photo.url(:thumb) %></p>
+  
 <p>
   <strong>Name:</strong>
   <%= @yair.name %>
@@ -15,11 +17,6 @@
 <p>
   <strong>Field:</strong>
   <%= @yair.field %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @yair.photo.url(:thumb) %>
 </p>
 
 <br>

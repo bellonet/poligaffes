@@ -2,7 +2,7 @@
  
 <% @social_media_accounts.each do |social_media_account| %>
 	<div class="social_media_account">
-     	<a style="float: left;"><%= image_tag social_media_account.yair.photo.url(:thumb) %></a>
+     	<a style="float: left;"><%= image_tag social_media_account.photo.url(:thumb) %></a>
       	<div class="social_media_account_content">
       		<div class="social_media_account_title">
 	      		<a><%= social_media_account.yair.name %></a>

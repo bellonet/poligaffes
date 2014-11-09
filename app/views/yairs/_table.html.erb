@@ -2,7 +2,7 @@
   <tbody>
     <% @yairs.each do |yair| %>
       <tr>
-        <td class="photo"><%= image_tag yair.photo.url(:thumb) %></td>
+        <td><%= image_tag yair.social_media_accounts.first.photo.url(:thumb) %></td>
         <td><%= link_to yair.name, yair_path(yair) %></td>
         <td><%= yair.party %></td>
         <td><%= yair.field %></td>

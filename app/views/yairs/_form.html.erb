@@ -25,12 +25,7 @@
     <%= f.label :field %><br>
     <%= f.text_field :field %>
   </p>
-
-  <p>
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo, input_html: { hidden: true }, label: 'Upload Attachment' %>
-  </p>
-
+  
   <p>
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

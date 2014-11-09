@@ -45,8 +45,8 @@ class YairsController < ApplicationController
 
 	def show
  		@yair = Yair.find(params[:id])
- 		@posts = Yair.find(params[:id]).posts.all.order(timestamp: :desc).paginate(page: params[:page], per_page: 2)
- 		@social_media_accounts = Yair.find(params[:id]).social_media_accounts.all
+ 		@posts = Yair.find(params[:id]).posts.order(timestamp: :desc).paginate(page: params[:page], per_page: 2)
+ 		@social_media_accounts = Yair.find(params[:id]).social_media_accounts
  	end
 
 	def destroy
@@ -58,6 +58,6 @@ class YairsController < ApplicationController
 
 	private
   	def yair_params
-    	params.require(:yair).permit(:name, :party, :field, :photo)
+    	params.require(:yair).permit(:name, :party, :field)
   	end
 end
