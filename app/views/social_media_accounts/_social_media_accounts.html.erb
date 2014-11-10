@@ -2,7 +2,7 @@
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tabAll" data-toggle="tab">All</a></li>
     <% @yair.social_media_accounts.each_with_index do |s, i| %>
-      <li><a href=<%= "#tab#{i}" %> data-toggle="tab"><%= s.link %></a></li>
+      <li><a href=<%= "#tab#{i}" %> data-toggle="tab"><%= s.name %></a></li>
     <% end %>
   </ul>
   <div class="tab-content">

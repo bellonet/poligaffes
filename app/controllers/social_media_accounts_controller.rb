@@ -1,12 +1,17 @@
 class SocialMediaAccountsController < ApplicationController
-	def index
+  def index
     @social_media_accounts = SocialMediaAccount.all
   end
 
-	def create
+  def create
     @yair = Yair.find(params[:yair_id])
-    @social_media_account = @yair.social_media_accounts.create(social_media_account_params)
-    redirect_to yair_path(@yair)
+    @social_media_account = SocialMediaAccount.new(social_media_account_params)
+    @social_media_account.yair = @yair
+    if @social_media_account.save
+      redirect_to yair_path(@yair)
+    else
+      render 'yairs/show'
+    end
   end
 
   def destroy
@@ -18,6 +23,6 @@ class SocialMediaAccountsController < ApplicationController
 
   private
     def social_media_account_params
-      params.require(:social_media_account).permit(:site, :link, :photo)
+      params.require(:social_media_account).permit(:name, :site, :link, :photo)
     end
 end

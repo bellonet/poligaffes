@@ -1,4 +1,20 @@
-<%= form_for([@yair, @yair.social_media_accounts.build]) do |f| %>
+<%= form_for([@yair, @social_media_account]) do |f| %>
+
+  <% if @social_media_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@social_media_account.errors.count, "error") %> prohibited this bitch from being saved:</h2>
+      <ul>
+        <% @social_media_account.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
   <p>
     <%= f.label :site %><br>
     <%= f.text_field :site %>
