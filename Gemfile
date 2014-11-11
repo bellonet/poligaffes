@@ -15,6 +15,7 @@ gem 'paperclip', '~> 4.2'
 
 ####
 
+gem 'koala'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
