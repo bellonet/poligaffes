@@ -4,14 +4,14 @@ class YairsController < ApplicationController
 
   def index
     if params[:search]
-      @yairs = Yair.where('name LIKE ?', "%#{params[:search]}%")
+      @yairs = Yair.where('last_name LIKE ?', "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
     else
-      @yairs = Yair.all
+      @yairs = Yair.all.order('last_name').paginate(page: params[:page], per_page: 10)
     end
   end
 
   def by_letter
-    @yairs = Yair.where('name LIKE ?', "#{params[:letter]}%")
+    @yairs = Yair.where('last_name LIKE ?', "#{params[:letter]}%").paginate(page: params[:page], per_page: 10)
     render 'index'
   end
 
@@ -58,6 +58,6 @@ class YairsController < ApplicationController
 
   private
     def yair_params
-      params.require(:yair).permit(:name, :party, :field)
+      params.require(:yair).permit(:first_name, :last_name, :party, :field)
     end
 end

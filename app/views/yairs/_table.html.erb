@@ -1,9 +1,12 @@
+<html dir="rtl" lang="ar">
+
 <table class="table table-striped">
   <tbody>
     <% @yairs.each do |yair| %>
       <tr>
         <td><%= image_tag yair.social_media_accounts.first.photo.url(:thumb) %></td>
-        <td><%= link_to yair.name, yair_path(yair) %></td>
+        <td><%= link_to yair.first_name, yair_path(yair) %></td>
+        <td><%= link_to yair.last_name, yair_path(yair) %></td>
         <td><%= yair.party %></td>
         <td><%= yair.field %></td>
         
@@ -22,3 +25,6 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @yairs %>
+<br>

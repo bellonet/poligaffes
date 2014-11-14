@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   def search
-  	@yairs = Yair.where("name LIKE ?", "%#{params[:search]}%")
+  	@yairs = Yair.where("last_name LIKE ?", "%#{params[:search]}%")
   	render :index
   end
   
