@@ -5,7 +5,7 @@ Spreadsheet.client_encoding = 'UTF-8'
 
 book = Spreadsheet.open 'representatives.xls'
 
-sheet = book.worksheet 0
+sheet = book.worksheet 2
 
 api_key = File.read("#{Rails.root}/config/facebook_api_key.txt").strip
 g = Koala::Facebook::API.new(api_key)
@@ -15,7 +15,8 @@ sheet.each do |row|
 	yair_first_name = row[0]
 	yair_last_name = row[1]
 	yair_party = row[2]
-	account_name = row[3]
+	account_name = row[3].to_i.to_s
+	puts account_name
 	account_site = "Facebook"
 
 	picture = g.get_picture(account_name, type: 'normal')
