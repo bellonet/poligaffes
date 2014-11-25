@@ -9,6 +9,7 @@ class YairsController < ApplicationController
       # @yairs = Yair.all.order('last_name').paginate(page: params[:page], per_page: 10)
       @yairs = Yair.all
       @yairs = @yairs.sort_by { |y| y.last_name }.paginate(page: params[:page], per_page: 10)
+      #Yair.delete_all
     end
   end
 

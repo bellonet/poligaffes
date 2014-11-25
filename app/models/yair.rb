@@ -3,6 +3,6 @@ class Yair < ActiveRecord::Base
 	has_many :posts, through: :social_media_accounts, dependent: :destroy
 
 	validates :last_name, presence: true,
-                    length: { minimum: 3 }
+                    length: { minimum: 2 }
 
 end
