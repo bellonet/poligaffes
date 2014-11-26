@@ -1,0 +1,15 @@
+
+he:
+  helpers:
+    actions: "פעולות"
+    links:
+      back: "חזור"
+      cancel: "בטל"
+      confirm: "בטוח?"
+      destroy: "מחק"
+      new: "חדש"
+    titles:
+      edit: "ערוך"
+      save: "שמור"
+      new: "חדש"
+      delete: "מחיקה"
