@@ -1,8 +1,8 @@
-<h1> Sign up! </h1>
+<h1> הרשמה </h1>
 <%= form_for @user do |f| %>
 	<% if @user.errors.any? %>
 		<div class="error messages">
-			<h2> form is invalid </h2>
+			<h2> טופס לא תקין </h2>
 			<ul>
 				<% for message in @user.errors.full_messages %>
 					<li> <%= message %> </li>

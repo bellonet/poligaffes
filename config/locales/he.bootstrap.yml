@@ -7,6 +7,7 @@ he:
       cancel: "בטל"
       confirm: "בטוח?"
       destroy: "מחק"
+      edit: "ערוך"
       new: "חדש"
     titles:
       edit: "ערוך"

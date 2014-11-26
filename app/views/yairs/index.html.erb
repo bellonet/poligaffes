@@ -1,12 +1,12 @@
 
 <div class="page-header">
-  <h1>Yairs</h1>
+  <h1>יאירים</h1>
 </div>
 
 <%= form_tag yairs_path, method: "get" do %>
-  <%= label_tag(:search, "Search for:") %>
+  <%= label_tag(:search, "חפש:") %>
   <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", name: nil %>
+  <%= submit_tag "חפש", name: nil %>
 <% end %>
 
 <br>
@@ -23,7 +23,7 @@
 <%= render 'table' %>
 
 <% if current_user %>
-  <%= link_to 'new', new_yair_path, :class => 'btn btn-primary' %>
+  <%= link_to 'יאיר חדש', new_yair_path, :class => 'btn btn-primary' %>
 <% end %>
 
 <br><br><br><br>

@@ -1,4 +1,21 @@
 he:
+  activerecord:
+    models:
+      user:
+        one: משתמש
+        other: משתמשים
+      yair:
+        one: יאיר
+        other: יאירים
+      social_media_account:
+        one: חשבון
+        other: חשבונות
+      post:
+        one: פוסט
+        other: פוסטים
+  will_paginate:
+    previous_label: הקודם
+    next_label: הבא
   date:
     abbr_day_names:
     - א

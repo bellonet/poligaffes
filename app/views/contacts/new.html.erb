@@ -1,5 +1,5 @@
 <div align="center">
-  <h3>Send A message to Us</h3>
+  <h3>שלחו לנו הודעה</h3>
 
   <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
     <%= f.input :name, :required => true %>
@@ -7,7 +7,7 @@
     <%= f.input :message, :as => :text, :required => true %>
     <div>
       </br>
-      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+      <%= f.button :submit, 'שלח', :class=> "btn btn-primary" %>
     </div>
   <% end %>
 </div>
