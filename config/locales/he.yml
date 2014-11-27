@@ -13,9 +13,48 @@ he:
       post:
         one: פוסט
         other: פוסטים
+
+    attributes:
+      user:
+        email: אימייל
+        password: סיסמא
+        password_confirmation: אישור סיסמא 
+      yair:
+        first_name: שם פרטי
+        last_name: שם משפחה
+        party: קבוצה
+        field: תחום
+      contact:
+        name: שם
+        email: אימייל
+        message: הודעה
+
+
   will_paginate:
     previous_label: הקודם
     next_label: הבא
+
+  representatives:
+    title: ח"כים
+  figures:
+    title: אושיות
+  media:
+    title: תקשורת
+  about:
+    title: עלינו
+  contact: 
+    title: צרו קשר
+
+  users: משתמשים
+  logout: צא!
+  login: כניסה
+  latest_posts: פוסטים אחרונים
+  new_yair: יאיר חדש
+  all_accounts: כל החשבונות
+  search: חפש
+
+
+
   date:
     abbr_day_names:
     - א

@@ -1,11 +1,9 @@
 
 <div class="page-header">
-  <h1> יאיר: </h1>
+  <h1><%= @yair. first_name %> <%= @yair. last_name %></h1>
 </div>
 
 <%= render 'social_media_accounts/social_media_accounts' %>
-
-<!-- JUST FOR NOW !!!!!! -->
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               yairs_path, :class => 'btn btn-default'  %>

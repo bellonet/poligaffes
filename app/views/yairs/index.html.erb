@@ -1,12 +1,11 @@
 
 <div class="page-header">
-  <h1>יאירים</h1>
+  <h1><%= t "representatives.title" %></h1>
 </div>
 
 <%= form_tag yairs_path, method: "get" do %>
-  <%= label_tag(:search, "חפש:") %>
   <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "חפש", name: nil %>
+  <%= submit_tag (t "search"), name: nil %>
 <% end %>
 
 <br>
@@ -23,7 +22,7 @@
 <%= render 'table' %>
 
 <% if current_user %>
-  <%= link_to 'יאיר חדש', new_yair_path, :class => 'btn btn-primary' %>
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_yair_path, :class => 'btn btn-primary' %>
 <% end %>
 
 <br><br><br><br>

@@ -1,13 +1,13 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tabAll" data-toggle="tab">כל החשבונות</a></li>
+    <li class="active"><a href="#tabAll" data-toggle="tab"><%= t "all_accounts" %></a></li>
     <% @yair.social_media_accounts.each_with_index do |s, i| %>
       <li><a href=<%= "#tab#{i}" %> data-toggle="tab"><%= s.name %></a></li>
     <% end %>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tabAll">
-      <p>פוסטים מכל החשבונות</p>
+      <p>POSTS FROM ALL ACCOUNTS</p>
       <%= render @yair.posts %>
     </div>
     <% @yair.social_media_accounts.each_with_index do |s, i| %>

@@ -47,13 +47,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand pull-right" href="http://localhost:3000">אופסי</a>
+        <a class="navbar-brand pull-right" href="http://localhost:3000">Oopsy</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
-            <li><%= link_to "יאירים", controller: 'yairs'  %></li>
-            <li><%= link_to "על האתר", controller: 'about'  %></li>
-            <li><%= link_to "צרו קשר", '/contacts'  %></li>
+            <li><%= link_to (t "representatives.title"), controller: 'yairs'  %></li>
+            <li><%= link_to (t "figures.title"), controller: 'yairs'  %></li>
+            <li><%= link_to (t "media.title"), controller: 'yairs'  %></li>
+            <li><%= link_to (t "about.title"), controller: 'about'  %></li>
           </ul>
         </div>
       </div>
@@ -77,12 +79,12 @@
     <div class="footer navbar-default navbar-fixed-bottom">
       <div class="container">
         <div id="user_footer">
-          <li><%= link_to "משתמשים", controller: 'users'  %></li>
+          <li><%= link_to (t "users"), controller: 'users'  %></li>
           <% if current_user %>
-            משתמש רשום  <%= current_user.email %>
-            <%= link_to "צא!", logout_path %>
+            <%= current_user.email %>
+            <%= link_to (t "logout"), logout_path %>
           <% else %>
-            <%= link_to "הכנס", login_path %>
+            <%= link_to (t "login"), login_path %>
           <% end %>
         </div>
       </div>

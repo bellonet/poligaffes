@@ -2,7 +2,6 @@
 <%= form_for @user do |f| %>
 	<% if @user.errors.any? %>
 		<div class="error messages">
-			<h2> טופס לא תקין </h2>
 			<ul>
 				<% for message in @user.errors.full_messages %>
 					<li> <%= message %> </li>
