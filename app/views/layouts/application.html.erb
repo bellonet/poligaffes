@@ -52,9 +52,9 @@
         <a class="navbar-brand pull-right" href="/">Oopsy</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
-            <li><%= link_to (t "representatives.title"), controller: 'yairs'  %></li>
-            <li><%= link_to (t "figures.title"), controller: 'yairs'  %></li>
-            <li><%= link_to (t "media.title"), controller: 'yairs'  %></li>
+            <li><%= link_to (t "representatives.title"), {controller: 'yairs', :field => 'representative'} %></li>
+            <li><%= link_to (t "figures.title"), {controller: 'yairs', :field => 'figure'} %></li>
+            <li><%= link_to (t "media.title"), {controller: 'yairs', :field => 'media'} %></li>
             <li><%= link_to (t "about.title"), controller: 'about'  %></li>
           </ul>
         </div>
