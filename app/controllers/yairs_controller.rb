@@ -6,11 +6,8 @@ class YairsController < ApplicationController
     if params[:search]
       @yairs = Yair.where('last_name LIKE ?', "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
     else
-      # @yairs = Yair.all.order('last_name').paginate(page: params[:page], per_page: 10)
-      #@yairs = Yair.all
       @yairs = Yair.where(field: params[:field])
       @yairs = @yairs.sort_by { |y| y.last_name }.paginate(page: params[:page], per_page: 10)
-      #Yair.delete_all
     end
   end
 

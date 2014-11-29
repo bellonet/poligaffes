@@ -9,7 +9,6 @@ class PostsController < ApplicationController
     social_media_account = SocialMediaAccount.find(params[:post][:social_media_account_id])
     
     social_media_account.posts.create(post_params)
-    # @post = @yair.posts.create(post_params)
     redirect_to yair_path(@yair)
   end
  
