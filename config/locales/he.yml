@@ -34,14 +34,10 @@ he:
     previous_label: הקודם
     next_label: הבא
 
-  representatives:
-    title: ח"כים
-  figures:
-    title: אושיות
-  media:
-    title: תקשורת
-  about:
-    title: עלינו
+  representatives: ח"כים
+  figures: אושיות
+  media: תקשורת
+  about: עלינו
   contact: 
     title: צרו קשר
 
