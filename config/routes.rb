@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/search', to: "home#search", as: 'search'
 
-  get '/byletter/:letter', to: 'yairs#by_letter'
+  get '(/:field)/byletter/:letter', to: 'yairs#by_letter'
 
   root 'home#index'
 
