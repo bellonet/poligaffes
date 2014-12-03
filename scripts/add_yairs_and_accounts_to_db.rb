@@ -8,9 +8,14 @@ book = Spreadsheet.open 'representatives.xls'
 
 sheet = book.worksheet 0
 
-api_key = File.read("#{Rails.root}/config/facebook_api_key.txt").strip
+# api_key = File.read("#{Rails.root}/config/facebook_api_key.txt").strip
 
-g = Koala::Facebook::API.new(api_key)
+token = FbApiToken.order(expires: :desc).first
+if token.expires < DateTime.now
+	raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
+end
+
+g = Koala::Facebook::API.new(token.token)
 
 sheet.each do |row|
 	yair_first_name = row[0]
