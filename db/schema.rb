@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113194905) do
+ActiveRecord::Schema.define(version: 20141203032045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 20141113194905) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "fb_api_tokens", force: true do |t|
+    t.text     "token"
+    t.datetime "expires"
+    t.integer  "application_id"
+    t.text     "application_name"
+    t.integer  "user_id"
+    t.text     "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fb_api_tokens", ["expires"], name: "index_fb_api_tokens_on_expires", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "status"

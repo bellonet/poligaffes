@@ -1,0 +1,24 @@
+<h1><%= t "fb_api_tokens" %></h1>
+
+<table class="table table-striped table-hover">
+  <th>
+    <td><%= t 'fb_api_token.token' %></td>
+    <td><%= t 'fb_api_token.expires' %></td>
+    <td></td>
+  </th>
+  <% @fb_api_tokens.each do |fb_api_token| %>
+    <tr>
+      <td><%= fb_api_token.token %></td>
+  <% end %>
+</table>
+
+  <br/>
+  <hr/>
+
+  <h4><%= t('fb_api_token.new', :default => t("helpers.links.new")) %></h4>
+  <%= form_for [:admin, @fb_api_token], html: {class: 'form form-inline'} do |f| %>
+    <div class="input-group">
+      <%= f.label :token %>
+      <%= f.text_field :token %>
+    <button type="submit" class="btn btn-default"><%= t 'submit' %></button>
+  <% end %>

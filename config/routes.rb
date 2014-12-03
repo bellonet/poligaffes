@@ -26,9 +26,9 @@ Rails.application.routes.draw do
 	resources "contacts", only: [:new, :create]
 
   namespace :admin do
+    root 'dashboard#index'
     resources :users
-    get '/dashboard', to: 'dashboard#index', as: 'dashboard'
-    # resource :dashboard
+    resources :fb_api_tokens
   end
 
 end
