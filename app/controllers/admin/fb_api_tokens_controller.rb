@@ -9,19 +9,22 @@ class Admin::FbApiTokensController < Admin::BaseController
 
   def create
     token = params[:fb_api_token][:token]
-    g = Koala::Facebook::API.new(token)
-    token_info = g.debug_token(token)
-    if token_info['data']['is_valid']
-      FbApiToken.create(
-        token: token,
-        expires: Time.at(token_info['data']['expires_at']).to_datetime,
-        application_id: token_info['data']['app_id'].to_i,
-        application_name: token_info['data']['application'],
-        user_id: token_info['data']['user_id'].to_i
-        )
-      redirect_to :index, flash: 'success'
+    begin
+      g = Koala::Facebook::API.new(token)
+      token_info = g.debug_token(token)
+      if token_info['data']['is_valid']
+        FbApiToken.create(
+          token: token,
+          expires: Time.at(token_info['data']['expires_at']).to_datetime,
+          application_id: token_info['data']['app_id'].to_i,
+          application_name: token_info['data']['application'],
+          user_id: token_info['data']['user_id'].to_i
+          )
+        redirect_to admin_fb_api_tokens_url, flash: 'success'
+      end
+    rescue Exception => e
+      redirect_to admin_fb_api_tokens_url, notice: e.try(:fb_error_message)
     end
-    redirect_to :index
   end
 
   def destroy
