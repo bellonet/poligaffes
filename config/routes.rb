@@ -20,10 +20,15 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :users
   resources :sessions
 
   match '/contacts', to: 'contacts#new', via: 'get'
 	resources "contacts", only: [:new, :create]
+
+  namespace :admin do
+    resources :users
+    get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+    # resource :dashboard
+  end
 
 end

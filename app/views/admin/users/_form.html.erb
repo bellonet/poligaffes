@@ -1,5 +1,5 @@
 <h1> הרשמה </h1>
-<%= form_for @user do |f| %>
+<%= form_for [:admin, @user] do |f| %>
 	<% if @user.errors.any? %>
 		<div class="error messages">
 			<ul>
