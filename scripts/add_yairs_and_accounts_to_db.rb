@@ -24,7 +24,12 @@ sheet.each do |row|
 	account_name = row[3]
 	account_site = "Facebook"
 
-	picture = g.get_picture(account_name, type: 'normal')
+	begin
+		picture = g.get_picture(account_name, type: 'normal')
+	rescue Exception => e
+		puts e.fb_error_message
+		next
+	end
 
 	# NEED TO FIX - IN CASE OF MULTIPLE
 

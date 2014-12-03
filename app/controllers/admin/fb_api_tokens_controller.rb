@@ -24,7 +24,6 @@ class Admin::FbApiTokensController < Admin::BaseController
           )
         redirect_to admin_fb_api_tokens_url notice: 'success!'
     rescue Exception => e
-      raise e
       redirect_to admin_fb_api_tokens_url, notice: e.try(:fb_error_message)
     end
   end
