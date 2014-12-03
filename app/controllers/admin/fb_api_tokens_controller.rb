@@ -5,6 +5,28 @@ class Admin::FbApiTokensController < Admin::BaseController
   end
 
   def show
+    @fb_api_token = FbApiToken.find(params[:id])
+  end
+
+  def update
+    @token = FbApiToken.find(params[:id])
+    begin
+      o = Koala::Facebook::OAuth.new(params[:fb_api_token][:application_id].to_i, params[:fb_api_token][:application_secret])
+      new_token = o.exchange_access_token(@token.token)
+      g = Koala::Facebook::API.new(new_token)
+      token_info = g.debug_token(new_token)
+      @token.update_attributes(
+          token: new_token,
+          expires: Time.at(token_info['data']['expires_at']).to_datetime,
+          application_id: token_info['data']['app_id'].to_i,
+          application_name: token_info['data']['application'],
+          user_id: token_info['data']['user_id'].to_i
+          )
+        redirect_to admin_fb_api_tokens_url notice: 'success!'
+    rescue Exception => e
+      raise e
+      redirect_to admin_fb_api_tokens_url, notice: e.try(:fb_error_message)
+    end
   end
 
   def create

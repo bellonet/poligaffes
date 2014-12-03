@@ -5,12 +5,14 @@
     <td><%= t 'fb_api_token.token' %></td>
     <td><%= t 'fb_api_token.expires' %></td>
     <td></td>
+    <td></td>
   </th>
   <% @fb_api_tokens.each do |fb_api_token| %>
     <tr>
       <td><%= fb_api_token.token.truncate 20 %></td>
       <td><%= l fb_api_token.expires %></td>
-      <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")), admin_fb_api_token_path(fb_api_token),
+      <td><%= link_to t('.view'), admin_fb_api_token_path(fb_api_token) %></td>
+      <td><%= link_to t('.destroy', default: t("helpers.links.destroy")), admin_fb_api_token_path(fb_api_token),
                     method: :delete, data: { confirm: 'Are you sure?' }, html: {class: 'btn btn-danger'} %></td></td>
     </tr>
   <% end %>
