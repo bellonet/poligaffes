@@ -1,1 +1,27 @@
-<h1>Yo, admin!</h1>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello, admin!</h1>
+        <p>What you do in here?</p>
+      </div>
+    </div>
+
+    <div class="container pull-right">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2><%= t 'users' %></h2>
+          <p><%= t 'users.explanation' %></p>
+          <p><a class="btn btn-default" href="<%= admin_users_path %>" role="button"><%= t 'edit' %> &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2><%= t 'api_keys' %></h2>
+          <p><%= t 'api_keys.explanation' %></p>
+          <p><a class="btn btn-default" href="#" role="button"><%= t 'view' %> &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2><%= t 'yairs' %></h2>
+          <p><%= t 'yairs.explanation' %></p>
+          <p><a class="btn btn-default" href="#" role="button"><%= t 'edit' %> &raquo;</a></p>
+        </div>
+      </div>
