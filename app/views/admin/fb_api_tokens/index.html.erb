@@ -8,7 +8,10 @@
   </th>
   <% @fb_api_tokens.each do |fb_api_token| %>
     <tr>
-      <td><%= fb_api_token.token %></td>
+      <td><%= fb_api_token.token.truncate 20 %></td>
+      <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")), admin_fb_api_token_path(fb_api_token),
+                    method: :delete, data: { confirm: 'Are you sure?' }, html: {class: 'btn btn-danger'} %></td></td>
+    </tr>
   <% end %>
 </table>
 

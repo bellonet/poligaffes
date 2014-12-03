@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20141203032045) do
   create_table "fb_api_tokens", force: true do |t|
     t.text     "token"
     t.datetime "expires"
-    t.integer  "application_id"
+    t.integer  "application_id",   limit: 8
     t.text     "application_name"
-    t.integer  "user_id"
+    t.integer  "user_id",          limit: 8
     t.text     "user"
     t.datetime "created_at"
     t.datetime "updated_at"

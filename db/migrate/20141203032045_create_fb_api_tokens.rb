@@ -3,9 +3,9 @@ class CreateFbApiTokens < ActiveRecord::Migration
     create_table :fb_api_tokens do |t|
       t.text :token
       t.datetime :expires
-      t.integer :application_id
+      t.column :application_id, :bigint
       t.text :application_name
-      t.integer :user_id
+      t.column :user_id, :bigint
       t.text :user
 
       t.timestamps
