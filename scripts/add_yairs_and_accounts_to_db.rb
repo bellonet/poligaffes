@@ -37,7 +37,7 @@ sheet.each do |row|
 	&& (Yair.find_by_last_name(yair_last_name).first_name==yair_first_name)
 		@yair = Yair.find_by_last_name(yair_last_name)
 	else
-		@yair = Yair.new(last_name: yair_last_name, first_name: yair_first_name, party: yair_party, field: 'representative')
+		@yair = Yair.new(last_name: yair_last_name, first_name: yair_first_name, party: yair_party, field: 'representatives')
 		@yair.save
 		puts @yair.last_name
 	end
