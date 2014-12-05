@@ -4,6 +4,7 @@ class YairsController < ApplicationController
 
   def index
     if params[:search]
+      @yairs = Yair.where(field: params[:field])
       @yairs = Yair.where('last_name LIKE ?', "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
     else
       @yairs = Yair.where(field: params[:field])
