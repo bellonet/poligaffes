@@ -4,7 +4,9 @@
     <% @yairs.each do |yair| %>
       <tr>
         <td><%= image_tag yair.social_media_accounts.first.photo.url(:thumb) %></td>
-        <td><%= link_to yair.first_name, yair_path(yair) %></td>
+        <td><% if yair.first_name %>
+          <%= link_to yair.first_name, yair_path(yair) %></td>
+        <% end %>
         <td><%= link_to yair.last_name, yair_path(yair) %></td>
         <td><%= yair.party %></td>
         
