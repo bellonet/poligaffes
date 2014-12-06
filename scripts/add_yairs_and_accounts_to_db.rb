@@ -6,14 +6,14 @@ Spreadsheet.client_encoding = 'UTF-8'
 
 book = Spreadsheet.open 'yairs.xls'
 
-api_key = File.read("#{Rails.root}/config/facebook_api_key.txt").strip
+#api_key = File.read("#{Rails.root}/config/facebook_api_key.txt").strip
 
 token = FbApiToken.order(expires: :desc).first
 if token.expires < DateTime.now
 	raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
 end
 
-g = Koala::Facebook::API.new(api_key) #(token.token)
+g = Koala::Facebook::API.new(token.token)
 
 ## Needs to be changed acording to the sheet
 sheet = book.worksheet 1
