@@ -21,7 +21,7 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
 
   posts.each do |post|
     RawPost.create(post: post,
-                   timestamp: post['updated_time'],
+                   timestamp: DateTime.strptim(post['created_time']),
                    id_in_site: post['id'],
                    social_media_account: acc)
     $stdout.write '.'
