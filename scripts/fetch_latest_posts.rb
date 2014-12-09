@@ -15,7 +15,7 @@ g = Koala::Facebook::API.new(token.token)
 
 SocialMediaAccount.where(site: 'Facebook').each do |acc|
   $stdout.write "fetching for #{acc['name']}"
-  #TODO instead of this next line, only get the posts SINCE THE LATEST WE ALREADY HAVE
+  # TODO instead of this next line, only get the posts SINCE THE LATEST WE ALREADY HAVE
   posts = g.get_connections(acc.link, 'posts')
 
   posts.each do |post|
@@ -25,5 +25,7 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
                    social_media_account: acc)
     $stdout.write '.'
   end
+  # TODO also, in case all these posts were newer than what's in DB, we need to go to the next page and also save those
+  # posts = posts.next_page
   $stdout.write "\n"
 end
