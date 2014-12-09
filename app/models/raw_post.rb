@@ -1,6 +1,5 @@
 class RawPost < ActiveRecord::Base
-  # validates :yair, presence: true
-  validates :site_id, presence: true
-  validates :site_user_id, presence: true
+  belongs_to :social_media_account
   validates :post, presence: true
+  validates_uniqueness_of :id_in_site
 end

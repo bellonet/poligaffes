@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20141209054139) do
     t.integer  "social_media_account_id"
   end
 
+  add_index "raw_posts", ["id_in_site"], name: "index_raw_posts_on_id_in_site", using: :btree
   add_index "raw_posts", ["social_media_account_id"], name: "index_raw_posts_on_social_media_account_id", using: :btree
   add_index "raw_posts", ["timestamp"], name: "index_raw_posts_on_timestamp", using: :btree
 

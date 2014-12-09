@@ -5,6 +5,8 @@ class AddSocialMediaAccountToRawPost < ActiveRecord::Migration
     remove_column :raw_posts, :site_id
     add_column :raw_posts, :id_in_site, :string
     add_reference :raw_posts, :social_media_account, index: true
+
+    add_index :raw_posts, :id_in_site
   end
 
   def down
