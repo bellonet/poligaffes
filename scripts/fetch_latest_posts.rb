@@ -15,9 +15,9 @@ g = Koala::Facebook::API.new(token.token)
 
 SocialMediaAccount.where(site: 'Facebook').each do |acc|
   $stdout.write "fetching for #{acc['name']}"
-  # TODO instead of this next line, only get the posts SINCE THE LATEST WE ALREADY HAVE
-  # this is something like .get_connections(acc.link, 'posts', since: latest_post_datetime)
-  posts = g.get_connections(acc.link, 'posts')
+  latest_post_datetime = acc.raw_posts.order('timestamp').last.timestamp
+  posts = g.get_connections(acc.link, 'posts', since: latest_post_datetime)
+  #posts = g.get_connections(acc.link, 'posts')
 
   posts.each do |post|
     RawPost.create(post: post,

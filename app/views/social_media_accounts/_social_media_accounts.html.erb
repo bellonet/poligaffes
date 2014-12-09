@@ -14,7 +14,12 @@
       <div class="tab-pane" id=<%= "tab#{i}" %>>
         <p>INFO ABOUT THE ACCOUNT</p>
 
-        <%= render s.posts %>
+        <% s.raw_posts.each do |r| %>
+          <%= r.timestamp %>
+          <br>
+          <br>
+        <% end %>
+        <%#= render s.posts %>
         <br>
 
       </div>
