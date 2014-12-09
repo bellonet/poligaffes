@@ -1,9 +1,5 @@
 source 'https://rubygems.org'
 
-#### Added by megem "twitter-bootstrap-rails"
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
 
 gem 'mail_form'
 gem 'simple_form'
