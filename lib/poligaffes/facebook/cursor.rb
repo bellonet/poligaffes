@@ -18,18 +18,19 @@ class SinceRespectingCursor
 
   def each
     @posts = @g.__send__(@method_name, *@args)
-
-    reached_past_since_limit = false
-    while true do
-      @posts.each do |p|
-        if @since && DateTime.strptime(p['created_time']) < @since
-          reached_past_since_limit = true
-          break
+    if @posts.any?
+      reached_past_since_limit = false
+      while true do
+        @posts.each do |p|
+          if @since && DateTime.strptime(p['created_time']) < @since
+            reached_past_since_limit = true
+            break
+          end
+          yield p
         end
-        yield p
+        break if reached_past_since_limit
+        @posts = @posts.next_page
       end
-      break if reached_past_since_limit
-      @posts = @posts.next_page
     end
   end
 end
