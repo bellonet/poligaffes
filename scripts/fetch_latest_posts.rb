@@ -20,9 +20,9 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
   posts = g.get_connections(acc.link, 'posts', since: latest_post_datetime)
   #posts = g.get_connections(acc.link, 'posts')
 
-  SinceRespectingCursor.new(g, :get_connections, acc.link, 'posts', since: since).each do |post|
+  SinceRespectingCursor.new(g, :get_connections, acc.link, 'posts', since: latest_post_datetime).each do |post|
     RawPost.create(post: post,
-                   timestamp: DateTime.strptim(post['created_time']),
+                   timestamp: DateTime.strptime(post['created_time']),
                    id_in_site: post['id'],
                    social_media_account: acc)
     $stdout.write '.'
