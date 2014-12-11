@@ -1,8 +1,9 @@
 require 'time'
-require 'koala'
+require 'poligaffes/facebook/errors'
 
 class SinceRespectingCursor
   include Enumerable
+  include Poligaffes::Facebook::Errors
 
   def initialize(g, method_name, *args)
     @g = g
@@ -17,7 +18,9 @@ class SinceRespectingCursor
   end
 
   def each
-    @posts = @g.__send__(@method_name, *@args)
+    call_with_retries do
+      @posts = @g.__send__(@method_name, *@args)
+    end
     if @posts.any?
       reached_past_since_limit = false
       while true do
@@ -29,7 +32,10 @@ class SinceRespectingCursor
           yield p
         end
         break if reached_past_since_limit
-        @posts = @posts.next_page
+        call_with_retries do
+          @posts = @posts.next_page
+        end
+        break if not @posts
       end
     end
   end
