@@ -18,7 +18,6 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
   $stdout.write "fetching for #{acc['name']}"
   latest_post = acc.raw_posts.order('timestamp').last
   latest_post_datetime = latest_post ? latest_post.timestamp : DateTime.new(1970)
-  posts = g.get_connections(acc.link, 'posts', since: latest_post_datetime)
 
   SinceRespectingCursor.new(g, :get_connections, acc.link, 'posts', since: latest_post_datetime).each do |post|
     RawPost.create(post: post,
