@@ -3,6 +3,7 @@
 
 require 'koala'
 require 'time'
+require 'poligaffes/facebook/cursor'
 
 puts "Updating raw posts."
 token = FbApiToken.order(expires: :desc).first
@@ -19,7 +20,7 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
   posts = g.get_connections(acc.link, 'posts', since: latest_post_datetime)
   #posts = g.get_connections(acc.link, 'posts')
 
-  posts.each do |post|
+  SinceRespectingCursor.new(g, :get_connections, acc.link, 'posts', since: since).each do |post|
     RawPost.create(post: post,
                    timestamp: DateTime.strptim(post['created_time']),
                    id_in_site: post['id'],
