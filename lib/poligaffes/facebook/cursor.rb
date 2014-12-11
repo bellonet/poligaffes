@@ -21,7 +21,7 @@ class SinceRespectingCursor
     call_with_retries do
       @posts = @g.__send__(@method_name, *@args)
     end
-    if @posts.any?
+    if @posts and @posts.any?
       reached_past_since_limit = false
       while true do
         @posts.each do |p|
