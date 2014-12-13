@@ -20,6 +20,6 @@ lfp  = latest_fb_posts.map { |p| p['message'] }
 
 lrp.each do |l|
 	unless lfp.include? l
-		puts l
+		Post.create(body: l, social_media_account: acc)
 	end
 end
