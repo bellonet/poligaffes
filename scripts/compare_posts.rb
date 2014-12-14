@@ -12,14 +12,23 @@ acc = SocialMediaAccount.find_by_id('129')
 facebook_id = SocialMediaAccount.find_by_id('129').link
 
 latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(10)
-lrp = latest_raw_posts.map { |p| p.post['message'] }
+#lrp = latest_raw_posts.map { |p| p.post['message'] }
 latest_post_datetime = latest_raw_posts.first.timestamp
 
-latest_fb_posts = g.get_connections(facebook_id, 'posts', until: latest_post_datetime, limit: 10)
-lfp  = latest_fb_posts.map { |p| p['message'] }
+latest_fb_posts = g.get_connections(facebook_id, 'posts', until: latest_post_datetime, limit: 1)
+lfp_m  = latest_fb_posts.map { |p| p['message'] }
+lfp_id = latest_fb_posts.map { |p| p['id'] }
 
-lrp.each do |l|
-	unless lfp.include? l
-		Post.create(body: l, social_media_account: acc)
+latest_raw_posts.each do |lrp|
+	unless lfp_m.include? lrp.post['message']
+		unless lfp_id.include? lrp.post['id']
+			status = "deleted"
+		else
+			status = "edited"
+		end
+		Post.create(body: lrp.post['message'], 
+					status: status,
+					created_at: lrp.timestamp,
+					social_media_account: acc)
 	end
 end
