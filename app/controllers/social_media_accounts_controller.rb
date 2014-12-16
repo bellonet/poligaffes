@@ -1,7 +1,4 @@
 class SocialMediaAccountsController < ApplicationController
-  def index
-    @social_media_accounts = SocialMediaAccount.all
-  end
 
   def create
     @yair = Yair.find(params[:yair_id])
