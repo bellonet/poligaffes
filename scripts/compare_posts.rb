@@ -9,13 +9,13 @@ puts "Got an access token than expires #{token.expires}"
 g = Koala::Facebook::API.new(token.token)
 
 acc = SocialMediaAccount.find_by_id('129')
-facebook_id = SocialMediaAccount.find_by_id('129').link
 
 latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(10)
 #lrp = latest_raw_posts.map { |p| p.post['message'] }
 latest_post_datetime = latest_raw_posts.first.timestamp
 
-latest_fb_posts = g.get_connections(facebook_id, 'posts', until: latest_post_datetime, limit: 1)
+latest_fb_posts = g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: 10)
+
 lfp_m  = latest_fb_posts.map { |p| p['message'] }
 lfp_id = latest_fb_posts.map { |p| p['id'] }
 
