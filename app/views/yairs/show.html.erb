@@ -6,7 +6,7 @@
 <%= render 'social_media_accounts/social_media_accounts' %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              yairs_path, :class => 'btn btn-default'  %>
+              yairs_path(field: @yair.field), :class => 'btn btn-default'  %>
 
 <% if current_user %>
 	<%= link_to t('.edit', :default => t("helpers.links.edit")),
