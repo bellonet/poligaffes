@@ -1,5 +1,4 @@
 require 'koala'
-require 'pry'
 
 module Poligaffes
   module Facebook
