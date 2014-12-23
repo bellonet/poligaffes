@@ -8,10 +8,9 @@ puts "Got an access token than expires #{token.expires}"
 
 g = Koala::Facebook::API.new(token.token)
 
-acc = SocialMediaAccount.find_by_id('129')
+acc = SocialMediaAccount.find_by_id('142')
 
 latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(10)
-#lrp = latest_raw_posts.map { |p| p.post['message'] }
 latest_post_datetime = latest_raw_posts.first.timestamp
 
 latest_fb_posts = g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: 10)
@@ -21,6 +20,9 @@ lfp_id = latest_fb_posts.map { |p| p['id'] }
 
 latest_raw_posts.each do |lrp|
 	unless lfp_m.include? lrp.post['message']
+		if (lrp.posts.any?) && !(lfp_m.include? lrp.posts.last.body)
+			next
+		end
 		unless lfp_id.include? lrp.post['id']
 			status = "deleted"
 		else
@@ -29,6 +31,7 @@ latest_raw_posts.each do |lrp|
 		Post.create(body: lrp.post['message'], 
 					status: status,
 					created_at: lrp.timestamp,
-					social_media_account: acc)
+					social_media_account: acc,
+					raw_post: lrp)
 	end
 end
