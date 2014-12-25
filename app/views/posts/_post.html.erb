@@ -5,7 +5,7 @@
   		<div class="col-md-3"><%= post.yair.first_name %></div>
 
 	  	<div class="col-md-9"><%= post.body %></div>
-	  	<div class="col-md-9">Posted on <%= post.social_media_account.site %> at <%= post.created_at %> for <%= post.duration %></div>
+	  	<div class="col-md-9">Posted on <%= post.social_media_account.site %> at <%= post.created_at %> status <%= post.status %></div>
 	</div>
   	<div class="col-md-3"><%= image_tag post.social_media_account.photo.url(:thumb) %></div>
 </div>
