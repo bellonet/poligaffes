@@ -32,7 +32,6 @@ sheet.each do |row|
 	unless SocialMediaAccount.find_by_link(account_name)
 		begin
 			picture = g.get_picture(account_name, type: 'normal')
-			about = g.get_object(account_name, fields: "about")
 
 		rescue Exception => e
 			puts e.fb_error_message
@@ -50,8 +49,7 @@ sheet.each do |row|
 
 		@social_media_account = SocialMediaAccount.new(name: account_name, 
 													site: account_site, 
-													link: account_name,
-													about: about["about"])
+													link: account_name)
 		@social_media_account.photo = URI.parse(picture)
 		@social_media_account.yair = @yair
 
