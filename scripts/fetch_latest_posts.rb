@@ -13,7 +13,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-logfile.puts "Updating raw posts."
+logfile.puts "(#{DateTime.now})Updating raw posts."
 token = FbApiToken.order(expires: :desc).first
 if token.expires < DateTime.now
 	raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
