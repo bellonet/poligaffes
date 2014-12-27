@@ -10,13 +10,53 @@
 
     <div class="tab-pane active" id="tabAll">
       <p><%= t ("Posts_from_all_accounts") %></p>
-      <%= render @yair.posts %>
+
+      <br>
+
+      <div class="tabbable"> 
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#tabDeleted" data-toggle="tab"><%= t "deleted" %></a></li>
+          <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= "edited" %></a></li>
+        </ul>
+
+        <br>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="tabDeleted">
+            <%= render @yair.posts.where(status: "deleted") %>
+          </div>
+          <div class="tab-pane" id="tabEdited">
+            <%= render @yair.posts.where(status: "edited") %>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <% @yair.social_media_accounts.each_with_index do |s, i| %>
       <div class="tab-pane" id=<%= "tab#{i}" %>>
         <p><%= s.about %></p>
-        <%= render s.posts %>
+
+        <br>
+        
+        <div class="tabbable"> 
+          <ul class="nav nav-pills">
+            <li class="active"><a href=<%="#tabDeleted_#{i}"%> data-toggle="tab"><%= t "deleted" %></a></li>
+            <li><a href=<%= "#tabEdited_#{i}" %> data-toggle="tab"><%= "edited" %></a></li>
+          </ul>
+
+          <br>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id=<%="tabDeleted_#{i}" %>>
+              <%= render s.posts.where(status: "deleted") %>
+            </div>
+            <div class="tab-pane" id=<%="tabEdited_#{i}" %>>
+              <%= render s.posts.where(status: "edited") %>
+            </div>
+          </div>
+        </div>
+
         <br>
       </div>
     <% end %>
