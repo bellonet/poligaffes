@@ -11,6 +11,9 @@ g = Koala::Facebook::API.new(token.token)
 SocialMediaAccount.where(site: 'Facebook').each do |acc|
 
 	latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(10)
+	
+	next unless latest_raw_posts.any?
+
 	latest_post_datetime = latest_raw_posts.first.timestamp
 
 	latest_fb_posts = g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: 10)
