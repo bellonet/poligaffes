@@ -1,9 +1,11 @@
 
 <div class="row">
   <div class="col-md-10">
-    <div class="col-md-4"><%= post.yair.last_name %></div>
-    <div class="col-md-4"><%= post.yair.first_name %></div>
     <div class="col-md-4"><%= post.yair.party %></div>
+    <div class="col-md-4"><%= link_to post.yair.last_name, yair_path(post.yair)%></div>
+    <% if post.yair.first_name %>
+      <div class="col-md-4"><%= link_to post.yair.first_name, yair_path(post.yair) %></div>
+    <% end %>
     <div class="col-md-12"><%= post.body %></div>
     <div class="col-md-12">Posted on <%= post.social_media_account.site %> at <%= post.created_at %> status <%= post.status %></div>
   </div>
