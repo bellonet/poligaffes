@@ -28,7 +28,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
     resources :users
+    resources :facebook_applications
     resources :fb_api_tokens
+    get '/create_token_using_fb_flow', to: 'fb_api_tokens#create_using_fb_flow', as: 'facebook_login_flow'
+    get '/callback_from_facush', to: 'fb_api_tokens#callback_from_facebook', as: 'facush_callback'
+    get '/callback_from_parsed_url_fragment', to: 'fb_api_tokens#callback_from_parsed_url_fragment', as: 'callback_from_parsed_url_fragment'
   end
 
 end

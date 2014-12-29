@@ -1,0 +1,7 @@
+Uno momento, por favor...
+<script>
+  $( document ).ready(function() {
+    var fragment = window.location.hash.split('=')[1].split('&')[0]
+    window.location.href = '<%= admin_callback_from_parsed_url_fragment_path %>?application_id=<%=@application_id%>&fragment='+fragment;
+  });
+</script>

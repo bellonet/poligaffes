@@ -22,6 +22,16 @@
   <hr/>
 
   <h4><%= t('fb_api_token.new', :default => t("helpers.links.new")) %></h4>
+
+  <%= form_tag admin_facebook_login_flow_path, method: :get, html: {class: 'form form-inline'} do %>
+    <div class="input-group">
+      <%= label :fb_api_token, :facebook_application %>
+      <%= select_tag :facebook_application_id, options_for_select(Admin::FacebookApplication.all.map{ |app| [app.name, app.id] }) %>
+    <button type="submit" class="btn btn-default"><%= t 'submit' %></button>
+  <% end %>
+
+  <hr/>
+
   <%= form_for [:admin, @fb_api_token], html: {class: 'form form-inline'} do |f| %>
     <div class="input-group">
       <%= f.label :token %>
