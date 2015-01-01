@@ -17,7 +17,7 @@
       <ul class="list-group">
         <% @latest_raw_posts.each do |raw_post| %>
           <li class="list-group-item">
-            <%= raw_post.yair.last_name %>, <%= link_to (raw_post.post['story'] || raw_post.post['message']).truncate(40), (raw_post.post['link'] || "https://www.facebook.com/#{raw_post.social_media_account.link}/posts/#{raw_post.post['id'].split('_').last}") %>
+            <%= raw_post.yair.last_name %>, <%= link_to (raw_post.post['story'] || raw_post.post['message']).truncate(40), "https://www.facebook.com/#{raw_post.social_media_account.link}/posts/#{raw_post.post['id'].split('_').last}" %>
             <span class="pull-left text-muted"><%= l raw_post.timestamp.in_time_zone('Israel'), format: :short %></span>
           </li>
         <% end %>
