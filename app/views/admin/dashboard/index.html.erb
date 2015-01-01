@@ -1,10 +1,3 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1>Hello, admin!</h1>
-    <p>What you do in here?</p>
-  </div>
-</div>
-
 <div class="well">
   <div class="row">
     <div class="col-md-5 pull-right">
@@ -14,6 +7,18 @@
           <li class="list-group-item">
             <span class="badge"><%= rpc['count'] %></span>
             <%= rpc['name'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-5 pull-right">
+      <p><%= t 'dashboard.latest_raw_posts' %></p>
+      <ul class="list-group">
+        <% @latest_raw_posts.each do |raw_post| %>
+          <li class="list-group-item">
+            <%= raw_post.yair.last_name %>, <%= link_to (raw_post.post['story'] || raw_post.post['message']).truncate(30), (raw_post.post['link'] || "https://www.facebook.com/#{raw_post.social_media_account.link}/posts/#{raw_post.post['id'].split('_').last}") %>
+            <span class="pull-left text-muted"><%= l raw_post.timestamp, format: :short %></span>
           </li>
         <% end %>
       </ul>
