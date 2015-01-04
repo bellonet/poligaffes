@@ -6,8 +6,20 @@
   <li><%= @fb_api_token.application_name %></li>
 </ul>
 
+<h3>Edit purpose</h3>
+<%= form_for [:admin, @fb_api_token] do |f| %>
+  <div class="field">
+    <%= f.label :purpose %>
+    <%= f.text_field :purpose %>
+  <div class="action"><%= f.submit %></div>
+
+<% end %>
+
+<hr/>
+
 <h3>Extend token expiration to 2 months</h3>
 <%= form_for [:admin, @fb_api_token] do |f| %>
+  <%= f.hidden_field :extend, value: 'true' %>
   <div class="field">
     <%= f.label :application_id %>
     <%= f.text_field :application_id %>
