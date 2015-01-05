@@ -20,7 +20,7 @@ def post_edited(acc, raw_post, new_post)
     raw_post:             raw_post)
 end
 
-token = FbApiToken.order(expires: :desc).last
+token = FbApiToken.where('purpose = ?', 'compare').order(expires: :desc).last
 if token.expires < DateTime.now
   raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
 end
