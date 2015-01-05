@@ -15,9 +15,16 @@ class SinceRespectingCursor
       @since = nil
     end
 
+    if @args[-1].is_a?(Hash) && args[-1].has_key?(:limit)
+      @limit = args[-1][:limit]
+    else
+      @limit = 25 # FB api default limit
+    end
+
   end
 
   def each
+    first_req = true
     call_with_retries do
       @posts = @g.__send__(@method_name, *@args)
     end
@@ -31,7 +38,8 @@ class SinceRespectingCursor
           end
           yield p
         end
-        break if reached_past_since_limit
+        break if reached_past_since_limit || (first_req && @posts.count<@limit)
+        first_req = false
         call_with_retries do
           @posts = @posts.next_page
         end
