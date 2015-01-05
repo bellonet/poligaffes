@@ -61,6 +61,7 @@ class Admin::FbApiTokensController < Admin::BaseController
       token: new_token,
       expires: Time.at(new_token_info['data']['expires_at']).to_datetime,
       application_id: new_token_info['data']['app_id'].to_i,
+      facebook_application_id: fb_app.id,
       application_name: new_token_info['data']['application'],
       user_id: new_token_info['data']['user_id'].to_i
       )
