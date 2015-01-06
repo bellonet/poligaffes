@@ -16,11 +16,12 @@ module Poligaffes
             break
           rescue Koala::Facebook::ServerError => e
             $stderr.write " Graph API Error: #{e.inspect} "
+            #   1: Possibly a temporary issue due to downtime - retry the operation after waiting, if it occurs again, check you are requesting an existing API.
             #   2: Temporary issue due to downtime - retry the operation after waiting.
             #   4: Temporary issue due to throttling - retry the operation after waiting and examine your API request volume.
             #  17: Temporary issue due to throttling - retry the operation after waiting and examine your API request volume.
             # 341: Temporary issue due to downtime or throttling - retry the operation after waiting and examine your API request volume.
-            if not [2, 4, 17, 341].include? e.fb_error_code
+            if not [1, 2, 4, 17, 341].include? e.fb_error_code
               raise e
             end
             $stderr.write "sleeping #{WAIT_SECONDS} seconds. "
