@@ -6,6 +6,7 @@ require 'poligaffes/facebook/errors'
 include Poligaffes::Facebook::Errors
 
 def post_deleted(acc, raw_post)
+  return if raw_post.posts.any? && raw_post.posts.last.status == 'deleted'
   @logfile.write "D"
   Post.create(
     body:                 raw_post.post['message'], 
