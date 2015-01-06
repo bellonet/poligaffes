@@ -11,23 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223182424) do
+ActiveRecord::Schema.define(version: 20150104204412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "fb_api_tokens", force: true do |t|
-    t.text     "token"
-    t.datetime "expires"
-    t.integer  "application_id",   limit: 8
-    t.text     "application_name"
-    t.integer  "user_id",          limit: 8
-    t.text     "user"
+  create_table "admin_facebook_applications", force: true do |t|
+    t.string   "app_id"
+    t.string   "app_secret"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "fb_api_tokens", force: true do |t|
+    t.text     "token"
+    t.datetime "expires"
+    t.integer  "application_id",          limit: 8
+    t.text     "application_name"
+    t.integer  "user_id",                 limit: 8
+    t.text     "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "facebook_application_id"
+    t.string   "purpose"
+  end
+
   add_index "fb_api_tokens", ["expires"], name: "index_fb_api_tokens_on_expires", using: :btree
+  add_index "fb_api_tokens", ["purpose"], name: "index_fb_api_tokens_on_purpose", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "status"

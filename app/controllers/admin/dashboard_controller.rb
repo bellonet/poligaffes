@@ -9,5 +9,6 @@ class Admin::DashboardController < Admin::BaseController
                           LIMIT 5;"
   def index
     @raw_post_counts = ActiveRecord::Base::connection.execute(RAW_POSTS_REPORT_SQL)
+    @latest_raw_posts = RawPost.last(5)
   end
 end

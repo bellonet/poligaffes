@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>App name:</strong>
+  <%= @admin_facebook_application.name %>
+</p>
+
+<p>
+  <strong>App id:</strong>
+  <%= @admin_facebook_application.app_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_facebook_application_path(@admin_facebook_application) %> |
+<%= link_to 'Back', admin_facebook_applications_path %>

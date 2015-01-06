@@ -1,21 +1,38 @@
 <h1><%= t "fb_api_tokens" %></h1>
 
 <ul>
-  <li><%= @fb_api_token.token %></li>
+  <li><%= @fb_api_token.token.truncate 20 %></li>
   <li><%= l @fb_api_token.expires %></li>
   <li><%= @fb_api_token.application_name %></li>
+  <li><%= @fb_api_token.purpose %></li>
 </ul>
 
+
+
+
 <h3>Extend token expiration to 2 months</h3>
+<%= form_tag admin_extend_fb_api_token_path, id: @fb_api_token.id do %>
+  <%= hidden_field :extend, value: 'true' %>
+  <div class="field">
+    <%= label :fb_api_token, :application_id %>
+    <%= text_field :fb_api_token, :application_id %>
+  </div>
+  <div class="field">
+    <%= label :fb_api_token, :application_secret %>
+    <%= password_field :fb_api_token, :application_secret %>
+  </div>
+  <div class="action"><%= submit_tag 'extend' %></div>
+
+<% end %>
+
+<hr/>
+
+<h3>Edit purpose</h3>
 <%= form_for [:admin, @fb_api_token] do |f| %>
   <div class="field">
-    <%= f.label :application_id %>
-    <%= f.text_field :application_id %>
+    <%= f.label :purpose %>
+    <%= f.text_field :purpose %>
+  <div class="action">
+    <%= f.submit %>
   </div>
-  <div class="field">
-    <%= f.label :application_secret %>
-    <%= f.password_field :application_secret %>
-  </div>
-  <div class="action"><%= f.submit %></div>
-
 <% end %>
