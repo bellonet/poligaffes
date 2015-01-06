@@ -1,6 +1,9 @@
 require 'set'
 require 'koala'
 require 'optparse'
+require 'poligaffes/facebook/errors'
+
+include Poligaffes::Facebook::Errors
 
 def post_deleted(acc, raw_post)
   @logfile.write "D"
@@ -51,7 +54,10 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
   next unless latest_raw_posts.any?
 
   latest_post_datetime = latest_raw_posts.first.timestamp
-  latest_fb_posts = g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: @how_many)
+
+  latest_fb_posts = call_with_retries do
+    g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: @how_many)
+  end
 
   ids_in_facebook      = Set.new latest_fb_posts.map { |p| p['id'] }
   facebook_posts       = Hash[latest_fb_posts.map { |p| [p['id'], p] }]
