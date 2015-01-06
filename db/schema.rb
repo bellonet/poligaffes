@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20150104204412) do
     t.datetime "updated_at"
   end
 
+  create_table "contacts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fb_api_tokens", force: true do |t|
     t.text     "token"
     t.datetime "expires"
@@ -78,7 +83,6 @@ ActiveRecord::Schema.define(version: 20150104204412) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "name"
-    t.string   "about"
   end
 
   add_index "social_media_accounts", ["yair_id"], name: "index_social_media_accounts_on_yair_id", using: :btree
