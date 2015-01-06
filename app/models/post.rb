@@ -6,4 +6,5 @@ class Post < ActiveRecord::Base
 
   validates :social_media_account, presence: true
   validates :raw_post, presence: true
+
 end
