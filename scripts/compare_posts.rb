@@ -58,6 +58,7 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
   latest_fb_posts = call_with_retries do
     g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: @how_many)
   end
+  next unless latest_fb_posts # if too many errors
 
   ids_in_facebook      = Set.new latest_fb_posts.map { |p| p['id'] }
   facebook_posts       = Hash[latest_fb_posts.map { |p| [p['id'], p] }]
