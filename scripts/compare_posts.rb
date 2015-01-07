@@ -11,7 +11,6 @@ def post_deleted(acc, raw_post)
   Post.create(
     body:                 raw_post.post['message'], 
     status:               'deleted',
-    created_at:           raw_post.timestamp,
     social_media_account: acc,
     raw_post:             raw_post)
 end

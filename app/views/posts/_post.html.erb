@@ -7,7 +7,7 @@
       <div class="col-md-4"><%= link_to post.yair.first_name, yair_path(post.yair) %></div>
     <% end %>
     <div class="col-md-12"><%= post.body %></div>
-    <div class="col-md-12">Posted on <%= post.social_media_account.site %> at <%= post.created_at %> status <%= post.status %></div>
+    <div class="col-md-12">Posted on <%= post.social_media_account.site %> at <%= post.raw_post.timestamp %> status <%= post.status %></div>
   </div>
 
   <div class="col-md-2"><%= image_tag post.social_media_account.photo.url(:thumb) %></div>
