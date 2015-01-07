@@ -49,6 +49,7 @@ sheet.each do |row|
 
 		@social_media_account = SocialMediaAccount.new(name: account_name, 
 													site: account_site, 
+													about: about,
 													link: account_name)
 		@social_media_account.photo = URI.parse(picture)
 		@social_media_account.yair = @yair

@@ -20,6 +20,6 @@ class SocialMediaAccountsController < ApplicationController
 
   private
     def social_media_account_params
-      params.require(:social_media_account).permit(:name, :site, :link, :photo)
+      params.require(:social_media_account).permit(:name, :site, ,:about, :link, :photo)
     end
 end
