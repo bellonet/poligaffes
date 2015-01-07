@@ -38,6 +38,12 @@ sheet.each do |row|
 			next
 		end
 
+		begin
+			about = g.get_object(account_name, fields: 'about')["about"]
+		rescue
+			puts account_name + " about was not found"
+		end
+
 		if (Yair.find_by_last_name(yair_last_name)) \
 		&& (Yair.find_by_last_name(yair_last_name).first_name==yair_first_name)
 			@yair = Yair.find_by_last_name(yair_last_name)

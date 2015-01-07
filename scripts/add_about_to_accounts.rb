@@ -11,11 +11,10 @@ SocialMediaAccount.where(site: 'Facebook').each do |acc|
 
 	begin
 		about = g.get_object(acc.name, fields: 'about')["about"]
-	rescue Exception => e
-		puts e.fb_error_message
-		next
+	rescue
+		puts acc.name + " about was not found"
+	else
+		acc.about = about
+		acc.save
 	end
-
-	acc.about = about
-	acc.save
 end
