@@ -1,8 +1,8 @@
 <div class="tabbable"> 
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tabAll" data-toggle="tab"><%= t "all_accounts" %></a></li>
-    <% @yair.social_media_accounts.each_with_index do |s, i| %>
-      <li><a href=<%= "#tab#{i}" %> data-toggle="tab"><%= s.name %></a></li>
+    <% @yair.social_media_accounts.each_with_index do |acc, i| %>
+      <li><a href=<%= "#tab#{i}" %> data-toggle="tab"><%= acc.name %></a></li>
     <% end %>
   </ul>
 
@@ -33,9 +33,9 @@
 
     </div>
 
-    <% @yair.social_media_accounts.each_with_index do |s, i| %>
+    <% @yair.social_media_accounts.each_with_index do |acc, i| %>
       <div class="tab-pane" id=<%= "tab#{i}" %>>
-        <p><%= s.about %></p>
+        <p><%= acc.about %></p>
 
         <br>
         
@@ -49,10 +49,10 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id=<%="tabDeleted_#{i}" %>>
-              <%= render s.posts.where(status: "deleted") %>
+              <%= render acc.posts.where(status: "deleted") %>
             </div>
             <div class="tab-pane" id=<%="tabEdited_#{i}" %>>
-              <%= render s.posts.where(status: "edited") %>
+              <%= render acc.posts.where(status: "edited") %>
             </div>
           </div>
         </div>
