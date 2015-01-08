@@ -26,6 +26,32 @@
   </div>
 
   <div class="row">
+    <div class="col-md-5 pull-right">
+      <p><%= t 'dashboard.most_deletes' %></p>
+      <ul class="list-group">
+        <% @top_posts['deleted'].each do |rpc| %>
+          <li class="list-group-item">
+            <span class="badge"><%= rpc['count'] %></span>
+            <%= rpc['name'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-5 pull-right">
+      <p><%= t 'dashboard.most_edits' %></p>
+      <ul class="list-group">
+        <% @top_posts['edited'].each do |rpc| %>
+          <li class="list-group-item">
+            <span class="badge"><%= rpc['count'] %></span>
+            <%= rpc['name'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-4">
       <h2><%= t 'users' %></h2>
       <p><%= t 'users.explanation' %></p>
