@@ -3,7 +3,6 @@ require 'koala'
 require 'paperclip'
 
 Spreadsheet.client_encoding = 'UTF-8'
-
 book = Spreadsheet.open 'yairs.xls'
 
 #api_key = File.read("#{Rails.root}/config/facebook_api_key.txt").strip
@@ -29,6 +28,8 @@ end
 account_site = "Facebook"
 
 picture = g.get_picture(account_name, type: 'normal')
+about = g.get_object(account_name, fields: 'about')["about"]
+
 
 
 if (Yair.find_by_last_name(yair_last_name)) \
@@ -44,6 +45,8 @@ end
 											site: account_site, 
 											about: about,
 											link: account_name)
+
+
 @social_media_account.photo = URI.parse(picture)
 @social_media_account.yair = @yair
 

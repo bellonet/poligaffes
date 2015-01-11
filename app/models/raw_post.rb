@@ -7,4 +7,11 @@ class RawPost < ActiveRecord::Base
   validates :social_media_account, presence: true
   validates :post, presence: true
   validates_uniqueness_of :id_in_site
+
+  has_attached_file :video, :styles => {
+    :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+  }, :processors => [:transcoder], :default_url => "/images/:style/missing.png"
+
+  validates_attachment_content_type :video, :content_type => ['video/mp4']
 end
+
