@@ -8,13 +8,33 @@ class RawPost < ActiveRecord::Base
   validates :post, presence: true
   validates_uniqueness_of :id_in_site
 
-  has_attached_file :video, :styles => {
-    :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
-  }, :processors => [:transcoder], :default_url => "/images/:style/missing.png"
+  # has_attached_file :attachment, :styles => {
+  #   :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+  # }, :processors => [:transcoder], :default_url => "/images/:style/missing.png"
 
-  validates_attachment_content_type :video, :content_type => ['video/mp4']
+  # validates_attachment_content_type :attachment, :content_type => ['video/mp4']
 
-  has_attached_file :photo, :styles => { :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+  # has_attached_file :photo, :styles => { :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  # validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
+
+  has_attached_file :attachment
+  validates_attachment_content_type :attachment,
+    :content_type => ['video/mp4'],
+    :if => :is_type_of_video?
+  validates_attachment_content_type :attachment,
+     :content_type => [/\Aimage\/.*\Z/],
+     :if => :is_type_of_image?
+  
+  protected
+  def is_type_of_video?
+    attachment.content_type =~ %r(video)
+  end
+
+  def is_type_of_image?
+    attachment.content_type =~ %r(image)
+  end
+
+
 end
 

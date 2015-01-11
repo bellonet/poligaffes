@@ -8,14 +8,12 @@ require 'poligaffes/facebook/cursor'
 require 'paperclip'
 require 'httparty'
 
-# token = FbApiToken.order(expires: :desc).first
-# if token.expires < DateTime.now
-#   raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
-# end
+token = FbApiToken.order(expires: :desc).first
+if token.expires < DateTime.now
+  raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
+end
 
-# g = Koala::Facebook::API.new(token.token)
-
-g = Koala::Facebook::API.new('CAAJvj022TzUBAFLrIpVolT3cfXOFsfIZBhPgOuqOskXDfnHyPVg8TFnTvEXBuqvDLGe2fIF7nPD4LQsm6H0YuRP5068P3tMZCaWArAcfSiVq9cOCHZABMqhj9SXt433tXZBtyKPRzDkGTDdk4Q3ZCfVBJWxFfonDQHFa5PB8sQB6bL9GlTo4IcDkKtwmCcZCJrtWvsN0BidLEYDsPTzDXTrkcGwYhuO2IZD')
+g = Koala::Facebook::API.new(token.token)
 
 acc = SocialMediaAccount.find_by_id('144')
 
@@ -34,11 +32,11 @@ acc = SocialMediaAccount.find_by_id('144')
       if post['type'] == "photo"
         link = 'https://graph.facebook.com/' + @RP.post['object_id'] + '/picture'
         puts link
-        @RP.photo = URI.parse(link)
+        @RP.attachment = URI.parse(link)
 
       elsif post['type'] == "video" 
         link = post['source']
-        @RP.video = URI.parse(link)
+        @RP.attachment = URI.parse(link)
 
         puts link
 
