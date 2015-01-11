@@ -1,6 +1,6 @@
 require 'koala'
 
-token = FbApiToken.order(expires: :desc).first
+token = FbApiToken.where(purpose: 'misc').order(expires: :desc).first
 if token.expires < DateTime.now
 	raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
 end
