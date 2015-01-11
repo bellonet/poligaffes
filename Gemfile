@@ -7,7 +7,10 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 gem 'will_paginate'
 
+gem 'httparty'
+
 gem 'paperclip', '~> 4.2'
+gem 'paperclip-av-transcoder'
 
 ####
 

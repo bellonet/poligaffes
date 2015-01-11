@@ -29,6 +29,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    av (0.8.0)
+      cocaine
     bcrypt-ruby (3.1.1.rc1)
     builder (3.2.2)
     capistrano (3.3.5)
@@ -64,6 +66,9 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     hike (1.2.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
@@ -86,6 +91,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.5.0)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -95,6 +101,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-av-transcoder (0.6.2)
+      av (>= 0.7.1)
+      paperclip (>= 2.5.2)
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.1)
@@ -176,11 +185,13 @@ DEPENDENCIES
   capistrano-rails (~> 1.1.1)
   capistrano-rbenv (~> 2.0)
   coffee-rails (~> 4.0.0)
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   koala
   mail_form
   paperclip (~> 4.2)
+  paperclip-av-transcoder
   pg
   pry
   rails (= 4.1.5)

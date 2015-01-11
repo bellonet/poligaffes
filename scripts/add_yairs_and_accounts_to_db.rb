@@ -58,6 +58,7 @@ sheet.each do |row|
 													about: about,
 													link: account_name)
 		@social_media_account.photo = URI.parse(picture)
+
 		@social_media_account.yair = @yair
 
 		if @social_media_account.save
