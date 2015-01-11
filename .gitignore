@@ -19,3 +19,4 @@ config/database.yml
 config/secrets.yml
 /public
 .capistrano/
+.DS_Store
