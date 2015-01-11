@@ -31,7 +31,8 @@
     <div class="input-group">
       <%= label :fb_api_token, :facebook_application %>
       <%= select_tag :facebook_application_id, options_for_select(Admin::FacebookApplication.all.map{ |app| [app.name, app.id] }) %>
-    <button type="submit" class="btn btn-default"><%= t 'submit' %></button>
+      <button type="submit" class="btn btn-default"><%= t 'submit' %></button>
+    </div>
   <% end %>
 
   <hr/>
@@ -40,5 +41,6 @@
     <div class="input-group">
       <%= f.label :token %>
       <%= f.text_field :token %>
-    <button type="submit" class="btn btn-default"><%= t 'submit' %></button>
+      <button type="submit" class="btn btn-default"><%= t 'submit' %></button>
+    </div>
   <% end %>
