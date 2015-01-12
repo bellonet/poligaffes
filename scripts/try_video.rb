@@ -15,7 +15,9 @@ end
 
 g = Koala::Facebook::API.new(token.token)
 
-acc = SocialMediaAccount.find_by_id('144')
+acc = SocialMediaAccount.find_by_id('3')
+
+puts acc.name
 
   latest_post = acc.raw_posts.order('timestamp').last
   latest_post_datetime = latest_post ? latest_post.timestamp : DateTime.new(1970)
