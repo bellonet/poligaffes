@@ -16,8 +16,8 @@ end
 g = Koala::Facebook::API.new(token.token)
 
 ## Needs to be changed acording to the sheet
-sheet = book.worksheet 0
-field = "representatives"
+sheet = book.worksheet 1
+field = "figures"
 
 sheet.each do |row|
 	yair_first_name = row[0]
