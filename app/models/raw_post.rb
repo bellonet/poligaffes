@@ -24,3 +24,4 @@ class RawPost < ActiveRecord::Base
   def is_type_of_image?
     attachment.content_type =~ %r(image)
   end
+end
