@@ -7,7 +7,11 @@
       <div class="col-md-4"><%= link_to post.yair.first_name, yair_path(post.yair) %></div>
     <% end %>
     <div class="col-md-12"><%= post.body %></div>
-    <div class="col-md-12"><%= image_tag post.raw_post.attachment.url %></div>
+    <% if post.raw_post.attachment_content_type == "image/jpeg" %>
+      <div class="col-md-12"><%= image_tag post.raw_post.attachment.url %></div>
+    <% elsif post.raw_post.attachment_content_type == "video/mp4" %>    
+      <div class="col-md-12"><%= video_tag post.raw_post.attachment.url %></div>
+    <% end %>
     <div class="col-md-12">Posted on <%= post.social_media_account.site %> at <%= post.raw_post.timestamp %> status <%= post.status %></div>
   </div>
 
