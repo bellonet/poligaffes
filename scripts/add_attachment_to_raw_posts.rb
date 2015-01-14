@@ -1,19 +1,8 @@
 # encoding: UTF-8
 #!/usr/bin/env ruby
 
-require 'time'
-require 'koala'
-require 'optparse'
 require 'poligaffes/facebook/cursor'
 require 'paperclip'
-require 'httparty'
-
-# token = FbApiToken.order(expires: :desc).first
-# if token.expires < DateTime.now
-#   raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
-# end
-
-# g = Koala::Facebook::API.new(token.token)
 
 RawPost.where("timestamp >?", 1.month.ago).
 where('attachment_file_name is null').
