@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :posts
+
   resources :sessions
 
   match '/contacts', to: 'contacts#new', via: 'get'

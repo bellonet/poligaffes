@@ -1,7 +1,6 @@
 # encoding: UTF-8
 #!/usr/bin/env ruby
 
-require 'poligaffes/facebook/cursor'
 require 'paperclip'
 
 RawPost.where("timestamp >?", 1.month.ago).
@@ -12,15 +11,10 @@ where("post ->> 'object_id' LIKE ?", "%%").each do |rp|
 
   if rp.post['type'] == "photo"
     link = 'https://graph.facebook.com/' + rp.post['object_id'] + '/picture'
-    puts link
     rp.attachment = URI.parse(link)
 
   elsif rp.post['type'] == "video" 
-    link = rp.post['source']
-    rp.attachment = URI.parse(link)
-
-    puts link
-
+    rp.attachment = URI.parse(rp.post['source'])
   end
 
   if rp.save

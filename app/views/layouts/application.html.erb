@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "PoliGaffes" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : t("lahadam") %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -48,8 +48,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%#= link_to "Oopsy", root_path %>
-        <a class="navbar-brand pull-right" href="/">Oopsy</a>
+        <%#= link_to "Lahadam", root_path %>
+        <a class="navbar-brand pull-right" href="/"><%= t("lahadam") %></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
             <li><%= link_to (t "representatives"), yairs_path(field: 'representatives') %></li>
