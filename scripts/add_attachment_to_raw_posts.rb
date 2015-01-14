@@ -3,7 +3,7 @@
 
 require 'paperclip'
 
-RawPost.where("timestamp >?", 1.month.ago).
+RawPost.where("timestamp >?", 1.minute.ago).
 where('attachment_file_name is null').
 where("post ->> 'object_id' LIKE ?", "%%").each do |rp|
 
