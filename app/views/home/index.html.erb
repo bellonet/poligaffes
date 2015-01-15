@@ -20,11 +20,11 @@
     <div class="tab-content">
       <div class="tab-pane active" id=<%="tabDeleted" %>>
         <%= render @posts.where(status: "deleted") %>
-        <%= will_paginate @posts.where(status: "deleted") %>
+        <%= will_paginate @posts.where(status: "deleted"), renderer: BootstrapPagination::Rails %>
       </div>
       <div class="tab-pane" id=<%="tabEdited" %>>
         <%= render @posts.where(status: "edited") %>
-        <%= will_paginate @posts.where(status: "edited") %>
+        <%= will_paginate @posts.where(status: "edited"), renderer: BootstrapPagination::Rails %>
       </div>
     </div>
   </div>

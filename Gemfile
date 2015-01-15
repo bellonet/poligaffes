@@ -6,6 +6,7 @@ gem 'simple_form'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 gem 'httparty'
 
