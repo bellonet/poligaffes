@@ -20,7 +20,7 @@ raise OptionParser::MissingArgument if @type.nil?
 raise OptionParser::ParseError.new("choose photo/video") if !(['photo','video'].include? @type)
 
 @logfile.puts "(#{DateTime.now})fetching attachments (#{@type}."
-RawPost.where("timestamp >?", 1.month.ago).
+RawPost.where("timestamp >?", 2.minutes.ago).
   where('attachment_file_name is null').
   where("post ->> 'object_id' LIKE ?", "%%").
   where("post ->> 'type' = ?", @type).each do |rp|
