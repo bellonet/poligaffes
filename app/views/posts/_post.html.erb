@@ -9,6 +9,7 @@
     <% end %>
 
     <div class="col-md-12"><%= truncate(post.body, length: @length || 9999) %></div>
+    <div class="col-md-12">Story: <%= post.raw_post.post["story"] %></div>
 
     <% if post.raw_post.attachment_content_type == "image/jpeg" %>
       <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, :height => "230" %></div>
