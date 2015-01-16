@@ -2,14 +2,30 @@
 #!/usr/bin/env ruby
 
 require 'paperclip'
+require 'optparse'
 require 'time'
 
-puts "(#{DateTime.now})fetching attachments."
-RawPost.where("timestamp >?", 5.minutes.ago).
-where('attachment_file_name is null').
-where("post ->> 'object_id' LIKE ?", "%%").each do |rp|
+@logfile = $stdout
+@type = nil
+OptionParser.new do |opts|
+  opts.on("-lLOGFILE", "--logfile=LOGFILE", "file to output to") do |l|
+    @logfile = File.open(l, 'a') if l
+  end
+  opts.on("-tTYPE", "--type=TYPE", "which attachments to get [photo/video]") do |t|
+    @type = t
+  end
+end.parse!
 
-  $stdout.write "#{rp.id} - #{rp.social_media_account.link}"
+raise OptionParser::MissingArgument if @type.nil?
+raise OptionParser::ParseError.new("choose photo/video") if !(['photo','video'].include? @type)
+
+@logfile.puts "(#{DateTime.now})fetching attachments (#{@type}."
+RawPost.where("timestamp >?", 1.month.ago).
+  where('attachment_file_name is null').
+  where("post ->> 'object_id' LIKE ?", "%%").
+  where("post ->> 'type' = ?", @type).each do |rp|
+
+  @logfile.write "#{rp.id} - #{rp.social_media_account.link}"
 
   if rp.post['type'] == "photo"
     link = 'https://graph.facebook.com/' + rp.post['object_id'] + '/picture'
@@ -20,10 +36,10 @@ where("post ->> 'object_id' LIKE ?", "%%").each do |rp|
   end
 
   if rp.save
-    puts "... saved\n"
+    @logfile.puts "... saved\n"
   else
-    puts "\n"
+    @logfile.puts "\n"
   end
 
 end
-puts "finished run (#{DateTime.now})"
+@logfile.puts "finished run (#{DateTime.now})"
