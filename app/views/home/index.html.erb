@@ -8,7 +8,16 @@
 <% if @yairs %>
 	<%= render "yairs/table" %>
 <% else %>
-
+<div class="row">
+  <div class="col-md-7 pull-right">
+    <div id="stats-graph"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7 pull-right">
+    <div id="stats-legend"></div>
+  </div>
+</div>
 	<div class="tabbable"> 
     <ul class="nav nav-pills">
       <li class="active"><a href=<%="#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
@@ -30,3 +39,31 @@
   </div>
 <% end %>
 
+<script>
+        data = <%= JSON.dump(@stats).html_safe %>
+        MG.data_graphic({
+            title: "השבוע בארץ להדם",
+            // description: "<%= t('graph.activity.description') %>",
+            data: data,
+            // markers: [{'year': 1964, 'label': '"The Creeping Terror" released'}],
+            width: 400,
+            height: 170,
+            target: "#stats-graph",
+            x_accessor: "day",
+            y_accessor: "count",
+            interpolate: "monotone",
+            legend: ['מחיקות', 'עריכות'],
+            legend_target: "#stats-legend",
+            animate_on_load: true,
+            area: false,
+            missing_is_zero: true,
+            custom_line_color_map: [3,1]
+            });
+        $($('#stats-graph > svg > g.mg-x-axis > text')[6]).text(data[1][6]['name']);
+        $($('#stats-graph > svg > g.mg-x-axis > text')[5]).text(data[1][5]['name']);
+        $($('#stats-graph > svg > g.mg-x-axis > text')[4]).text(data[1][4]['name']);
+        $($('#stats-graph > svg > g.mg-x-axis > text')[3]).text(data[1][3]['name']);
+        $($('#stats-graph > svg > g.mg-x-axis > text')[2]).text(data[1][2]['name']);
+        $($('#stats-graph > svg > g.mg-x-axis > text')[1]).text(data[1][1]['name']);
+        $($('#stats-graph > svg > g.mg-x-axis > text')[0]).text(data[1][0]['name']);
+</script>
