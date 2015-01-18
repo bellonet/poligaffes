@@ -23,3 +23,6 @@ nav {
 #stats-graph > h2 {
   position: absolute;
 }
+#stats-graph > svg > g.mg-y-axis > text {
+  direction: ltr;
+}
