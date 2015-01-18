@@ -59,7 +59,20 @@
             missing_is_zero: true,
             custom_line_color_map: [3,1]
             });
+        // fix ticks on x axis
         $(data[1]).each(function (i,v) {
           $($('#stats-graph > svg > g.mg-x-axis > text')[i]).text(data[1][i]['name']);
+        });
+        // move y-axis to the right side
+        var width = $('#stats-graph > svg').width();
+        var leftSide = parseInt($('#stats-graph > svg > g.mg-y-axis > line')[0].getAttribute('x1'));
+        var rightSide = width - 15;
+        var toMove = rightSide - leftSide;
+        $('#stats-graph > svg > g.mg-y-axis > line').each(function (i,el) {
+          console.log(el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove));
+          console.log(el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove));
+        });
+        $('#stats-graph > svg > g.mg-y-axis > text').each(function (i,el) {
+          console.log(el.setAttribute('x', parseInt(el.getAttribute('x'))+toMove + 15));
         });
 </script>
