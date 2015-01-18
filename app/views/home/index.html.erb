@@ -69,10 +69,10 @@
         var rightSide = width - 15;
         var toMove = rightSide - leftSide;
         $('#stats-graph > svg > g.mg-y-axis > line').each(function (i,el) {
-          console.log(el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove));
-          console.log(el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove));
+          el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove);
+          el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove);
         });
         $('#stats-graph > svg > g.mg-y-axis > text').each(function (i,el) {
-          console.log(el.setAttribute('x', parseInt(el.getAttribute('x'))+toMove + 15));
+          el.setAttribute('x', width);
         });
 </script>
