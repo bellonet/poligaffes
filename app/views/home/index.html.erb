@@ -8,16 +8,20 @@
 <% if @yairs %>
 	<%= render "yairs/table" %>
 <% else %>
-<div class="row">
-  <div class="col-md-7 pull-right">
-    <div id="stats-graph"></div>
+
+  <div class="row">
+    <div class="col-md-7 pull-right">
+      <div id="stats-graph"></div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-7 pull-right">
-    <div id="stats-legend"></div>
+  <div class="row">
+    <div class="col-md-7 pull-right">
+      <div id="stats-legend"></div>
+    </div>
   </div>
-</div>
+
+  <br>
+
 	<div class="tabbable"> 
     <ul class="nav nav-pills">
       <li class="active"><a href=<%="#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
