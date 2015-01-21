@@ -8,7 +8,9 @@ class HomeController < ApplicationController
   """
 
   def index
-  	@posts = Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+  	@deleted_posts = Post.all.order(created_at: :desc).where(status: "deleted").paginate(page: params[:deleted_page], per_page: 5)
+    @edited_posts = Post.all.order(created_at: :desc).where(status: "edited").paginate(page: params[:edited_page], per_page: 5)
+
   	@length = 400
 
     res = ActiveRecord::Base::connection.execute(STATS_SQL % 1.week.ago.strftime('%Y-%m-%d'))
