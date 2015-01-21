@@ -8,23 +8,26 @@
       <div class="col-md-4"><%= link_to post.yair.first_name, yair_path(post.yair) %></div>
     <% end %>
 
-    <div class="col-md-12"><%= truncate(post.body, length: @length || 9999) %></div>
-
-    <div class="accordion" id="accordion2">
-      <div class="accordion-group">
-        <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= post.id %>">
-            Collapsible Group Item #2
-          </a>
-        </div>
-        <div id="collapseTwo<%= post.id %>" class="accordion-body collapse">
-          <div class="accordion-inner">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet quasi reiciendis harum quibusdam tempore commodi! Voluptatem recusandae incidunt accusamus expedita.</p>
+    <div class="col-md-12">
+      <% if post.body.nil? or (post.body.length < @length) %>
+        <p><%= truncate(post.body, length: @length || 9999) %></p>
+      <% else %>
+        <div class="accordion" id="accordion">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= post.id %>">
+                <%= truncate(post.body, length: @length || 9999) %>
+              </div>
+            </div>
+            <div id="collapse<%= post.id %>" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <p><%= post.body[@length..-1] %></p>
+              </div>
+            </div>
+            <a class="see_more" data-toggle="collapse" href="#collapse<%= post.id %>">המשך לקרוא</a>
           </div>
         </div>
-        <button class="SeeMore2" data-toggle="collapse" href="#collapseTwo<%= post.id %>">See More</button>
-
-      </div>
+      <% end %>
     </div>
 
     <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
