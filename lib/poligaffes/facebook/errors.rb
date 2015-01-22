@@ -22,13 +22,16 @@ module Poligaffes
             #  17: Temporary issue due to throttling - retry the operation after waiting and examine your API request volume.
             # 341: Temporary issue due to downtime or throttling - retry the operation after waiting and examine your API request volume.
             if not [1, 2, 4, 17, 341].include? e.fb_error_code
-              $stderr.write e.inspect
-              $stderr.write "\nSKIPPING.\n"
-              return nil
+              raise e
             end
             $stderr.write "sleeping #{WAIT_SECONDS} seconds. "
             sleep WAIT_SECONDS
             $stderr.write "retrying"
+
+          rescue Koala::Facebook::ClientError => e
+            $stderr.write e.message
+            $stderr.write "\n SKIPPING!\n"
+            return nil
           end
         end
         unless success
