@@ -10,7 +10,8 @@ class Admin::DashboardController < Admin::BaseController
 
   TOP_POSTS_SQL = "SELECT yairs.first_name || ' ' || yairs.last_name AS name, count(*)
                     FROM posts
-                      JOIN social_media_accounts ON posts.social_media_account_id = social_media_accounts.id
+                      JOIN raw_posts ON raw_posts.id = posts.raw_post_id
+                      JOIN social_media_accounts ON raw_posts.social_media_account_id = social_media_accounts.id
                       JOIN yairs ON yairs.id = social_media_accounts.id
                     WHERE posts.status = '%s'
                     GROUP BY yairs.id
