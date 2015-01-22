@@ -33,9 +33,9 @@ logfile.puts "Got an access token than expires #{token.expires}"
 g = Koala::Facebook::API.new(token.token)
 
 if tracking
-  cursor = SocialMediaAccount.tracking.where(site: 'Facebook')
+  cursor = SocialMediaAccount.tracking.where(site: 'Facebook').order('random()')
 else
-  cursor = SocialMediaAccount.non_tracking.where(site: 'Facebook')
+  cursor = SocialMediaAccount.non_tracking.where(site: 'Facebook').order('random()')
 end
 
 cursor.each do |acc|
