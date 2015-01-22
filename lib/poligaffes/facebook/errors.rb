@@ -22,7 +22,9 @@ module Poligaffes
             #  17: Temporary issue due to throttling - retry the operation after waiting and examine your API request volume.
             # 341: Temporary issue due to downtime or throttling - retry the operation after waiting and examine your API request volume.
             if not [1, 2, 4, 17, 341].include? e.fb_error_code
-              raise e
+              $stderr.write e.inspect
+              $stderr.write "\nSKIPPING.\n"
+              return nil
             end
             $stderr.write "sleeping #{WAIT_SECONDS} seconds. "
             sleep WAIT_SECONDS
