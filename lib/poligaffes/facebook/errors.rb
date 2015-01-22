@@ -29,6 +29,8 @@ module Poligaffes
             $stderr.write "retrying"
 
           rescue Koala::Facebook::ClientError => e
+            if e.fb_error_code = 613 # API RATE LIMIT
+              raise e
             $stderr.write e.message
             $stderr.write "\n SKIPPING!\n"
             return nil
