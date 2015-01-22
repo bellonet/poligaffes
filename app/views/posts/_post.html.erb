@@ -9,7 +9,7 @@
     <% end %>
 
     <div class="col-md-12">
-      <% if post.body.nil? or (post.body.length < @length) %>
+      <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
         <p><%= truncate(post.body, length: @length || 9999) %></p>
       <% else %>
         <div class="accordion" id="accordion">

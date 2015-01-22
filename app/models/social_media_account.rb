@@ -2,6 +2,7 @@ class SocialMediaAccount < ActiveRecord::Base
   belongs_to :yair
   has_many :posts, dependent: :destroy
   has_many :raw_posts, dependent: :destroy
+  has_many :posts, through: :raw_posts
 
  	validates :name, presence: true, length: { minimum: 3 }
  	validates :site, presence: true, length: { minimum: 3 }
