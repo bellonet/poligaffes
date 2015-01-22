@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121140005) do
+ActiveRecord::Schema.define(version: 20150122035415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150121140005) do
     t.datetime "photo_updated_at"
     t.string   "name"
     t.text     "about"
+    t.boolean  "track"
   end
 
   add_index "social_media_accounts", ["yair_id"], name: "index_social_media_accounts_on_yair_id", using: :btree

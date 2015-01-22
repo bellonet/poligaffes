@@ -15,6 +15,7 @@ end.parse!
 
 logfile.puts "(#{DateTime.now})Updating raw posts."
 token = FbApiToken.where('purpose = ?', 'fetch').order(expires: :desc).first
+token or raise "No token found!"
 if token.expires < DateTime.now
 	raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
 end
@@ -22,7 +23,7 @@ logfile.puts "Got an access token than expires #{token.expires}"
 
 g = Koala::Facebook::API.new(token.token)
 
-SocialMediaAccount.where(site: 'Facebook').each do |acc|
+SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
   logfile.write "fetching for #{acc['name']}"
   latest_post = acc.raw_posts.order('timestamp').last
   latest_post_datetime = latest_post ? latest_post.timestamp : DateTime.new(1970)
