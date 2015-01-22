@@ -48,7 +48,7 @@ puts "Got an access token than expires #{token.expires}"
 
 g = Koala::Facebook::API.new(token.token)
 
-SocialMediaAccount.where(site: 'Facebook').each do |acc|
+SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
   @logfile.write "#{acc.link}"
   latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(@how_many)
   next unless latest_raw_posts.any?

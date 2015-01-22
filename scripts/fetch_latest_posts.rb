@@ -7,14 +7,24 @@ require 'optparse'
 require 'poligaffes/facebook/cursor'
 
 logfile = $stdout
+token_purpose = 'fetch'
+tracking = true
 OptionParser.new do |opts|
   opts.on("-lLOGFILE", "--logfile=LOGFILE", "file to output to") do |l|
     logfile = File.open(l, 'a') if l
   end
+
+  opts.on("-pTOKEN_PURPOSE", "--token-purpose=TOKEN_PURPOSE", "which kind of token to use [fetch]") do |p|
+    token_purpose = p
+  end
+  opts.on("-n", "--non-tracking", "run the script for non-tracking accounts (as an initial thing)") do |n|
+    tracking = false
+  end
 end.parse!
 
 logfile.puts "(#{DateTime.now})Updating raw posts."
-token = FbApiToken.where('purpose = ?', 'fetch').order(expires: :desc).first
+token = FbApiToken.where('purpose = ?', token_purpose).order(expires: :desc).first
+token or raise "No token found!"
 if token.expires < DateTime.now
 	raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
 end
@@ -22,7 +32,13 @@ logfile.puts "Got an access token than expires #{token.expires}"
 
 g = Koala::Facebook::API.new(token.token)
 
-SocialMediaAccount.where(site: 'Facebook').each do |acc|
+if tracking
+  cursor = SocialMediaAccount.tracking.where(site: 'Facebook').order('random()')
+else
+  cursor = SocialMediaAccount.non_tracking.where(site: 'Facebook').order('random()')
+end
+
+cursor.each do |acc|
   logfile.write "fetching for #{acc['name']}"
   latest_post = acc.raw_posts.order('timestamp').last
   latest_post_datetime = latest_post ? latest_post.timestamp : DateTime.new(1970)
