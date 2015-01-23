@@ -23,7 +23,7 @@
   <br>
 
 	<div class="tabbable"> 
-    <ul class="nav nav-pills">
+    <ul class="nav nav-tabs">
       <li class="active"><a href=<%="#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
       <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= "edited" %></a></li>
     </ul>
@@ -33,15 +33,16 @@
     <div class="tab-content">
       <div class="tab-pane active" id=<%="tabDeleted" %>>
         <%= render @deleted_posts %>
-        <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page" %>
+        <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page"  %>
       </div>
       <div class="tab-pane" id=<%="tabEdited" %>>
         <%= render @edited_posts %>
-        <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page" %>
+        <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
       </div>
     </div>
   </div>
 <% end %>
+
 
 <script>
         data = <%= JSON.dump(@stats).html_safe %>
@@ -88,5 +89,17 @@
         });
 </script>
 
+<script>
+        // Javascript to enable link to tab
+        var hash = document.location.hash;
+        if (hash) {
+            $('.nav-tabs a[href='+hash+']').tab('show');
+        } 
+
+        // Change hash for page-reload
+        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+            window.location.hash = e.target.hash;
+        });
+</script>
 
 
