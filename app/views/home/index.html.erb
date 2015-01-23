@@ -23,7 +23,7 @@
   <br>
 
 	<div class="tabbable"> 
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-pills">
       <li class="active"><a href=<%="#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
       <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= "edited" %></a></li>
     </ul>
@@ -93,7 +93,7 @@
         // Javascript to enable link to tab
         var hash = document.location.hash;
         if (hash) {
-            $('.nav-tabs a[href='+hash+']').tab('show');
+            $('.nav-pills a[href='+hash+']').tab('show');
         } 
 
         // Change hash for page-reload
