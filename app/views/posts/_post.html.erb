@@ -34,9 +34,9 @@
       <div class="col-md-12"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
     <% end %>
 
-    <% if post.raw_post.attachment_content_type == "image/jpeg" %>
+    <% if post.should_have_photo? %>
       <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, :height => "230" %></div>
-    <% elsif post.raw_post.attachment_content_type == "video/mp4" %>    
+    <% elsif post.should_have_video? %>    
       <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, :controls => true %></div>
     <% end %>
 

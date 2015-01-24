@@ -5,7 +5,14 @@ class Post < ActiveRecord::Base
 
   belongs_to :raw_post
 
-  validates :social_media_account, presence: true
   validates :raw_post, presence: true
+
+  def should_have_photo?
+  	self.raw_post.post["type"]=="photo"
+  end
+
+  def should_have_video?
+  	self.raw_post.post["type"]=="video"
+  end
 
 end
