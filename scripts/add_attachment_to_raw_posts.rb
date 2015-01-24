@@ -40,14 +40,17 @@ RawPost.where("timestamp >?", @minutes_ago.to_i.minutes.ago).
     elsif rp.post['type'] == "video"
       rp.attachment = URI.parse(rp.post['source'])
     end
+    @logfile.puts rp.attachment.url
   rescue OpenURI::HTTPError => e
     ok = false
-    @logfile.puts e.inspect
+    @logfile.puts "ERROR"
+    $stderr.write e.inspect
   end
 
   if rp.save && ok
     @logfile.puts "... saved\n"
   else
+    @logfile.puts rp.errors.messages
     @logfile.puts "... skipped\n"
   end
 
