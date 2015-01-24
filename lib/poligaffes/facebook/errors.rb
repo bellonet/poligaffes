@@ -31,6 +31,7 @@ module Poligaffes
           rescue Koala::Facebook::ClientError => e
             if e.fb_error_code = 613 # API RATE LIMIT
               raise e
+            end
             $stderr.write e.message
             $stderr.write "\n SKIPPING!\n"
             return nil
