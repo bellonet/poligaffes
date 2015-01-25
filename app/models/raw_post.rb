@@ -8,8 +8,8 @@ class RawPost < ActiveRecord::Base
   validates :post, presence: true
   validates_uniqueness_of :id_in_site
 
-  has_attached_file :attachment
-  validates_attachment_content_type :attachment,
+  has_attached_file :attachment, :default_url => "/system/missing.jpeg"
+  validates_attachment_content_type :attachment, 
     :content_type => ['video/mp4'],
     :if => :is_type_of_video?
   validates_attachment_content_type :attachment,
