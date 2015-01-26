@@ -2,10 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html, body {
+    background: #F8F8F8 !important;
+}
 
 .navbar {
-  background-color: #3a2665;
-  color: #ffffff;
+  background: #3b5998 !important;
 }
 
 .navbar .nav {
@@ -23,11 +25,17 @@
 .post {
   margin-top: 10px;
   padding-top: 10px;
-  background-color: #F8F8F8;
+  background-color: #FFFFFF;
 }
 
 .post-yair {
   font-size: 1.5em;
+  color: #708090 ;
+}
+
+.post-details {
+  margin: 5px;
+  color: #708090 ;
 }
 
 #stats-graph > h2 {
