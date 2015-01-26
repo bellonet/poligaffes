@@ -3,22 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.navbar {
+  background-color: #3a2665;
+  color: #ffffff;
+}
 
+.navbar .nav {
+  padding-top: 30px;
+  padding-right: 10px;
+}
 
-nav {
-  ul {
-    margin: 500;
-    padding: 500;
-    list-style: none;
-  }
+.navbar .nav > li {
+  font-color: #00ff00;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5em;
+  padding-right: 20px;
+}
 
-  li { display: inline-block; }
+.post {
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color: #F8F8F8;
+}
 
-  a {
-    display: block;
-    padding: 6px 12px;
-    text-decoration: none;
-  }
+.post-yair {
+  font-size: 1.5em;
 }
 
 #stats-graph > h2 {
