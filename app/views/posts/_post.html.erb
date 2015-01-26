@@ -40,6 +40,10 @@
       <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, :controls => true %></div>
     <% end %>
 
+    <% if post.raw_post.post["caption"] %>
+      <div class="col-md-12"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
+    <% end %>
+
     <div class="col-md-12">Posted on <%= post.social_media_account.site %> at <%= post.raw_post.timestamp %> status <%= post.status %></div>
   </div>
 
