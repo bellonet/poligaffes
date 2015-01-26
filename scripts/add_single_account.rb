@@ -18,10 +18,10 @@ g = Koala::Facebook::API.new(token.token)
 
 field = "representatives"
 
-yair_first_name = "aaaa"
-yair_last_name = "aaaa"
+yair_first_name = "uri"
+yair_last_name = "fisch"
 yair_party = "aaaa"
-account_name = "barb.a.r.b.a.r765"
+account_name = "100002628074872"
 if account_name.is_a? Numeric
 	account_name = account_name.round.to_s
 end
