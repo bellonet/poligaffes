@@ -8,6 +8,7 @@ html, body {
 
 .navbar {
   background: #3b5998 !important;
+  border-bottom: 1px solid #000;
 }
 
 .navbar .nav {
@@ -22,12 +23,16 @@ html, body {
   padding-right: 20px;
 }
 
-.nav-pills {
+.nav-pills > li > a {
+  font-size: 2em;
+}
+
+.nav-pills > li > .active > a {
   font-size: 2em;
 }
 
 .post {
-  margin-top: 10px;
+  border-radius: 3px;
   padding-top: 10px;
   background-color: #FFFFFF;
 }
@@ -40,6 +45,10 @@ html, body {
 .post-details {
   margin: 5px;
   color: #708090 ;
+}
+
+.post-acc-image {
+  box-shadow: 3px 3px 3px 3px #777;
 }
 
 #stats-graph > h2 {
