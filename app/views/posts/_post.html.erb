@@ -1,58 +1,109 @@
+<div class="row">
+  <% if post.status == "deleted" %>
+  <div class="col-md-6"></div>
+  <% end %>
+    <div class="col-md-6 post">
+    <div class="col-md-9">
+      
+      <div class="post-yair">
+        <div class="col-md-8"><%= post.yair.party %></div>
+        <div class="col-md-4"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair)%></div>
+      </div>
 
-<div class="row post">
-  <div class="col-md-10">
-    
-    <div class="post-yair">
-      <div class="col-md-10"><%= post.yair.party %></div>
-      <div class="col-md-2"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair)%></div>
-    </div>
-
-    <br><br>
-
-    <div class="col-md-12">
-      <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
-        <p><%= truncate(post.body, length: @length || 9999) %></p>
-      <% else %>
-        <div class="accordion" id="accordion">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= post.id %>">
-                <%= truncate(post.body, length: @length || 9999) %>
+      <div class="col-md-12">
+        <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
+          <p><%= truncate(post.body, length: @length || 9999) %></p>
+        <% else %>
+          <div class="accordion" id="accordion">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= post.id %>">
+                  <%= truncate(post.body, length: @length || 9999) %>
+                </div>
               </div>
-            </div>
-            <div id="collapse<%= post.id %>" class="accordion-body collapse">
-              <div class="accordion-inner">
-                <p><%= post.body[@length..-1] %></p>
+              <div id="collapse<%= post.id %>" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <p><%= post.body[@length..-1] %></p>
+                </div>
               </div>
+              <a class="see_more" data-toggle="collapse" href="#collapse<%= post.id %>">המשך לקרוא</a>
             </div>
-            <a class="see_more" data-toggle="collapse" href="#collapse<%= post.id %>">המשך לקרוא</a>
           </div>
-        </div>
+        <% end %>
+      </div>
+
+      <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
+        <div class="col-md-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
       <% end %>
+
+      <% if post.should_have_photo? %>
+        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, :height => "230" %></div>
+      <% elsif post.should_have_video? %>    
+        <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, :controls => true %></div>
+      <% end %>
+
+      <% if post.raw_post.post["caption"] %>
+        <div class="col-md-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
+      <% end %>
+
+      <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp %></div>
     </div>
 
-    <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
-      <div class="col-md-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
-    <% end %>
-
-    <% if post.should_have_photo? %>
-      <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, :height => "230" %></div>
-    <% elsif post.should_have_video? %>    
-      <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, :controls => true %></div>
-    <% end %>
-
-    <% if post.raw_post.post["caption"] %>
-      <div class="col-md-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
-    <% end %>
-
-    <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp %></div>
+    <div class="col-md-3 post-acc-image"><%= image_tag post.social_media_account.photo.url(:thumb) %></div>
   </div>
 
-  <div class="col-md-2 post-acc-image"><%= image_tag post.social_media_account.photo.url(:thumb) %></div>
+  <% if post.status == "edited" %>
+    <div class="col-md-6 post">
+      <div class="col-md-9">
+        
+        <div class="post-yair">
+          <div class="col-md-8"><%= post.yair.party %></div>
+          <div class="col-md-4"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair)%></div>
+        </div>
+
+        <div class="col-md-12">
+          <% if post.raw_post.post["message"].nil? or (post.raw_post.post["message"].length < (@length || 9999)) %>
+            <p><%= post.raw_post.post["message"] %></p>
+          <% else %>
+            <div class="accordion" id="accordion">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= post.id %>">
+                    <%= truncate(post.raw_post.post["message"], length: @length || 9999) %>
+                  </div>
+                </div>
+                <div id="collapse<%= post.id %>" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <p><%= post.raw_post.post["message"][@length..-1] %></p>
+                  </div>
+                </div>
+                <a class="see_more" data-toggle="collapse" href="#collapse<%= post.id %>">המשך לקרוא</a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
+          <div class="col-md-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
+        <% end %>
+
+        <% if post.should_have_photo? %>
+          <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, :height => "230" %></div>
+        <% elsif post.should_have_video? %>    
+          <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, :controls => true %></div>
+        <% end %>
+
+        <% if post.raw_post.post["caption"] %>
+          <div class="col-md-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
+        <% end %>
+
+        <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp %></div>
+      </div>
+
+      <div class="col-md-3 post-acc-image"><%= image_tag post.social_media_account.photo.url(:thumb) %></div>
+    </div>
+  <% end %>
 </div>
-
-<br>
-
 
 
 
