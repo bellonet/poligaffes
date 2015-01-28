@@ -68,16 +68,16 @@
             <div class="accordion" id="accordion">
               <div class="accordion-group">
                 <div class="accordion-heading">
-                  <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= post.id %>">
+                  <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-edit-<%= post.id %>">
                     <%= truncate(post.raw_post.post["message"], length: @length || 9999) %>
                   </div>
                 </div>
-                <div id="collapse<%= post.id %>" class="accordion-body collapse">
+                <div id="collapse-edit-<%= post.id %>" class="accordion-body collapse">
                   <div class="accordion-inner">
                     <p><%= post.raw_post.post["message"][@length..-1] %></p>
                   </div>
                 </div>
-                <a class="see_more" data-toggle="collapse" href="#collapse<%= post.id %>">המשך לקרוא</a>
+                <a class="see_more" data-toggle="collapse" href="#collapse-edit-<%= post.id %>">המשך לקרוא</a>
               </div>
             </div>
           <% end %>
