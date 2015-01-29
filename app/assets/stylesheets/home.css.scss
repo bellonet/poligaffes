@@ -9,23 +9,36 @@ html, body {
 .navbar {
   background: #3b5998 !important; 
   border-bottom: 1px solid #000;
+  height: 50px;
+}
+
+.navbar > a.navbar-brand {
+  padding-top: 9px;
 }
 
 .navbar .nav {
-  padding-top: 10px;
   padding-right: 10px;
 }
 
 .navbar .nav > li {
   font-family: 'Oswald', sans-serif;
   font-size: 1.5em;
-  padding-right: 20px;
+  padding-right: 15px;
+}
+
+.navbar-nav > li > a {
+  color: #0e1f5b !important;
+}
+
+.nav-search {
+  padding: 0px 80px 0px 0px;
 }
 
 .nav-pills > li > a {
   font-size: 2em;
   color: #708090;
   background-color: #d4d8dd;
+  margin-bottom: 20px !important;
 }
 
 .nav-pills > li > a:hover {
@@ -36,25 +49,19 @@ html, body {
   background-color: #3b5998 !important;
 }
 
-.navbar-nav > li > a {
-  color: #0e1f5b !important;
-}
-
-.nav-search {
-  padding: 6px 120px 0px 0px;
-}
-
 .title {
   color: #708090;
+  margin-top: 0px !important;
+  margin-bottom: 15px !important;
 }
 
 .post {
-  margin-top: 10px;
   border-radius: 3px;
-  border: 1px dotted #dfe3ee;
+  border: 8px solid #ebeef4;
   padding: 10px 0px 10px 0px !important;
   background-color: #FFFFFF;
 }
+
 
 .post-acc-image {
   border: 1px solid #808080;

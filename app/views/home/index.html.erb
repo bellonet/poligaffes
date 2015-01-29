@@ -2,15 +2,13 @@
 	<%= render "yairs/table" %>
 <% else %>
 
-  <h1 class="title"><%= t "latest_posts" %></h1>
-  <br>
+  <h2 class="title"><%= t "latest_posts" %></h2>
+  
 	<div class="tabbable"> 
     <ul class="nav nav-pills">
       <li class="active"><a href=<%= "#tabDeleted"%> data-toggle="tab"><%= t "deleted_posts" %></a></li>
       <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= t "edited_posts" %></a></li>
     </ul>
-
-    <br>
 
     <div class="tab-content">
       <div class="tab-pane active" id=<%="tabDeleted" %>>
@@ -18,7 +16,7 @@
         <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page"  %>
       </div>
       <div class="tab-pane" id=<%="tabEdited" %>>
-        <div class="row"><div class="col-md-6"><h1 class="title"> אחרי </h1></div><div class="col-md-6"><h1 class="title"> לפני </h1></div></div>
+        <div class="row"><div class="col-md-6"><h2 class="title"> אחרי </h2></div><div class="col-md-6"><h2 class="title"> לפני </h2></div></div>
         <%= render @edited_posts %>
         <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
       </div>

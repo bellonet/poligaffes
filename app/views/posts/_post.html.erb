@@ -1,14 +1,14 @@
 <div class="row">
   <% if post.status == "deleted" %>
-    <div class="col-md-6"></div>
+  <div class="col-md-12 post">
+  <% else %>
+  <div class="col-md-6 post">
   <% end %>
 
-  <div class="col-md-6 post">
     <div class="col-md-11">
-      
       <div class="post-yair">
-        <div class="col-md-9"><%= post.yair.party %></div>
-        <div class="col-md-3"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair), :class => "post-yair-link"%></div>
+        <div class="col-md-8"><%= post.yair.party %></div>
+        <div class="col-md-4"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair), :class => "post-yair-link"%></div>
       </div>
 
       <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
@@ -39,6 +39,7 @@
       <% end %>
     </div>
 
+
     <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
       <div class="col-md-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
     <% end %>
@@ -60,8 +61,8 @@
       <div class="col-md-11">
         
         <div class="post-yair">
-          <div class="col-md-9"><%= post.yair.party %></div>
-          <div class="col-md-3"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair), :class => "post-yair-link"%></div>
+          <div class="col-md-8"><%= post.yair.party %></div>
+          <div class="col-md-4"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair), :class => "post-yair-link"%></div>
         </div>
 
         <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
