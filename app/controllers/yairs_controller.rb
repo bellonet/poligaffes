@@ -3,13 +3,8 @@ class YairsController < ApplicationController
   before_filter :authorize, only: [:new, :edit, :destroy]
 
   def index
-    if params[:search]
-      @yairs = Yair.where(field: params[:field])
-      @yairs = @yairs.where('last_name LIKE ?', "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
-    else
-      @yairs = Yair.where(field: params[:field])
-      @yairs = @yairs.sort_by { |y| y.last_name }.paginate(page: params[:page], per_page: 10)
-    end
+      @yair = Yair.where(field: params[:field])
+      @yair = @yair.sort_by { |y| y.last_name }.paginate(page: params[:page], per_page: 10)
   end
 
   def by_letter

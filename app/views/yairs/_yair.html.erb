@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-12 yair-in-index">
+
+    <%= image_tag yair.social_media_accounts.first.photo.url(:thumb), class: "yair-photo" %>
+
+    <div class="col-md-4"><%= yair.party %></div>
+
+     <div class="col-md-4"><%= link_to yair.last_name + " " + yair.first_name, yair_path(yair), :class => "index-yair-link"%></div>
+    
+  </div>
+</div>

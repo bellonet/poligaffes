@@ -1,29 +1,12 @@
 
-<div class="page-header">
-  <h1><%= t params[:field] %></h1>
-</div>
-
-<%= form_tag yairs_path, method: "get" do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= hidden_field_tag :field, params[:field] %>
-  <%= submit_tag (t "search"), name: nil %>
-<% end %>
-
-<br>
+<h2 class="title"><%= t params[:field] %></h2>
 
 <%# ('A'..'Z').each do |letter| %>
 
 <% arr = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'] %>
 <% arr.each do |letter| %>
-  <%= link_to letter.to_s, "/#{params[:field]}/byletter/#{letter}" %>
+  <%= link_to letter.to_s, "/#{params[:field]}/byletter/#{letter}", class: "letters-link" %>
 <% end %>
 
-<br><br><br>
-
-<%= render 'table' %>
-
-<% if current_user %>
-  <%= link_to t('.new', :default => t("helpers.links.new")), new_yair_path, :class => 'btn btn-primary' %>
-<% end %>
-
-<br><br><br><br>
+<%= render @yair %>
+<%= will_paginate @yair, renderer: BootstrapPagination::Rails %>
