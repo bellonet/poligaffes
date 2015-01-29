@@ -2,24 +2,11 @@
 	<%= render "yairs/table" %>
 <% else %>
 
-  <div class="row">
-    <div class="col-md-7 pull-right">
-      <div id="stats-graph"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-7 pull-right">
-      <div id="stats-legend"></div>
-    </div>
-  </div>
-
-  <br>
-
   <h1 class="title"> פוסטים אחרונים </h1>
   <br>
 	<div class="tabbable"> 
     <ul class="nav nav-pills nav-justified">
-      <li class="active"><a href=<%="#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
+      <li class="active"><a href=<%= "#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
       <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= t "edited" %></a></li>
     </ul>
 
@@ -38,45 +25,6 @@
     </div>
   </div>
 <% end %>
-
-
-<script>
-        data = <%= JSON.dump(@stats).html_safe %>
-        MG.data_graphic({
-            title: "השבוע בארץ להדם",
-            // description: "<%= t('graph.activity.description') %>",
-            data: data,
-            // markers: [{'year': 1964, 'label': '"The Creeping Terror" released'}],
-            width: 400,
-            height: 170,
-            target: "#stats-graph",
-            x_accessor: "day",
-            y_accessor: "count",
-            interpolate: "monotone",
-            legend: ['מחיקות', 'עריכות'],
-            legend_target: "#stats-legend",
-            animate_on_load: true,
-            area: false,
-            missing_is_zero: true,
-            custom_line_color_map: [3,1]
-            });
-        // fix ticks on x axis
-        $(data[1]).each(function (i,v) {
-          $($('#stats-graph > svg > g.mg-x-axis > text')[i]).text(data[1][i]['name']);
-        });
-        // move y-axis to the right side
-        var width = $('#stats-graph > svg').width();
-        var leftSide = parseInt($('#stats-graph > svg > g.mg-y-axis > line')[0].getAttribute('x1'));
-        var rightSide = width - 15;
-        var toMove = rightSide - leftSide;
-        $('#stats-graph > svg > g.mg-y-axis > line').each(function (i,el) {
-          el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove);
-          el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove);
-        });
-        $('#stats-graph > svg > g.mg-y-axis > text').each(function (i,el) {
-          el.setAttribute('x', width);
-        });
-</script>
 
 <script>
         $('.see_more').click(function(){

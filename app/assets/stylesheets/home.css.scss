@@ -17,7 +17,6 @@ html, body {
 }
 
 .navbar .nav > li {
-  font-color: #00ff00;
   font-family: 'Oswald', sans-serif;
   font-size: 1.5em;
   padding-right: 20px;
@@ -25,6 +24,16 @@ html, body {
 
 .nav-pills > li > a {
   font-size: 2em;
+  color: #708090;
+  background-color: #d4d8dd;
+}
+
+.nav-pills > li > a:hover {
+  background-color: #bec2c6 !important;
+}
+
+.nav-pills > li.active > a {
+  background-color: #3b5998 !important;
 }
 
 .title {
