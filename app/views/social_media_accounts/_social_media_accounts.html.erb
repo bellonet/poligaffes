@@ -9,9 +9,7 @@
   <div class="tab-content">
 
     <div class="tab-pane active" id="tabAll">
-      <p><%= t ("Posts_from_all_accounts") %></p>
-
-      <br>
+      <p class="post-info"><%= t ("Posts_from_all_accounts") %></p>
 
       <div class="tabbable"> 
         <ul class="nav nav-pills">
@@ -35,14 +33,12 @@
 
     <% @yair.social_media_accounts.each_with_index do |acc, i| %>
       <div class="tab-pane" id=<%= "tab#{i}" %>>
-        <p><%= acc.about %></p>
-
-        <br>
+        <p class="post-info"><%= acc.about %></p>
         
         <div class="tabbable"> 
           <ul class="nav nav-pills">
-            <li class="active"><a href=<%="#tabDeleted_#{i}"%> data-toggle="tab"><%= t "deleted" %></a></li>
-            <li><a href=<%= "#tabEdited_#{i}" %> data-toggle="tab"><%= "edited" %></a></li>
+            <li class="active"><a href=<%="#tabDeleted_#{i}"%> data-toggle="tab"><%= t "deleted_posts" %></a></li>
+            <li><a href=<%= "#tabEdited_#{i}" %> data-toggle="tab"><%= t "edited_posts" %></a></li>
           </ul>
 
           <br>

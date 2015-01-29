@@ -23,3 +23,23 @@
 .yair-photo {
 	border: 1px solid #808080;
 }
+
+.index-yair-link {
+	color: #3b5998;
+}
+
+.nav-tabs > li > a {
+	font-size: 1.2em;
+	color: #708090;
+	margin-top: 10px;
+}
+
+.nav-tabs > li.active > a {
+	color: #FFFFFF !important;
+  background-color: #3b5998 !important;
+}
+
+p.post-info {
+	font-size: 1.2em;
+	margin-bottom: 25px;
+}

@@ -5,6 +5,10 @@
   <div class="col-md-6 post">
   <% end %>
 
+    <% if post.status == "deleted" %>
+    <div class="col-md-6"></div>
+    <div class="col-md-6 deleted-post-top">
+    <% end %>
     <div class="col-md-11">
       <div class="post-yair">
         <div class="col-md-8"><%= post.yair.party %></div>
@@ -16,6 +20,10 @@
     </div>
 
     <div class="col-md-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>
+
+    <% if post.status == "deleted" %>
+    </div>
+    <% end %>
 
     <div class="col-md-12 post-body">
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
