@@ -53,10 +53,10 @@
         <a class="navbar-brand pull-right" href="/"><img src="<%= image_path 'lahadam.png' %>"></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
-            <li><%= link_to (t "representatives"), yairs_path(field: 'representatives'), {style: "color: #0e1f5b"} %></li>
-            <li><%= link_to (t "figures"), yairs_path(field: 'figures'), {style: "color: #0e1f5b"} %></li>
-            <li><%= link_to (t "stats"), stats_index_path, {style: "color: #0e1f5b"} %></li>
-            <li><%= link_to (t "about"), about_index_path, {style: "color: #0e1f5b"} %></li>
+            <li><%= link_to (t "representatives"), yairs_path(field: 'representatives') %></li>
+            <li><%= link_to (t "figures"), yairs_path(field: 'figures') %></li>
+            <li><%= link_to (t "stats"), stats_index_path %></li>
+            <li><%= link_to (t "about"), about_index_path %></li>
             <li>        
               <div class="input-group" style="padding: 6px 120px 0px 0px">
                 <%= form_tag search_path, method: "get", :class => "form-inline" do %>
