@@ -44,8 +44,12 @@ html, body {
   margin-top: 10px;
   border-radius: 3px;
   border: 1px dotted #dfe3ee;
-  padding-top: 10px;
+  padding: 10px 0px 10px 0px !important;
   background-color: #FFFFFF;
+}
+
+.post-acc-image {
+  border: 1px solid #808080;
 }
 
 .post-yair {
@@ -53,14 +57,23 @@ html, body {
   color: #708090;
 }
 
-.post-details {
-  margin: 5px;
-  color: #708090 ;
+.post-yair-link {
+  color: #3b5998;
 }
 
-.post-acc-image {
+.post-details {
+  color: #708090;
+}
+
+.post-body {
+  padding-top: 6px;
+}
+
+.post-attach {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid #808080;
-  padding-buttom: 5px;
 }
 
 #stats-graph > h2 {

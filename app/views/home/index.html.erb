@@ -2,12 +2,12 @@
 	<%= render "yairs/table" %>
 <% else %>
 
-  <h1 class="title"> פוסטים אחרונים </h1>
+  <h1 class="title"><%= t "latest_posts" %></h1>
   <br>
 	<div class="tabbable"> 
-    <ul class="nav nav-pills nav-justified">
-      <li class="active"><a href=<%= "#tabDeleted"%> data-toggle="tab"><%= t "deleted" %></a></li>
-      <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= t "edited" %></a></li>
+    <ul class="nav nav-pills">
+      <li class="active"><a href=<%= "#tabDeleted"%> data-toggle="tab"><%= t "deleted_posts" %></a></li>
+      <li><a href=<%= "#tabEdited" %> data-toggle="tab"><%= t "edited_posts" %></a></li>
     </ul>
 
     <br>

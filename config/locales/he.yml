@@ -51,13 +51,17 @@ he:
   new_yair: יאיר חדש
   all_accounts: כל החשבונות
   search: חפש
+
+  latest_posts: פוסטים אחרונים
+  deleted_posts: פוסטים מחוקים
+  edited_posts: פוסטים ערוכים
   
   story: פעולה
   caption:  כתובית
   posted_on: שפורסם בפייסבוק ב-
   status: סטטוס
-  deleted: סטטוסים מחוקים
-  edited: סטטוסים ערוכים
+  deleted: מחוק
+  edited: ערוך
 
 
 
