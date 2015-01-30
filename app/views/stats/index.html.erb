@@ -45,7 +45,7 @@
       <% @monthly_top['deleted'].each do |rpc| %>
         <li class="list-group-item">
           <span class="badge"><%= rpc['count'] %></span>
-          <%= rpc['name'] %>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
         </li>
       <% end %>
     </ul>
@@ -57,7 +57,7 @@
       <% @monthly_top['edited'].each do |rpc| %>
         <li class="list-group-item">
           <span class="badge"><%= rpc['count'] %></span>
-          <%= rpc['name'] %>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
         </li>
       <% end %>
     </ul>
@@ -72,7 +72,7 @@
       <% @alltime_top['deleted'].each do |rpc| %>
         <li class="list-group-item">
           <span class="badge"><%= rpc['count'] %></span>
-          <%= rpc['name'] %>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
         </li>
       <% end %>
     </ul>
@@ -84,7 +84,7 @@
       <% @alltime_top['edited'].each do |rpc| %>
         <li class="list-group-item">
           <span class="badge"><%= rpc['count'] %></span>
-          <%= rpc['name'] %>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
         </li>
       <% end %>
     </ul>
