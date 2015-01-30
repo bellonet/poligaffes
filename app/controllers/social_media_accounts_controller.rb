@@ -1,5 +1,15 @@
 class SocialMediaAccountsController < ApplicationController
 
+  def new
+    @yair = Yair.new
+    @social_media_account = SocialMediaAccount.new
+  end
+
+  def search
+    @yairs = Yair.where("last_name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
+    render :new
+  end
+
   def create
     @yair = Yair.find(params[:yair_id])
     @social_media_account = SocialMediaAccount.new(social_media_account_params)
@@ -9,6 +19,10 @@ class SocialMediaAccountsController < ApplicationController
     else
       render 'yairs/show'
     end
+  end
+
+  def edit
+    @social_media_account = SocialMediaAccount.find(params[:id])
   end
 
   def destroy

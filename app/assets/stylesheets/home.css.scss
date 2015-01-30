@@ -36,7 +36,7 @@ html, body {
 }
 
 .nav-pills > li > a {
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: #708090;
   background-color: #d4d8dd;
   margin-bottom: 20px !important;
@@ -52,8 +52,14 @@ html, body {
 
 .title {
   color: #708090;
-  margin-top: 0px !important;
+  margin-top: 5px !important;
   margin-bottom: 15px !important;
+}
+
+.title-small {
+  color: #708090;
+  margin-top: 0px !important;
+  margin-bottom: 10px !important;
 }
 
 .post {

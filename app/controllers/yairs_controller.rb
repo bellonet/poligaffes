@@ -12,10 +12,6 @@ class YairsController < ApplicationController
     render 'index'
   end
 
-  def new
-    @yair = Yair.new
-  end
-
   def edit
     @yair = Yair.find(params[:id])
   end

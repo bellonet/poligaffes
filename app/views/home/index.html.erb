@@ -1,5 +1,6 @@
 <% if @yairs %>
-	<%= render "yairs/table" %>
+  <h2 class="title"><%= t ("search_results") %></h2>
+	<%= render @yairs %>
 <% else %>
 
   <h2 class="title"><%= t "latest_posts" %></h2>
@@ -16,7 +17,7 @@
         <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page"  %>
       </div>
       <div class="tab-pane" id=<%="tabEdited" %>>
-        <div class="row"><div class="col-md-6"><h2 class="title"> אחרי </h2></div><div class="col-md-6"><h2 class="title"> לפני </h2></div></div>
+        <div class="row"><div class="col-md-6"><h4 class="title-small"> אחרי </h4></div><div class="col-md-6"><h4 class="title-small"> לפני </h4></div></div>
         <%= render @edited_posts %>
         <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
       </div>
