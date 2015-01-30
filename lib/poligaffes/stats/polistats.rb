@@ -40,7 +40,7 @@ module Poligaffes
                        ORDER BY count(*) DESC
                        LIMIT 5;"
       def self.top_posts(type, days_ago)
-        ActiveRecord::Base::connection.execute(TOP_POSTS_SQL % [ type, days_ago.days.ago ].map { |e| ActiveRecord::Base.sanitize(e) })
+        ActiveRecord::Base::connection.execute(TOP_POSTS_SQL % [ type, days_ago.days.ago ].map { |e| ActiveRecord::Base.sanitize(e) }).map { |e| e }
       end # def self.top_posts
 
   end # module Stats

@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  after_save :clear_stats_cache
 
   has_one :yair, through: :social_media_account
   has_one :social_media_account, through: :raw_post
@@ -13,6 +14,13 @@ class Post < ActiveRecord::Base
 
   def should_have_video?
   	self.raw_post.post["type"]=="video"
+  end
+
+  private
+  def clear_stats_cache
+    Rails.cache.delete 'weekly_top-cache-key'
+    Rails.cache.delete 'monthly_top-cache-key'
+    Rails.cache.delete 'alltime_top-cache-key'
   end
 
 end
