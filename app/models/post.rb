@@ -21,6 +21,7 @@ class Post < ActiveRecord::Base
     Rails.cache.delete 'weekly_top-cache-key'
     Rails.cache.delete 'monthly_top-cache-key'
     Rails.cache.delete 'alltime_top-cache-key'
+    Rails.cache.delete 'weekly_activity-cache-key'
   end
 
 end
