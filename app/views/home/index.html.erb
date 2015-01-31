@@ -59,10 +59,12 @@
   var dmp = new diff_match_patch();
   _.each($('.post-row.post-edited'), function (elem) {
     $el = $(elem);
-    var truncOriginal = $($($el.children('.post-original')).find('div.truncated-post'));
-    var truncEdited = $($($el.children('.post-edit')).find('div.truncated-post'))
-    var diff = dmp.diff_main(truncOriginal.text(), truncEdited.text());
-    dmp.diff_cleanupSemantic(diff);
-    truncEdited.html(dmp.diff_prettyHtml(diff));
+    _.each(['truncated', 'full'], function (size) {
+      var original = $($($el.children('.post-original')).find('div.' + size + '-post'));
+      var edited = $($($el.children('.post-edit')).find('div.' + size + '-post'))
+      var diff = dmp.diff_main(original.text(), edited.text());
+      dmp.diff_cleanupSemantic(diff);
+      edited.html(dmp.diff_prettyHtml(diff));
+    });
   });
 </script>
