@@ -1,0 +1,8 @@
+<div class="input-group nav-search">
+  <%= form_tag search_path, method: "get", :class => "form-inline input-sm" do %>
+    <span class="input-group-btn input-sm">
+      <%= text_field_tag :search, params[:search], class: "form-control input-sm" %>
+      <%= submit_tag (t "search"), class: "btn btn-default input-sm", name: nil %>
+    </span>
+  <% end %>
+</div>

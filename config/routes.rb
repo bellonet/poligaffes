@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :social_media_accounts
   resources :posts
 
   resources :sessions

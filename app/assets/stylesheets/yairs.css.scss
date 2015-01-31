@@ -15,7 +15,7 @@
 .yair-in-index {
 	background-color: #FFFFFF;
 	border: 1px solid #808080;
-	margin-top: 15px;
+	margin: 15px 0px 0px 15px;
 	color: #708090;
 	font-size: 1.5em;
 }
@@ -24,12 +24,21 @@
 	border: 1px solid #808080;
 }
 
+.index-yair-name{
+	padding-top: 20px;
+}
+
 .index-yair-link {
 	color: #3b5998;
+	padding-right: 60px;
+}
+
+.index-yair-party {
+	padding-right: 75px;
 }
 
 .nav-tabs > li > a {
-	font-size: 1.2em;
+	font-size: 1.4em;
 	color: #708090;
 	margin-top: 10px;
 }
@@ -40,6 +49,7 @@
 }
 
 p.post-info {
+	margin-top: 3px;
 	font-size: 1.2em;
 	margin-bottom: 25px;
 }

@@ -8,5 +8,7 @@
   <%= link_to letter.to_s, "/#{params[:field]}/byletter/#{letter}", class: "letters-link" %>
 <% end %>
 
-<%= render @yair %>
-<%= will_paginate @yair, renderer: BootstrapPagination::Rails %>
+<div class="col-md-pull-12">
+	<%= render @yair %>
+	<%= will_paginate @yair, renderer: BootstrapPagination::Rails %>
+</div>
