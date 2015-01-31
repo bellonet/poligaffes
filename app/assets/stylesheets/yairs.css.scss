@@ -15,18 +15,26 @@
 .yair-in-index {
 	background-color: #FFFFFF;
 	border: 1px solid #808080;
-	margin-top: 15px;
+	margin: 15px 0px 0px 15px;
 	color: #708090;
 	font-size: 1.5em;
 }
 
 .yair-photo {
 	border: 1px solid #808080;
-	margin-right: 0px !important;
+}
+
+.index-yair-name{
+	padding-top: 20px;
 }
 
 .index-yair-link {
 	color: #3b5998;
+	padding-right: 60px;
+}
+
+.index-yair-party {
+	padding-right: 75px;
 }
 
 .nav-tabs > li > a {
