@@ -2,7 +2,7 @@
   <% if post.status == "deleted" %>
   <div class="col-md-12 post">
   <% else %>
-  <div class="col-md-6 post-edit">
+  <div class="col-md-6 post post-edit">
   <% end %>
     <div class="col-md-11">
       <div class="post-yair">
@@ -18,7 +18,7 @@
 
     <div class="col-md-12 post-body">
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
-        <p><%= post.body %></p>
+        <div class="post-text"><%= post.body %></div>
       <% else %>
         <div class="post-text truncated-post"><%= truncate(post.body, length: @length || 9999) %></div>
         <div class="post-text full-post" style="display: none;"><%= post.body %></div>
@@ -44,7 +44,7 @@
   </div>
 
   <% if post.status == "edited" %>
-    <div class="col-md-6 post-original">
+    <div class="col-md-6 post post-original">
       <div class="col-md-11">
         
         <div class="post-yair">
