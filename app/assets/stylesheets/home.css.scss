@@ -97,6 +97,10 @@ html, body {
   border: 1px solid #808080;
 }
 
+.post-text {
+  white-space: pre-wrap;
+}
+
 .raw-post {
   border-radius: 3px;
   box-shadow: 10px dotted #708090;

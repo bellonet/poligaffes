@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row post-row post-<%= post.status %>" id="post-<%= post.id %>">
   <% if post.status == "deleted" %>
   <div class="col-md-12 post">
   <% else %>
-  <div class="col-md-6 post">
+  <div class="col-md-6 post-edit">
   <% end %>
     <div class="col-md-11">
       <div class="post-yair">
@@ -20,8 +20,8 @@
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
         <p><%= post.body %></p>
       <% else %>
-        <p class="truncated-post"><%= truncate(post.body, length: @length || 9999) %></p>
-        <p class="full-post" style="display: none;"><%= post.body %></p>
+        <div class="post-text truncated-post"><%= truncate(post.body, length: @length || 9999) %></div>
+        <div class="post-text full-post" style="display: none;"><%= post.body %></div>
         <a class="see_more"><%= t('keep_reading') %></a>
       <% end %>
     </div>
@@ -44,7 +44,7 @@
   </div>
 
   <% if post.status == "edited" %>
-    <div class="col-md-6 post">
+    <div class="col-md-6 post-original">
       <div class="col-md-11">
         
         <div class="post-yair">
@@ -61,8 +61,8 @@
         <% if post.raw_post.post["message"].nil? or (post.raw_post.post["message"].length < (@length || 9999)) %>
           <p><%= post.raw_post.post["message"] %></p>
         <% else %>
-          <p class="truncated-post"><%= truncate(post.raw_post.post["message"], length: @length || 9999) %></p>
-          <p class="full-post" style="display: none;"><%= post.raw_post.post["message"] %></p>
+          <div class="post-text truncated-post"><%= truncate(post.raw_post.post["message"], length: @length || 9999) %></div>
+          <div class="post-text full-post" style="display: none;"><%= post.raw_post.post["message"] %></div>
           <a class="see_more"><%= t('keep_reading') %></a>
         <% end %>
       </div>
