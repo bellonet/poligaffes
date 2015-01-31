@@ -35,7 +35,10 @@
 
 <script>
         $('.see_more').click(function(){
-          $(this).remove();
+          $this = $(this)
+          $this.siblings('p.truncated-post').hide()
+          $this.siblings('p.full-post').show()
+          $this.remove();
         });
 </script>
 
