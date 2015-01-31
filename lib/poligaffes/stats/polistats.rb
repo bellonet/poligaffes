@@ -39,8 +39,21 @@ module Poligaffes
                        GROUP BY yairs.id
                        ORDER BY count(*) DESC
                        LIMIT 5;"
+
+      RAW_POSTS_REPORT_SQL = "SELECT yairs.id, yairs.first_name || ' ' || yairs.last_name AS name, count(*)
+                          FROM raw_posts
+                              JOIN social_media_accounts ON (raw_posts.social_media_account_id = social_media_accounts.id)
+                              JOIN yairs ON (social_media_accounts.yair_id = yairs.id)
+                          WHERE raw_posts.created_at > %s
+                          GROUP BY yairs.id
+                          ORDER BY count(*) DESC
+                          LIMIT 5;"
       def self.top_posts(type, days_ago)
-        ActiveRecord::Base::connection.execute(TOP_POSTS_SQL % [ type, days_ago.days.ago ].map { |e| ActiveRecord::Base.sanitize(e) }).map { |e| e }
+        if type == 'posts'
+          ActiveRecord::Base::connection.execute(RAW_POSTS_REPORT_SQL % [ days_ago.days.ago ].map { |e| ActiveRecord::Base.sanitize(e) }).map { |e| e }
+        else
+          ActiveRecord::Base::connection.execute(TOP_POSTS_SQL % [ type, days_ago.days.ago ].map { |e| ActiveRecord::Base.sanitize(e) }).map { |e| e }
+        end
       end # def self.top_posts
 
   end # module Stats
