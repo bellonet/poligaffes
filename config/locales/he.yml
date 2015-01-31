@@ -56,7 +56,10 @@ he:
   latest_posts: פוסטים אחרונים
   deleted_posts: פוסטים מחוקים
   edited_posts: פוסטים ערוכים
-  
+  before: אחרי
+  after: לפני
+  latest_raw_posts: סטטוסים מתפרצים
+
   story: פעולה
   caption:  כתובית
   posted_on: שפורסם בפייסבוק ב-

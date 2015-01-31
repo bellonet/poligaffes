@@ -1,11 +1,15 @@
 <div class="row">
-  <div class="col-md-12 yair-in-index">
+  <div class="col-md-3 yair-in-index">
 
-    <%= image_tag yair.social_media_accounts.first.photo.url(:thumb), class: "yair-photo" %>
+  	<div class="col-md-10">
 
-    <div class="col-md-8"><%= yair.party %></div>
+    	<div class="col-md-12"><%= link_to yair.first_name + " " + yair.last_name, yair_path(yair), :class => "index-yair-link"%></div>
 
-     <div class="col-md-2"><%= link_to yair.first_name + " " + yair.last_name, yair_path(yair), :class => "index-yair-link"%></div>
+    	<div class="col-md-12"><%= yair.party %></div>
+    </div>
+
+    <div class="col-md-2"><%= image_tag yair.social_media_accounts.first.photo.url(:thumb), class: "yair-photo" %></div>
+
     
   </div>
 </div>

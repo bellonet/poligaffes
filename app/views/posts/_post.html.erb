@@ -1,30 +1,20 @@
-
 <div class="row">
   <% if post.status == "deleted" %>
   <div class="col-md-12 post">
   <% else %>
   <div class="col-md-6 post">
   <% end %>
-
-    <% if post.status == "deleted" %>
-    <div class="col-md-6"></div>
-    <div class="col-md-6 deleted-post-top">
-    <% end %>
     <div class="col-md-11">
       <div class="post-yair">
         <div class="col-md-8"><%= post.yair.party %></div>
         <div class="col-md-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
       </div>
 
-      <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
+      <div class="col-md-12 post-details"><%= t("status") + " " + t(post.status) + " " + t("posted_on") + " " + post.raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
 
     </div>
 
     <div class="col-md-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>
-
-    <% if post.status == "deleted" %>
-    </div>
-    <% end %>
 
     <div class="col-md-12 post-body">
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
@@ -54,7 +44,7 @@
     <% end %>
 
     <% if post.should_have_photo? %>
-      <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "230", class: "post-attach" %></div>
+      <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "200", class: "post-attach" %></div>
     <% elsif post.should_have_video? %>    
       <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" %></div>
     <% end %>
