@@ -36,7 +36,13 @@ he:
 
   representatives: ח"כים
   figures: אושיות
-  stats: מספרים
+  stats:
+    title: מספרים
+    deletes: מחיקות
+    edits: עריכות
+    weekly_top: שיאני השבוע
+    monthly_top: שיאני החודש
+    alltime_top: שיאני כל הזמנים
   about: עלינו
   contact: 
     title: צרו קשר
