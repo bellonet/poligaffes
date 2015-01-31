@@ -22,7 +22,7 @@
       <% else %>
         <p class="truncated-post"><%= truncate(post.body, length: @length || 9999) %></p>
         <p class="full-post" style="display: none;"><%= post.body %></p>
-        <a class="see_more" data-toggle="collapse" href="#collapse-edit-<%= post.id %>"><%= t('keep_reading') %></a>
+        <a class="see_more"><%= t('keep_reading') %></a>
       <% end %>
     </div>
 
@@ -63,7 +63,7 @@
         <% else %>
           <p class="truncated-post"><%= truncate(post.raw_post.post["message"], length: @length || 9999) %></p>
           <p class="full-post" style="display: none;"><%= post.raw_post.post["message"] %></p>
-          <a class="see_more" data-toggle="collapse" href="#collapse-edit-<%= post.id %>"><%= t('keep_reading') %></a>
+          <a class="see_more"><%= t('keep_reading') %></a>
         <% end %>
       </div>
 
