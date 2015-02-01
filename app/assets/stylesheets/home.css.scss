@@ -12,27 +12,37 @@ html, body {
   height: 50px;
 }
 
-.navbar > a.navbar-brand {
-  padding-top: 9px;
-  padding-right: 30px;
+.navbar-brand {
+  padding-top: 8px !important;
+}
+
+.lahadam-explained {
+  padding-top: 18px;
+  padding-right: 0px !important;
+  font-size: 1.2em;
+  color: #0e1f5b;
 }
 
 .navbar .nav {
-  padding-right: 10px;
+  padding-right: 80px;
 }
 
 .navbar .nav > li {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.5em;
-  padding-right: 15px;
+  font-size: 1.2em;
+  padding-right: 5px;
 }
 
 .navbar-nav > li > a {
-  color: #0e1f5b !important;
+  color: #FFFFFF !important;
+}
+
+.navbar-nav > li > a:hover {
+  background-color: #0e1f5b !important;
 }
 
 .nav-search {
-  padding: 0px 80px 0px 0px;
+  padding: 0px 110px 0px 0px;
 }
 
 .nav-pills > li > a {
