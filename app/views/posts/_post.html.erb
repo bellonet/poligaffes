@@ -18,7 +18,7 @@
 
     <div class="col-md-12 post-body">
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
-        <div class="post-text"><%= post.body %></div>
+        <div class="post-text full-post"><%= post.body %></div>
       <% else %>
         <div class="post-text truncated-post"><%= truncate(post.body, length: @length || 9999) %></div>
         <div class="post-text full-post" style="display: none;"><%= post.body %></div>
@@ -59,7 +59,7 @@
 
       <div class="col-md-12 post-body">
         <% if post.raw_post.post["message"].nil? or (post.raw_post.post["message"].length < (@length || 9999)) %>
-          <p><%= post.raw_post.post["message"] %></p>
+          <div class="post-text full-post"><%= post.raw_post.post["message"] %></div>
         <% else %>
           <div class="post-text truncated-post"><%= truncate(post.raw_post.post["message"], length: @length || 9999) %></div>
           <div class="post-text full-post" style="display: none;"><%= post.raw_post.post["message"] %></div>
