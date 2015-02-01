@@ -266,7 +266,7 @@ he:
   time:
     am: am
     formats:
-      default: ! '%d-%m-%Y %H:%M:%S'
+      default: ! ' %H:%M:%S %d-%m-%Y'
       long: ! '%d ב%B, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm
