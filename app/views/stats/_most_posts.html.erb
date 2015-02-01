@@ -1,0 +1,116 @@
+<div class="row">
+  <h1><%= t 'stats.weekly_top' %></h1>
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.raw_posts' %></h4>
+    <ul class="list-group">
+      <% @weekly_top['posts'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.deletes' %></h4>
+    <ul class="list-group">
+      <% @weekly_top['deleted'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.edits' %></h4>
+    <ul class="list-group">
+      <% @weekly_top['edited'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <h1><%= t 'stats.monthly_top' %></h1>
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.raw_posts' %></h4>
+    <ul class="list-group">
+      <% @monthly_top['posts'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.deletes' %></h4>
+    <ul class="list-group">
+      <% @monthly_top['deleted'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.edits' %></h4>
+    <ul class="list-group">
+      <% @monthly_top['edited'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <h1><%= t 'stats.alltime_top' %></h1>
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.raw_posts' %></h4>
+    <ul class="list-group">
+      <% @alltime_top['posts'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.deletes' %></h4>
+    <ul class="list-group">
+      <% @alltime_top['deleted'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <h4><%= t 'stats.edits' %></h4>
+    <ul class="list-group">
+      <% @alltime_top['edited'].each do |rpc| %>
+        <li class="list-group-item">
+          <span class="badge"><%= rpc['count'] %></span>
+          <%= link_to rpc['name'], yair_path(rpc['id']) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

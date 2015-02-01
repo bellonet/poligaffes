@@ -9,159 +9,57 @@
   </div>
 </div>
 
+<div class="tabbable">
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#most-posts" data-toggle="tab"><%= t "stats.most_posts" %></a></li>
+    <li><a href="#words" data-toggle="tab"><%= t "stats.words" %></a></li>
+  </ul>
 
-<div class="row">
-  <h1><%= t 'stats.weekly_top' %></h1>
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.raw_posts' %></h4>
-    <ul class="list-group">
-      <% @weekly_top['posts'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.deletes' %></h4>
-    <ul class="list-group">
-      <% @weekly_top['deleted'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.edits' %></h4>
-    <ul class="list-group">
-      <% @weekly_top['edited'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="row">
-  <h1><%= t 'stats.monthly_top' %></h1>
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.raw_posts' %></h4>
-    <ul class="list-group">
-      <% @monthly_top['posts'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.deletes' %></h4>
-    <ul class="list-group">
-      <% @monthly_top['deleted'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.edits' %></h4>
-    <ul class="list-group">
-      <% @monthly_top['edited'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="row">
-  <h1><%= t 'stats.alltime_top' %></h1>
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.raw_posts' %></h4>
-    <ul class="list-group">
-      <% @alltime_top['posts'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.deletes' %></h4>
-    <ul class="list-group">
-      <% @alltime_top['deleted'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3 pull-right">
-    <h4><%= t 'stats.edits' %></h4>
-    <ul class="list-group">
-      <% @alltime_top['edited'].each do |rpc| %>
-        <li class="list-group-item">
-          <span class="badge"><%= rpc['count'] %></span>
-          <%= link_to rpc['name'], yair_path(rpc['id']) %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="most-posts">
+      <%= render 'most_posts' %>
+    </div>
+    <div class="tab-pane" id="words">
+      <p>coming soon...</p>
+    </div>
   </div>
 </div>
 
 
 <script>
-        data = <%= JSON.dump(@weekly_activity).html_safe %>
-        MG.data_graphic({
-            title: "השבוע בארץ להדם",
-            // description: "<%= t('graph.activity.description') %>",
-            data: data,
-            // markers: [{'year': 1964, 'label': '"The Creeping Terror" released'}],
-            width: 400,
-            height: 170,
-            target: "#stats-graph",
-            x_accessor: "day",
-            y_accessor: "count",
-            interpolate: "monotone",
-            legend: ['מחיקות', 'עריכות'],
-            legend_target: "#stats-legend",
-            animate_on_load: true,
-            area: false,
-            missing_is_zero: true,
-            custom_line_color_map: [3,1]
-            });
-        // fix ticks on x axis
-        $(data[1]).each(function (i,v) {
-          $($('#stats-graph > svg > g.mg-x-axis > text')[i]).text(data[1][i]['name']);
-        });
-        // move y-axis to the right side
-        var width = $('#stats-graph > svg').width();
-        var leftSide = parseInt($('#stats-graph > svg > g.mg-y-axis > line')[0].getAttribute('x1'));
-        var rightSide = width - 15;
-        var toMove = rightSide - leftSide;
-        $('#stats-graph > svg > g.mg-y-axis > line').each(function (i,el) {
-          el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove);
-          el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove);
-        });
-        $('#stats-graph > svg > g.mg-y-axis > text').each(function (i,el) {
-          el.setAttribute('x', width);
-        });
+  data = <%= JSON.dump(@weekly_activity).html_safe %>;
+  MG.data_graphic({
+    title: "השבוע בארץ להדם",
+    // description: "<%= t('graph.activity.description') %>",
+    data: data,
+    // markers: [{'year': 1964, 'label': '"The Creeping Terror" released'}],
+    width: 400,
+    height: 170,
+    target: "#stats-graph",
+    x_accessor: "day",
+    y_accessor: "count",
+    interpolate: "monotone",
+    legend: ['מחיקות', 'עריכות'],
+    legend_target: "#stats-legend",
+    animate_on_load: true,
+    area: false,
+    missing_is_zero: true,
+    custom_line_color_map: [3,1]
+    });
+  // fix ticks on x axis
+  $(data[1]).each(function (i,v) {
+  $($('#stats-graph > svg > g.mg-x-axis > text')[i]).text(data[1][i]['name']);
+  });
+  // move y-axis to the right side
+  var width = $('#stats-graph > svg').width();
+  var leftSide = parseInt($('#stats-graph > svg > g.mg-y-axis > line')[0].getAttribute('x1'));
+  var rightSide = width - 15;
+  var toMove = rightSide - leftSide;
+  $('#stats-graph > svg > g.mg-y-axis > line').each(function (i,el) {
+  el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove);
+  el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove);
+  });
+  $('#stats-graph > svg > g.mg-y-axis > text').each(function (i,el) {
+  el.setAttribute('x', width);
+  });
 </script>
