@@ -1,10 +1,9 @@
 <div class="raw-post">
 	<div><%= raw_post.yair.first_name + " " + raw_post.yair.last_name + ":" %></div>
 	<% if raw_post.post["message"] %>
-		<div><%= link_to truncate(raw_post.post["message"], length: 65), yairs_path, class: "raw-post-link" %></div>
-	<% end %>
-	<% if raw_post.post["story"] %>
-		<div><%= link_to raw_post.post["story"], yairs_path, class: "raw-post-link" %></div>
+		<div><%= link_to truncate(raw_post.post["message"], length: 65), raw_post.post["actions"][0]["link"], :target => "_blank", class: "raw-post-link" %></div>
+	<% elsif raw_post.post["story"] %>
+		<div><%= link_to raw_post.post["story"], raw_post.post["actions"][0]["link"], class: "raw-post-link" %></div>
 	<% end %>
 	<div><%= l raw_post.timestamp %></div>
 
