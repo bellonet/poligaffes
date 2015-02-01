@@ -10,7 +10,7 @@
         <div class="col-md-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
       </div>
 
-      <div class="col-md-12 post-details"><%= t("status") + " " + t(post.status) + " " + t("posted_on") + " " + post.raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
+      <div class="col-md-12 post-details"><%= t("status") + " " + t(post.status) + " " + t("posted_on") + " " + l(post.raw_post.timestamp) %></div>
 
     </div>
 
@@ -52,7 +52,7 @@
           <div class="col-md-4"><%= link_to post.yair.last_name + " " + post.yair.first_name, yair_path(post.yair), :class => "post-yair-link"%></div>
         </div>
 
-        <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= post.raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
+        <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= l post.raw_post.timestamp %></div>
       </div>
 
       <div class="col-md-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>

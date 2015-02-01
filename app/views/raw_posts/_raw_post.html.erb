@@ -6,6 +6,6 @@
 	<% if raw_post.post["story"] %>
 		<div><%= link_to raw_post.post["story"], yairs_path, class: "raw-post-link" %></div>
 	<% end %>
-	<div><%= raw_post.timestamp.strftime( "%d-%m-%Y %H:%M:%S") %></div>
+	<div><%= l raw_post.timestamp %></div>
 
 </div>
