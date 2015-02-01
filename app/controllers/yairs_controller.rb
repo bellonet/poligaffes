@@ -8,7 +8,7 @@ class YairsController < ApplicationController
   end
 
   def by_letter
-    @yairs = Yair.where(field: params[:field]).where('last_name LIKE ?', "#{params[:letter]}%").paginate(page: params[:page], per_page: 10)
+    @yair = Yair.where(field: params[:field]).where('last_name LIKE ?', "#{params[:letter]}%").paginate(page: params[:page], per_page: 10)
     render 'index'
   end
 
