@@ -4,3 +4,39 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               yairs_path(field: @yair.field), :class => 'btn btn-default'  %>
+
+<script>
+  $('.see_more').click(function(){
+    $this = $(this)
+    $this.siblings('div.truncated-post').hide()
+    $this.siblings('div.full-post').show()
+    $this.remove();
+        });
+</script>
+
+<script>
+  // Javascript to enable link to tab
+  var hash = document.location.hash;
+  if (hash) {
+      $('.nav-pills a[href='+hash+']').tab('show');
+  }
+
+  // Change hash for page-reload
+  $('.nav-tabs a').on('shown.bs.tab', function (e) {
+      window.location.hash = e.target.hash;
+        });
+</script>
+
+<script>
+  var dmp = new diff_match_patch();
+  _.each($('.post-row.post-edited'), function (elem) {
+    $el = $(elem);
+    _.each(['truncated', 'full'], function (size) {
+      var original = $($($el.children('.post-original')).find('div.' + size + '-post'));
+      var edited = $($($el.children('.post-edit')).find('div.' + size + '-post'))
+      var diff = dmp.diff_main(original.text(), edited.text());
+      dmp.diff_cleanupSemantic(diff);
+      edited.html(dmp.diff_prettyHtml(diff));
+    });
+  });
+</script>
