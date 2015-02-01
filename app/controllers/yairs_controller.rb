@@ -38,6 +38,7 @@ class YairsController < ApplicationController
   def show
     @yair = Yair.find(params[:id])
     @social_media_accounts = Yair.find(params[:id]).social_media_accounts
+    @length = 420
   end
 
   def destroy
