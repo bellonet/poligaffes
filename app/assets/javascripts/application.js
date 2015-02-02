@@ -15,5 +15,4 @@
 //= require turbolinks
 //= require rbootstrap
 //= require d3.min
-//= require metricsgraphics
 //= require_tree .
