@@ -45,7 +45,7 @@ module Poligaffes
                           FROM raw_posts
                               JOIN social_media_accounts ON (raw_posts.social_media_account_id = social_media_accounts.id)
                               JOIN yairs ON (social_media_accounts.yair_id = yairs.id)
-                          WHERE raw_posts.created_at > %s
+                          WHERE raw_posts.timestamp > %s
                           GROUP BY yairs.id
                           ORDER BY count(*) DESC
                           LIMIT 5;"
