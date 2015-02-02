@@ -75,8 +75,22 @@ html, body {
 .post {
   border-radius: 3px;
   border: 8px solid #ebeef4;
+  position: relative;
   padding: 10px 0px 10px 0px !important;
   background-color: #FFFFFF;
+}
+
+.post:before {
+    background: none;
+    border: 1px solid #dbdee2;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
 }
 
 .post-acc-image {
