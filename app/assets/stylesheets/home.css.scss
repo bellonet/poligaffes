@@ -122,13 +122,3 @@ html, body {
 .raw-post-link {
   color: #3b5998;
 }
-
-#stats-graph > h2 {
-  position: absolute;
-}
-#stats-graph > svg > g.mg-y-axis > text {
-  direction: ltr;
-}
-#stats-graph > svg {
-  padding-top: 6px;
-}

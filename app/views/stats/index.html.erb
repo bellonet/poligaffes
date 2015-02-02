@@ -25,41 +25,90 @@
   </div>
 </div>
 
-
 <script>
-  data = <%= JSON.dump(@weekly_activity).html_safe %>;
-  MG.data_graphic({
-    title: "השבוע בארץ להדם",
-    // description: "<%= t('graph.activity.description') %>",
-    data: data,
-    // markers: [{'year': 1964, 'label': '"The Creeping Terror" released'}],
-    width: 400,
-    height: 170,
-    target: "#stats-graph",
-    x_accessor: "day",
-    y_accessor: "count",
-    interpolate: "monotone",
-    legend: ['מחיקות', 'עריכות'],
-    legend_target: "#stats-legend",
-    animate_on_load: true,
-    area: false,
-    missing_is_zero: true,
-    custom_line_color_map: [3,1]
+  bardata = <%= JSON.dump(@bar_graph).html_safe %>;
+  var margin = {top: 20, right: 30, bottom: 30, left: 80},
+    width = 800 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
+
+  var x0 = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+
+  var x1 = d3.scale.ordinal();
+
+  var y = d3.scale.linear()
+      .range([height, 0]);
+
+  var color = d3.scale.ordinal()
+      .range(["#0066CC", "#CC0000", "#339933"]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x0)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("right")
+      .tickFormat(d3.format("d"));
+
+  var svg = d3.select("#stats-graph").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var countNames = ['<%= t 'stats.raw_posts' %>', '<%= t 'stats.deletes' %>', '<%= t 'stats.edits' %>'];
+
+    bardata.forEach(function(d) {
+      d.counts = countNames.map(function(name) { return {name: name, value: +d[name]}; });
     });
-  // fix ticks on x axis
-  $(data[1]).each(function (i,v) {
-  $($('#stats-graph > svg > g.mg-x-axis > text')[i]).text(data[1][i]['name']);
-  });
-  // move y-axis to the right side
-  var width = $('#stats-graph > svg').width();
-  var leftSide = parseInt($('#stats-graph > svg > g.mg-y-axis > line')[0].getAttribute('x1'));
-  var rightSide = width - 15;
-  var toMove = rightSide - leftSide;
-  $('#stats-graph > svg > g.mg-y-axis > line').each(function (i,el) {
-  el.setAttribute('x1', parseInt(el.getAttribute('x1'))+toMove);
-  el.setAttribute('x2', parseInt(el.getAttribute('x2'))+toMove);
-  });
-  $('#stats-graph > svg > g.mg-y-axis > text').each(function (i,el) {
-  el.setAttribute('x', width);
-  });
+
+    x0.domain(bardata.map(function(d) { return d.name; }));
+    x1.domain(countNames).rangeRoundBands([0, x0.rangeBand()]);
+    y.domain([0, d3.max(bardata, function(d) { return d3.max(d.counts, function(d) { return d.value; }); })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + width + " ,0)")
+      .call(yAxis);
+
+  var state = svg.selectAll(".state")
+      .data(bardata)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x0(d.name) + ",0)"; });
+
+  state.selectAll("rect")
+      .data(function(d) { return d.counts; })
+    .enter().append("rect")
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.name); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.name); });
+
+  var legend = svg.selectAll(".legend")
+      .data(countNames.slice())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate("+ -(width+40) +"," + i * 22 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .attr("transform", "translate(" + 30 + " ,0)")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
 </script>
