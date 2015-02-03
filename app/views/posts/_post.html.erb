@@ -35,7 +35,7 @@
       <% if post.raw_post.attachment_file_name %>
         <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "200", class: "post-attach" %></div>
       <% else %>
-        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "50", class: "post-attach" %></div>
+        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "120", class: "post-attach" %></div>
       <% end %>
     <% elsif post.should_have_video? %>    
       <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" %></div>
