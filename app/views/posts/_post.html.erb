@@ -38,7 +38,7 @@
         <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "120", class: "post-attach" %></div>
       <% end %>
     <% elsif post.should_have_video? %>    
-      <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" %></div>
+      <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "metadata" %></div>
     <% end %>
 
     <% if post.raw_post.post["caption"] %>
@@ -78,7 +78,7 @@
       <% if post.should_have_photo? %>
         <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "230", class: "post-attach" %></div>
       <% elsif post.should_have_video? %>    
-        <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" %></div>
+        <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach", preload: "metadata"  %></div>
       <% end %>
 
       <% if post.raw_post.post["caption"] %>
