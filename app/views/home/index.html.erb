@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="tab-pane" id="tabEdited">
-        <div class="row"><div class="col-md-6"><h4 class="title-small"><%= t "after" %></h4></div><div class="col-md-6"><h4 class="title-small"><%= t "before" %></h4></div></div>
+        <div class="row"><div class="col-md-6"><h4 class="title-small"><%= t "before" %></h4></div><div class="col-md-6"><h4 class="title-small"><%= t "after" %></h4></div></div>
         <%= render @edited_posts %>
         <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
       </div>

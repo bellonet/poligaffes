@@ -1,3 +1,37 @@
 // Place all the styles related to the about controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about {
+	border: 1px solid #FFFFFF;
+	padding: 0px 25px 20px 25px !important;
+}
+
+.about-titles {
+	color: #708090;
+}
+
+.about-img-div {
+	padding-right: 0px !important;
+}
+
+.about-img {
+	border: 10px solid #FFFFFF;
+	margin-top: 5px;
+	padding-right:0px !important;
+}
+
+.about-ppl {
+	margin-top: 25px;
+	padding-right: 0px !important;
+}
+
+.about-ppl-box {
+	padding: 0px 0px 0px 0px !important;
+	margin: 0px 0px 20px 0px !important;
+}
+
+.about-names {
+	font-size: 1.2em;
+	color: #708090;
+}
