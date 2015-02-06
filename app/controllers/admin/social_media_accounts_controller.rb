@@ -13,7 +13,7 @@ class Admin::SocialMediaAccountsController < Admin::BaseController
     else
       render 'new'
     end
-    end
+    #end
     @social_media_account = SocialMediaAccount.new(social_media_account_params)
     @social_media_account.yair = @yair
     if @social_media_account.save
