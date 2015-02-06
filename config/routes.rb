@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :social_media_accounts
   resources :posts
 
   resources :sessions
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
     resources :users
     resources :facebook_applications
     resources :fb_api_tokens
+    resources :social_media_accounts
     post '/fb_api_tokens/:id/extend', to: 'fb_api_tokens#extend', as: 'extend_fb_api_token'
     get '/create_token_using_fb_flow', to: 'fb_api_tokens#create_using_fb_flow', as: 'facebook_login_flow'
     get '/callback_from_facush', to: 'fb_api_tokens#callback_from_facebook', as: 'facush_callback'

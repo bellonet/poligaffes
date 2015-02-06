@@ -1,0 +1,23 @@
+<h2>בחר יאיר</h2>
+
+<%= render "yairs/search" %>
+
+<% if @yairs %>
+  <%= render @yairs %>
+<% end %>
+
+<h2>או צור יאיר חדש</h2>
+
+<%= render "yairs/form" %>
+
+<h2>חשבון</h2>
+
+<%= form_for @social_media_account, :url => { :action => "create" } do |f| %>
+  <p>
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </p>
+  
+  <%= f.submit "Create" %>
+
+<% end %>
