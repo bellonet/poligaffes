@@ -1,0 +1,8 @@
+* * * * * /bin/bash -l -c 'export PATH="/home/poligaffes/.rbenv/bin:$PATH" ; export RAILS_ENV="production" ; eval "$(rbenv init -)"; cd /var/www/poligaffes/current && bundle exec rails r scripts/fetch_latest_posts.rb' >> /home/poligaffes/fetch.log 2>&1
+*/2 * * * * /bin/bash -l -c 'export PATH="/home/poligaffes/.rbenv/bin:$PATH" ; export RAILS_ENV="production" ; eval "$(rbenv init -)"; cd /var/www/poligaffes/current && bundle exec rails r scripts/compare_posts.rb' >> /home/poligaffes/compare.log 2>&1
+* * * * * sleep 40; /bin/bash -l -c 'export PATH="/home/poligaffes/.rbenv/bin:$PATH" ; export RAILS_ENV="production" ; eval "$(rbenv init -)"; cd /var/www/poligaffes/current && bundle exec rails r scripts/add_attachment_to_raw_posts.rb -t photo -m 5' >> /home/poligaffes/add_attachment_photo.log 2>&1
+* * * * * sleep 50; /bin/bash -l -c 'export PATH="/home/poligaffes/.rbenv/bin:$PATH" ; export RAILS_ENV="production" ; eval "$(rbenv init -)"; cd /var/www/poligaffes/current && bundle exec rails r scripts/add_attachment_to_raw_posts.rb -t video -m 30' >> /home/poligaffes/add_attachment_video.log 2>&1
+0 0 * * 1,2,3,4,5,7 /bin/bash -l -c 'cd /home/poligaffes/backups && ./backup_db.sh' >> /home/poligaffes/backups/backup_db.log
+#0 0 * * 6 /bin/bash -l -c 'cd /home/poligaffes/backups && ./backup_db.sh && s3cmd put poligaffes_production_`date +"%Y-%m-%d"`.sql.gz s3://lahadam-backups' >> /home/poligaffes/backups/backup_db.log
+10 0 * * 1,2,3,4,5,7 /bin/bash -l -c 'cd /home/poligaffes/backups && ./backup_static.sh' >> /home/poligaffes/backups/backup_static.log
+#10 0 * * 6 /bin/bash -l -c 'cd /home/poligaffes/backups && ./backup_static.sh && s3cmd put poligaffes_system_`date +"%Y-%m-%d"`.tar.gz s3://lahadam-backups' >> /home/poligaffes/backups/backup_static.log
