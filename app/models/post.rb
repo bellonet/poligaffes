@@ -18,10 +18,7 @@ class Post < ActiveRecord::Base
 
   private
   def clear_stats_cache
-    Rails.cache.delete 'weekly_top-cache-key'
-    Rails.cache.delete 'monthly_top-cache-key'
-    Rails.cache.delete 'alltime_top-cache-key'
-    Rails.cache.delete 'weekly_activity-cache-key'
+    Rails.cache.delete_matched 'top-cache-key'
   end
 
 end
