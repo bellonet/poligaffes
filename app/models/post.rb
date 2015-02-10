@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base
+  include Poligaffes::Cache::Clearer
+
   after_save :clear_stats_cache
+  after_save :clear_homepage_cache
 
   has_one :yair, through: :social_media_account
   has_one :social_media_account, through: :raw_post
@@ -20,5 +23,4 @@ class Post < ActiveRecord::Base
   def clear_stats_cache
     Rails.cache.delete_matched 'top-cache-key'
   end
-
 end

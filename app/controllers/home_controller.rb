@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
 
+  caches_action :index, cache_path: lambda { |e| "home-#{params[:deleted_page]}-#{params[:edited_page]}" }
+
   def index
   	@deleted_posts = Post.all.order(created_at: :desc).where(status: "deleted").paginate(page: params[:deleted_page], per_page: 5)
     @edited_posts = Post.all.order(created_at: :desc).where(status: "edited").paginate(page: params[:edited_page], per_page: 5)

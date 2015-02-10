@@ -1,5 +1,8 @@
 class RawPost < ActiveRecord::Base
+  include Poligaffes::Cache::Clearer
+
   after_save :clear_stats_cache
+  after_save :clear_homepage_cache
 
   belongs_to :social_media_account
   has_one :yair, through: :social_media_account
