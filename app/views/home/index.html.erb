@@ -25,9 +25,16 @@
         </div>
       </div>
       <div class="tab-pane" id="tabEdited">
-        <div class="row"><div class="col-xs-6"><h4 class="title-small"><%= t "before" %></h4></div><div class="col-xs-6"><h4 class="title-small"><%= t "after" %></h4></div></div>
-        <%= render @edited_posts %>
-        <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
+        <div class="col-xs-3 latest-raw-posts">
+          <br><br><br><br>
+          <h4 class="title-small"><%= t "latest_raw_posts" %></h4>
+          <%= render @latest_raw_posts %>
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-8">
+          <%= render @edited_posts %>
+          <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
+        </div>
       </div>
     </div>
   </div>
