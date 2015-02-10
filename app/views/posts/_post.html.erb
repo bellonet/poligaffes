@@ -1,22 +1,22 @@
 <div class="row post-row post-<%= post.status %>" id="post-<%= post.id %>">
   <% if post.status == "deleted" %>
-  <div class="col-md-12 post">
+  <div class="col-xs-12 post">
   <% else %>
-  <div class="col-md-6 post post-edit">
+  <div class="col-xs-6 post post-edit">
   <% end %>
-    <div class="col-md-11">
+    <div class="col-xs-11">
       <div class="post-yair">
-        <div class="col-md-8"><%= post.yair.party %></div>
-        <div class="col-md-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
+        <div class="col-xs-8"><%= post.yair.party %></div>
+        <div class="col-xs-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
       </div>
 
-      <div class="col-md-12 post-details"><%= t("status") + " " + t(post.status) + " " + t("posted_on") + " " + l(post.raw_post.timestamp) %></div>
+      <div class="col-xs-12 post-details"><%= t("status") + " " + t(post.status) + " " + t("posted_on") + " " + l(post.raw_post.timestamp) %></div>
 
     </div>
 
-    <div class="col-md-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>
+    <div class="col-xs-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>
 
-    <div class="col-md-12 post-body">
+    <div class="col-xs-12 post-body">
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
         <div class="post-text full-post"><%= post.body %></div>
       <% else %>
@@ -28,44 +28,44 @@
 
 
     <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
-      <div class="col-md-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
+      <div class="col-xs-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
     <% end %>
 
     <% if post.should_have_photo? %>
       <% if post.raw_post.attachment_file_name %>
-        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "200", class: "post-attach" %></div>
+        <div class="col-xs-12"><%= image_tag post.raw_post.attachment.url, height: "200", class: "post-attach" %></div>
       <% else %>
-        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "120", class: "post-attach" %></div>
+        <div class="col-xs-12"><%= image_tag post.raw_post.attachment.url, height: "120", class: "post-attach" %></div>
       <% end %>
     <% elsif post.should_have_video? %> 
       <% if post.raw_post.attachment_file_name %>   
-        <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "metadata"%></div>
+        <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "metadata"%></div>
       <% else %>
-        <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, height: "120", class: "post-attach", poster: "missing.jpg" %></div>
+        <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, height: "120", class: "post-attach", poster: "missing.jpg" %></div>
       <% end %>
     <% end %>
 
     <% if post.raw_post.post["caption"] %>
-      <div class="col-md-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
+      <div class="col-xs-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
     <% end %>
 
   </div>
 
   <% if post.status == "edited" %>
-    <div class="col-md-6 post post-original">
-      <div class="col-md-11">
+    <div class="col-xs-6 post post-original">
+      <div class="col-xs-11">
         
         <div class="post-yair">
-          <div class="col-md-8"><%= post.yair.party %></div>
-          <div class="col-md-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
+          <div class="col-xs-8"><%= post.yair.party %></div>
+          <div class="col-xs-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
         </div>
 
-        <div class="col-md-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= l post.raw_post.timestamp %></div>
+        <div class="col-xs-12 post-details"><%= t "status" %> <%= (t post.status) %> <%= t "posted_on" %> <%= l post.raw_post.timestamp %></div>
       </div>
 
-      <div class="col-md-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>
+      <div class="col-xs-1"><%= image_tag post.social_media_account.photo.url(:thumb), size: '50x50', class: "post-acc-image" %></div>
 
-      <div class="col-md-12 post-body">
+      <div class="col-xs-12 post-body">
         <% if post.raw_post.post["message"].nil? or (post.raw_post.post["message"].length < (@length || 9999)) %>
           <div class="post-text full-post"><%= post.raw_post.post["message"] %></div>
         <% else %>
@@ -76,25 +76,25 @@
       </div>
 
       <% if post.raw_post.post["story"] and post.raw_post.post["story"].exclude? "הוסי" %>
-        <div class="col-md-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
+        <div class="col-xs-12 post-details"><%= (t "story") + ": " %><%= post.raw_post.post["story"] %></div>
       <% end %>
 
       <% if post.should_have_photo? %>
         <% if post.raw_post.attachment_file_name %>
-        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "200", class: "post-attach" %></div>
+        <div class="col-xs-12"><%= image_tag post.raw_post.attachment.url, height: "200", class: "post-attach" %></div>
         <% else %>
-        <div class="col-md-12"><%= image_tag post.raw_post.attachment.url, height: "120", class: "post-attach" %></div>
+        <div class="col-xs-12"><%= image_tag post.raw_post.attachment.url, height: "120", class: "post-attach" %></div>
         <% end %>
       <% elsif post.should_have_video? %>    
         <% if post.raw_post.attachment_file_name %>   
-          <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "metadata" %></div>
+          <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "metadata" %></div>
         <% else %>
-          <div class="col-md-12"><%= video_tag post.raw_post.attachment.url, height: "120", class: "post-attach", poster: "missing.jpg" %></div>
+          <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, height: "120", class: "post-attach", poster: "missing.jpg" %></div>
         <% end %>
       <% end %>
 
       <% if post.raw_post.post["caption"] %>
-        <div class="col-md-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
+        <div class="col-xs-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
       <% end %>
 
     </div>

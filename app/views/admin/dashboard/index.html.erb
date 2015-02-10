@@ -1,6 +1,6 @@
 <div class="well">
   <div class="row">
-    <div class="col-md-5 pull-right">
+    <div class="col-xs-5 pull-right">
       <p><%= t 'dashboard.most_raw_posts' %></p>
       <ul class="list-group">
         <% @raw_post_counts.each do |rpc| %>
@@ -12,7 +12,7 @@
       </ul>
     </div>
 
-    <div class="col-md-7 pull-right">
+    <div class="col-xs-7 pull-right">
       <p><%= t 'dashboard.latest_raw_posts' %></p>
       <ul class="list-group">
         <% @latest_raw_posts.each do |raw_post| %>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-5 pull-right">
+    <div class="col-xs-5 pull-right">
       <p><%= t 'dashboard.most_deletes' %></p>
       <ul class="list-group">
         <% @top_posts['deleted'].each do |rpc| %>
@@ -38,7 +38,7 @@
       </ul>
     </div>
 
-    <div class="col-md-5 pull-right">
+    <div class="col-xs-5 pull-right">
       <p><%= t 'dashboard.most_edits' %></p>
       <ul class="list-group">
         <% @top_posts['edited'].each do |rpc| %>
@@ -52,17 +52,17 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-xs-4">
       <h2><%= t 'users' %></h2>
       <p><%= t 'users.explanation' %></p>
       <p><a class="btn btn-default" href="<%= admin_users_path %>" role="button"><%= t 'edit' %> &raquo;</a></p>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs-4">
       <h2><%= t 'api_tokens' %></h2>
       <p><%= t 'api_tokens.explanation' %></p>
       <p><a class="btn btn-default" href="<%= admin_fb_api_tokens_path %>" role="button"><%= t 'view' %> &raquo;</a></p>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs-4">
       <h2><%= t 'yairs' %></h2>
       <p><%= t 'yairs.explanation' %></p>
       <p><a class="btn btn-default" href="#" role="button"><%= t 'edit' %> &raquo;</a></p>

@@ -6,14 +6,31 @@ html, body {
   background-image: url("brickwall.png"); 
 }
 
+.container {
+  width: 1170px !important;
+}
+
+.navbar-collapse.collapse {
+display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+float: right !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+margin-right: -15px !important;
+}
+
 .home-header {
-  background-image: url("knesset.jpg"); 
+  background: url(knesset.jpg) no-repeat left;
   background-size: 100%;
   padding-top: 40px;
   padding-bottom: 20px;
   font-size: 24px;
   text-align: left;
 }
+
 
 .navbar {
   margin-top: 100px;
@@ -23,10 +40,6 @@ html, body {
   height: 50px;
   box-shadow: 1px 1px 1px #9c9c9c !important;
   border-radius: 3px !important;
-}
-
-.brand {
-  
 }
 
 .lahadam-explained {
