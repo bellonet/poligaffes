@@ -29,6 +29,7 @@ margin-right: -15px !important;
   padding-bottom: 20px;
   font-size: 24px;
   text-align: left;
+  margin-bottom: 20px;
 }
 
 
@@ -99,24 +100,12 @@ margin-right: -15px !important;
 }
 
 .post {
+  border: 1px solid #dbdee2;
   border-radius: 3px;
   margin: 5px;
   position: relative;
   padding: 10px 0px 10px 0px !important;
   background-color: #FFFFFF;
-}
-
-.post:before {
-    background: none;
-    border: 1px solid #dbdee2;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    pointer-events: none;
 }
 
 .post-acc-image {
@@ -149,6 +138,13 @@ margin-right: -15px !important;
 
 .post-text {
   white-space: pre-wrap;
+}
+
+.latest-raw-posts {
+  margin-top: 150px;
+  padding-top: 20px;
+  border: 1px solid #dbdee2;
+  background: rgba(255,255,255,0.7);
 }
 
 .raw-post {
