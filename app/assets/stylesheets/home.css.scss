@@ -4,10 +4,45 @@
 
 html, body {
   background-image: url("brickwall.png"); 
+  /*background-color: #181818 !important;*/
 }
 
 .container {
   width: 1170px !important;
+}
+
+.home-header {
+  background: url(knesset2.jpg) no-repeat left;
+  background-size: 100%;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 20px;
+  border: 1px solid #FFFFFF !important;
+  box-shadow: 1px 1px 1px #9c9c9c !important;
+}
+
+.brand, .brand-l {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  color: #FFFFFF;
+  text-shadow: -1px 0 #4F2C4D, 0 1px #4F2C4D, 1px 0 #4F2C4D, 0 -1px #4F2C4D;
+  text-decoration: none;
+}
+
+.brand-l {
+  color: #ffffff !important;
+  text-shadow: -1px 0 #4F2C4D, 0 1px #4F2C4D, 1px 0 #4F2C4D, 0 -1px #4F2C4D;
+}
+
+.lahadam-explained {
+  margin-top: -10px;
+  padding-right: 10px;
+  padding-left: 3px;
+  font-size: 22px;
+  color: #ffffff;
 }
 
 .navbar-collapse.collapse {
@@ -22,32 +57,14 @@ float: right !important;
 margin-right: -15px !important;
 }
 
-.home-header {
-  background: url(knesset.jpg) no-repeat left;
-  background-size: 100%;
-  padding-top: 40px;
-  padding-bottom: 20px;
-  font-size: 24px;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-
 .navbar {
-  margin-top: 100px;
-  background: #ffffff !important; 
-  opacity: 0.9 !important;
-  border: 1px solid #0e1f5b !important;
+  margin-top: 120px;
+  background: #4F2C4D !important; 
+  opacity: 0.95 !important;
+  border: 1px solid #ffffff !important;
   height: 50px;
   box-shadow: 1px 1px 1px #9c9c9c !important;
   border-radius: 3px !important;
-}
-
-.lahadam-explained {
-  padding-top: 18px;
-  padding-right: 0px !important;
-  font-size: 15px;
-  color: #0e1f5b;
 }
 
 .navbar .nav {
@@ -61,11 +78,11 @@ margin-right: -15px !important;
 }
 
 .navbar-nav > li > a {
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .navbar-nav > li > a:hover {
-  background-color: #0e1f5b !important;
+  background-color: #bb84b8 !important;
 }
 
 .nav-search {
@@ -84,7 +101,7 @@ margin-right: -15px !important;
 }
 
 .nav-pills > li.active > a {
-  background-color: #3b5998 !important;
+  background-color: #4F2C4D !important;
 }
 
 .title {
@@ -144,7 +161,11 @@ margin-right: -15px !important;
   margin-top: 150px;
   padding-top: 20px;
   border: 1px solid #dbdee2;
-  background: rgba(255,255,255,0.7);
+  background: #ffffff;
+}
+
+.raw-small-title {
+  color: #FFFFFF;
 }
 
 .raw-post {

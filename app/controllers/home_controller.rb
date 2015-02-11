@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  layout 'home'
 
   caches_action :index, cache_path: lambda { |e| "home-#{params[:deleted_page]}-#{params[:edited_page]}" }
 

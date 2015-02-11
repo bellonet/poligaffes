@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title><%= content_for?(:title) ? yield(:title) : t("lahadam") %></title>
+    <title><%= content_for?(:title) ? yield(:title) : ("היו דברים מעולם") %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -37,20 +37,17 @@
   </head>
   <body>
 
+    <div class="home-header" id="content">
     <img style="position: absolute; z-index:9999; top: 0; left: 0; border: 0;" src="<%= image_path 'beta_ribbon.png' %>" alt="Beta">
-
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand pull-right" href="/"><img src="<%= image_path 'lahadam.png' %>"></a>
-        <div class="lahadam-explained col-xs-3 pull-right">כל המחיקות של הפוליטיקאים בפייסבוק</div>
-
+    <div class="container">
+      <div class="col-xs-12">
+      <a class="brand-l pull-right" href="/" style="text-decoration: none; color: #ffffff;">ל</a>
+      <a class="brand pull-right" href="/" style="text-decoration: none; color: #ffffff;">הד״ם</a>
+      </div>
+      <div class="col-xs-12">
+      <div class="lahadam-explained pull-right">כל המחיקות של הפוליטיקאים בפייסבוק</div>
+      </div>
+      <div class="navbar navbar-default navbar-static-top">
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
             <li><%= link_to (t "representatives"), yairs_path(field: 'representatives') %></li>
@@ -61,7 +58,9 @@
           </ul>
         </div>
       </div>
+      </div>
     </div>
+
 
     <div class="container">
       <div class="row">
