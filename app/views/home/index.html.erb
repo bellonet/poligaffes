@@ -67,9 +67,7 @@
 
     _.each($('.post-text.truncated-post'), function(post) {
       $post = $(post);
-      $post.html($.truncate($post.siblings('.full-post').html(), {length: <%= @length %>, words: true}));
+      $post.html($.truncate($post.siblings('.full-post').html(), {length: <%= @length || 9999 %>, words: true}));
     });
-
-    // $($('.post-text.truncated-post')[1]).html($.truncate($($('.post-text.truncated-post')[1]).siblings('.full-post').html(), {length: 100}))
   });
 </script>

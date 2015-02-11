@@ -1,0 +1,28 @@
+<div class="col-xs-6 col-xs-offset-3">
+  <%= render @post %>
+</div>
+
+<script>
+  $('.see_more').click(function(){
+  $this = $(this)
+  $this.siblings('div.truncated-post').hide()
+  $this.siblings('div.full-post').show()
+  $this.remove();
+      });
+</script>
+<script>
+  var dmp = new diff_match_patch();
+  _.each($('.post-row.post-edited'), function (elem) {
+    $el = $(elem);
+    var original = $($($el.children('.post-original')).find('div.full-post'));
+    var edited = $($($el.children('.post-edit')).find('div.full-post'))
+    var diff = dmp.diff_main(original.text(), edited.text());
+    dmp.diff_cleanupSemantic(diff);
+    edited.html(dmp.diff_prettyHtml(diff));
+
+    _.each($('.post-text.truncated-post'), function(post) {
+      $post = $(post);
+      $post.html($.truncate($post.siblings('.full-post').html(), {length: <%= @length || 9999 %>, words: true}));
+    });
+  });
+</script>

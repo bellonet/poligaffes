@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :posts
+  get '/posts/:id', to: 'posts#show', as: 'post'
 
   resources :sessions
 
