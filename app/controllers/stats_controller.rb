@@ -1,6 +1,8 @@
 require 'poligaffes/stats/polistats'
 class StatsController < ApplicationController
 
+	before_filter { use_cover_photo 'stats.jpg' }
+
 
   def index
     @weekly_top =  Rails.cache.fetch('weekly_top-cache-key')  { Hash[['posts', 'deleted', 'edited'].map { |k| [k, Poligaffes::Stats.top_posts(k, 7)] }] }

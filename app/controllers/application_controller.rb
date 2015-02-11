@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   	def authorize
   		redirect_to login_url, alert: "Not authorized!" if current_user.nil?
   	end
+
+    def use_cover_photo(photo)
+      @cover_photo = photo
+    end
 end

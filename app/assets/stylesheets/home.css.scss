@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html, body {
-  background-image: url("brickwall.png"); 
-  /*background-color: #181818 !important;*/
+  background-color: #DDDDDD !important;
 }
 
 .container {
@@ -12,14 +11,12 @@ html, body {
 }
 
 .home-header {
-  background: url(knesset2.jpg) no-repeat left;
-  background-size: 100%;
   padding-top: 20px;
   padding-bottom: 0px;
   font-size: 24px;
   text-align: left;
   margin-bottom: 20px;
-  border: 1px solid #FFFFFF !important;
+  border-bottom: 1px solid #FFFFFF !important;
   box-shadow: 1px 1px 1px #9c9c9c !important;
 }
 
@@ -58,7 +55,7 @@ margin-right: -15px !important;
 }
 
 .navbar {
-  margin-top: 120px;
+  margin-top: 130px;
   background: #4F2C4D !important; 
   opacity: 0.95 !important;
   border: 1px solid #ffffff !important;
@@ -68,12 +65,12 @@ margin-right: -15px !important;
 }
 
 .navbar .nav {
-  padding-right: 100px;
+  padding-right: 50px;
 }
 
 .navbar .nav > li {
   font-family: 'Oswald', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   padding-right: 5px;
 }
 
@@ -82,17 +79,17 @@ margin-right: -15px !important;
 }
 
 .navbar-nav > li > a:hover {
-  background-color: #bb84b8 !important;
+  background-color: #c291bf !important;
 }
 
 .nav-search {
-  padding: 0px 350px 0px 0px;
+  padding: 0px 450px 0px 0px;
 }
 
 .nav-pills > li > a {
   font-size: 1.4em;
-  color: #708090;
-  background-color: #d4d8dd;
+  color: #585858;
+  background-color: #c6c6c6;
   margin-bottom: 20px !important;
 }
 
@@ -105,19 +102,19 @@ margin-right: -15px !important;
 }
 
 .title {
-  color: #708090;
+  color: #585858;
   margin-top: 5px !important;
   margin-bottom: 15px !important;
 }
 
 .title-small {
-  color: #708090;
+  color: #585858;
   margin-top: 0px !important;
   margin-bottom: 10px !important;
 }
 
 .post {
-  border: 1px solid #dbdee2;
+  border: 1px solid #c6c6c6;
   border-radius: 3px;
   margin: 5px;
   position: relative;
@@ -158,14 +155,16 @@ margin-right: -15px !important;
 }
 
 .latest-raw-posts {
-  margin-top: 150px;
+  margin-top: 128px;
   padding-top: 20px;
-  border: 1px solid #dbdee2;
+  border: 1px solid #c6c6c6;
   background: #ffffff;
+  opacity: 0.7;
 }
 
 .raw-small-title {
-  color: #FFFFFF;
+  color: #585858;
+  margin-top:-5px;
 }
 
 .raw-post {
