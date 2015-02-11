@@ -5,9 +5,9 @@ module Poligaffes
                     FROM posts WHERE created_at > '%s'
                     GROUP BY status, date_trunc('day',created_at)
                     UNION
-                    SELECT date_trunc('day',created_at) AS day, 'total', count(*)
+                    SELECT date_trunc('day',timestamp) AS day, 'total', count(*)
                     FROM raw_posts
-                    WHERE created_at > '%s'
+                    WHERE timestamp > '%s'
                     GROUP BY 1
                     ORDER BY 1;
       """
