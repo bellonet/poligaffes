@@ -48,7 +48,7 @@
     <% if post.raw_post.post["caption"] %>
       <div class="col-xs-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
     <% end %>
-
+    <div class="pull-left fb-share-button" data-href="<%= post_url(post) %>" data-layout="button_count"></div>
   </div>
 
   <% if post.status == "edited" %>
@@ -96,10 +96,7 @@
       <% if post.raw_post.post["caption"] %>
         <div class="col-xs-12 post-details"><%= (t "caption") + ": " %><%= post.raw_post.post["caption"] %></div>
       <% end %>
-
+      <div class="fb-share-button" data-href="<%= post_url(post) %>" data-layout="button_count"></div>
     </div>
   <% end %>
 </div>
-
-
-
