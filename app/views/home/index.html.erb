@@ -59,12 +59,17 @@
   var dmp = new diff_match_patch();
   _.each($('.post-row.post-edited'), function (elem) {
     $el = $(elem);
-    _.each(['truncated', 'full'], function (size) {
-      var original = $($($el.children('.post-original')).find('div.' + size + '-post'));
-      var edited = $($($el.children('.post-edit')).find('div.' + size + '-post'))
-      var diff = dmp.diff_main(original.text(), edited.text());
-      dmp.diff_cleanupSemantic(diff);
-      edited.html(dmp.diff_prettyHtml(diff));
+    var original = $($($el.children('.post-original')).find('div.full-post'));
+    var edited = $($($el.children('.post-edit')).find('div.full-post'))
+    var diff = dmp.diff_main(original.text(), edited.text());
+    dmp.diff_cleanupSemantic(diff);
+    edited.html(dmp.diff_prettyHtml(diff));
+
+    _.each($('.post-text.truncated-post'), function(post) {
+      $post = $(post);
+      $post.html($.truncate($post.siblings('.full-post').html(), {length: <%= @length %>, words: true}));
     });
+
+    // $($('.post-text.truncated-post')[1]).html($.truncate($($('.post-text.truncated-post')[1]).siblings('.full-post').html(), {length: 100}))
   });
 </script>

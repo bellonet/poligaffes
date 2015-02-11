@@ -20,7 +20,7 @@
       <% if post.body.nil? or (post.body.length < (@length || 9999)) %>
         <div class="post-text full-post"><%= post.body %></div>
       <% else %>
-        <div class="post-text truncated-post"><%= truncate(post.body, length: @length || 9999) %></div>
+        <div class="post-text truncated-post"></div>
         <div class="post-text full-post" style="display: none;"><%= post.body %></div>
         <a class="see_more"><%= t('keep_reading') %></a>
       <% end %>
@@ -69,7 +69,7 @@
         <% if post.raw_post.post["message"].nil? or (post.raw_post.post["message"].length < (@length || 9999)) %>
           <div class="post-text full-post"><%= post.raw_post.post["message"] %></div>
         <% else %>
-          <div class="post-text truncated-post"><%= truncate(post.raw_post.post["message"], length: @length || 9999) %></div>
+          <div class="post-text truncated-post"></div>
           <div class="post-text full-post" style="display: none;"><%= post.raw_post.post["message"] %></div>
           <a class="see_more"><%= t('keep_reading') %></a>
         <% end %>
