@@ -65,7 +65,7 @@ margin-right: -15px !important;
 }
 
 .navbar .nav {
-  padding-right: 50px;
+  padding-right: 5px;
 }
 
 .navbar .nav > li {
@@ -80,6 +80,12 @@ margin-right: -15px !important;
 
 .navbar-nav > li > a:hover {
   background-color: #c291bf !important;
+}
+#home-link:hover {
+  background: none !important;
+}
+#home-link {
+  margin-top: -7px;
 }
 
 .nav-search {
