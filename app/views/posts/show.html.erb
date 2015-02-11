@@ -1,3 +1,7 @@
+<og:title><%= "היו דברים מעולם: #{post.raw_post['message']}" %></og:title>
+<og:site_name>להד"ם</og:site_name>
+<og:description><%= "#{post.yair.first_name} #{post.yair.last_name} מחק סטטוס בפייסבוק"</og:description>
+
 <div class="col-xs-6 col-xs-offset-3">
   <%= render @post %>
 </div>
