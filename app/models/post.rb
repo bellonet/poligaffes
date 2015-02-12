@@ -20,8 +20,12 @@ class Post < ActiveRecord::Base
   end
 
   def describe
-    "#{yair.first_name} #{yair.last_name} #{status=='deleted' ? 'מחק/ה' : 'ערכ/ה'} סטטוס שפורסם ב- #{I18n.l raw_post.timestamp}
+    "פורסם ב- #{I18n.l raw_post.timestamp}: \n
     #{body.truncate(100)}"
+  end
+
+  def facebook_share_title
+    "להדם: #{yair.first_name} #{yair.last_name} #{status=='deleted' ? 'מחק/ה' : 'ערכ/ה'} סטטוס"
   end
 
   private
