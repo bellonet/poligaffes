@@ -27,7 +27,7 @@ module Poligaffes
           r[row['day']][I18n.t("stats.#{status}")] = row['count'].to_i
           r
         end
-        ret = data.keys.sort.reverse.map { |d| data[d] }
+        ret = data.keys.sort.reverse.map { |d| data[d] }.first(7)
       end # def self.weekly_activity_bar
 
       TOP_POSTS_SQL = "SELECT yairs.id, yairs.first_name || ' ' || yairs.last_name AS name, count(*)
