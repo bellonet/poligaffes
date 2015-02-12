@@ -20,7 +20,8 @@ class Post < ActiveRecord::Base
   end
 
   def describe
-    "#{yair.first_name} #{yair.last_name} #{status=='deleted' ? 'מחק/ה' : 'ערכ/ה'} סטטוס שפורסם ב- #{I18n.l raw_post.timestamp}"
+    "#{yair.first_name} #{yair.last_name} #{status=='deleted' ? 'מחק/ה' : 'ערכ/ה'} סטטוס שפורסם ב- #{I18n.l raw_post.timestamp}
+    #{post.body.truncate(100)}"
   end
 
   private
