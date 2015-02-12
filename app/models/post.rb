@@ -19,6 +19,10 @@ class Post < ActiveRecord::Base
   	self.raw_post.post["type"]=="video"
   end
 
+  def describe
+    "#{yair.first_name} #{yair.last_name} #{status=='deleted' ? 'מחק/ה' : 'ערכ/ה'} סטטוס שפורסם ב- #{I18n.l raw_post.timestamp}"
+  end
+
   private
   def clear_stats_cache
     Rails.cache.delete_matched 'top-cache-key'
