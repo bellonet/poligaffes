@@ -11,6 +11,8 @@ class Post < ActiveRecord::Base
 
   validates :raw_post, presence: true
 
+  scope :not_empty, -> { joins(:raw_post).where("(raw_posts.post->>'story') ISNULL OR NOT (raw_posts.post->>'story') SIMILAR TO ?", "%(אוהב|הגיב|אהב)%") }
+
   def should_have_photo?
   	self.raw_post.post["type"]=="photo"
   end
