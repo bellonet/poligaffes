@@ -2,8 +2,12 @@
 	<div><%= raw_post.yair.first_name + " " + raw_post.yair.last_name + ":" %></div>
 	<% if raw_post.post["message"] and raw_post.post["actions"] %>
 		<div><%= link_to truncate(raw_post.post["message"], length: 65), raw_post.post["actions"][0]["link"], :target => "_blank", class: "raw-post-link" %></div>
-	<% elsif raw_post.post["story"] and raw_post.post["actions"] %>
-		<div><%= link_to raw_post.post["story"], raw_post.post["actions"][0]["link"], :target => "_blank", class: "raw-post-link" %></div>
+	<% elsif raw_post.post["story"] %>
+		<% if raw_post.post["actions"] %>
+			<div><%= link_to raw_post.post["story"], raw_post.post["actions"][0]["link"], :target => "_blank", class: "raw-post-link" %></div>
+		<% else %>
+			<div class="raw-small-title" ><%= raw_post.post["story"] %></div>
+		<% end %>
 	<% end %>
 	<div><%= l raw_post.timestamp %></div>
 
