@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter { use_cover_photo 'reps.jpg' }
+  before_filter { use_cover_photo 'post.jpg' }
 
   def show
     @post = Post.find(params[:id])
