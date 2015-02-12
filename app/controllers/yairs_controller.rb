@@ -44,6 +44,9 @@ class YairsController < ApplicationController
     @yair = Yair.find(params[:id])
     @social_media_accounts = Yair.find(params[:id]).social_media_accounts
     @length = 420
+
+    @latest_raw_posts = RawPost.all.order(created_at: :desc).limit(5)
+
   end
 
   def destroy
