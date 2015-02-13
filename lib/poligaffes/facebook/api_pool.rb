@@ -13,7 +13,7 @@ module Poligaffes
         @apis.count.times do |i|
           api = get_nothrottle_api()
           begin
-            return api.__send__ sym, *args, &block
+            return api[0].__send__ sym, *args, &block
           rescue Koala::Facebook::ClientError => e
             api[1] = 'throttled'
             $stderr.write " Graph API Error: #{e.inspect} "
@@ -26,7 +26,7 @@ module Poligaffes
 
       def get_nothrottle_api
         @apis.each do |api|
-          return api[0] if api[1] == 'ok'
+          return api if api[1] == 'ok'
         end
       end
     end
