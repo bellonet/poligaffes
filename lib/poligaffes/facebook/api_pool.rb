@@ -17,7 +17,7 @@ module Poligaffes
           rescue Koala::Facebook::ClientError => e
             if [17, 613].include? e.fb_error_code # API RATE LIMIT
               api[1] = 'throttled'
-              $stderr.write " Graph API Error: #{e.inspect} "
+              $stderr.write " Graph API Error: #{e.inspect}. Trying another token. "
               next
             else
               raise e
