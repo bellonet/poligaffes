@@ -29,7 +29,7 @@ end
 
 @logfile = $stdout
 @how_many_from_fb = 20
-@how_many_from_db = 10
+@how_many_from_db = 5
 OptionParser.new do |opts|
   opts.on("-lLOGFILE", "--logfile=LOGFILE", "file to output to") do |l|
     @logfile = File.open(l, 'a') if l
