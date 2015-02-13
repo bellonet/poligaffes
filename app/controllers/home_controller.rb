@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def index
     @deleted_posts = Post.not_empty.order(created_at: :desc).where(status: "deleted").paginate(page: params[:deleted_page], per_page: 5)
     @edited_posts = Post.not_empty.order(created_at: :desc).where(status: "edited").paginate(page: params[:edited_page], per_page: 5)
-    @latest_raw_posts = RawPost.all.order(created_at: :desc).limit(10)
+    @latest_raw_posts = RawPost.all.order(timestamp: :desc).limit(10)
 
     @length = 420
   end
