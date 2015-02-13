@@ -13,20 +13,25 @@ module Poligaffes
         @apis.count.times do |i|
           api = get_nothrottle_api()
           begin
-            return api.__send__ sym, *args, &block
+            return api[0].__send__ sym, *args, &block
           rescue Koala::Facebook::ClientError => e
-            api[1] = 'throttled'
-            $stderr.write " Graph API Error: #{e.inspect} "
-            next
+            if [17, 613].include? e.fb_error_code # API RATE LIMIT
+              api[1] = 'throttled'
+              $stderr.write " Graph API Error: #{e.inspect}. Trying another token. "
+              next
+            else
+              raise e
+            end
           end
         end
+        raise "Poligaffes::Facebook::ApiPool Ran out of APIs in pool... "
       end
 
       private
 
       def get_nothrottle_api
         @apis.each do |api|
-          return api[0] if api[1] == 'ok'
+          return api if api[1] == 'ok'
         end
       end
     end

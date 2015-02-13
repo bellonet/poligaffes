@@ -29,7 +29,7 @@ end
 
 @logfile = $stdout
 @how_many_from_fb = 20
-@how_many_from_db = 10
+@how_many_from_db = 5
 OptionParser.new do |opts|
   opts.on("-lLOGFILE", "--logfile=LOGFILE", "file to output to") do |l|
     @logfile = File.open(l, 'a') if l
@@ -44,17 +44,13 @@ end.parse!
 
 @logfile.puts "(#{DateTime.now})Checking for edits and deletes."
 
-token = FbApiToken.where('purpose = ?', 'compare').order(expires: :desc).last
-if token.expires < DateTime.now
-  raise "Invalid access token, enter a new one in /admin/fb_api_tokens"
-end
-puts "Got an access token than expires #{token.expires}"
-
-g = Koala::Facebook::API.new(token.token)
+tokens = FbApiToken.where(purpose: 'compare').where("expires > ?", DateTime.now)
+graphs = tokens.map { |t| Koala::Facebook::API.new(t.token) }
+g = Poligaffes::Facebook::ApiPool.new *graphs
 
 SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
   @logfile.write "#{acc.link}"
-  latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(@how_many_from_fb)
+  latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(@how_many_from_db)
   next unless latest_raw_posts.any?
 
   latest_post_datetime = latest_raw_posts.first.timestamp
