@@ -33,7 +33,7 @@ if token_purpose
 
   g = Koala::Facebook::API.new(token.token)
 else
-  tokens = FbApiToken.where(token: 'fetch').where("expires > ?", DateTime.now)
+  tokens = FbApiToken.where(purpose: 'fetch').where("expires > ?", DateTime.now)
   graphs = tokens.map { |t| Koala::Facebook::API.new(t.token) }
   g = Poligaffes::Facebook::ApiPool.new *graphs
 end
