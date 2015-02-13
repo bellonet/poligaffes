@@ -28,13 +28,17 @@ end
 
 
 @logfile = $stdout
-@how_many = 5
+@how_many_from_fb = 20
+@how_many_from_db = 10
 OptionParser.new do |opts|
   opts.on("-lLOGFILE", "--logfile=LOGFILE", "file to output to") do |l|
     @logfile = File.open(l, 'a') if l
   end
-  opts.on("-nHOWMANY", "--how-many=HOWMANY", "how many of the last posts to check") do |n|
-    @how_many = n if n
+  opts.on("-nHOWMANY", "--how-many-from-fb=HOWMANY", "how many posts to fetch from facebook ") do |n|
+    @how_many_from_fb = n if n
+  end
+  opts.on("-mFROMDB", "--how-many-from-db=FROMDB", "how many posts to compare from db") do |m|
+    @how_many_from_db = m if m
   end
 end.parse!
 
@@ -50,13 +54,13 @@ g = Koala::Facebook::API.new(token.token)
 
 SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
   @logfile.write "#{acc.link}"
-  latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(@how_many)
+  latest_raw_posts = acc.raw_posts.order('timestamp desc').limit(@how_many_from_fb)
   next unless latest_raw_posts.any?
 
   latest_post_datetime = latest_raw_posts.first.timestamp
 
   latest_fb_posts = call_with_retries do
-    g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: @how_many)
+    g.get_connections(acc.link, 'posts', until: latest_post_datetime, limit: @how_many_from_fb)
   end
   next unless latest_fb_posts # if too many errors
 
