@@ -20,18 +20,9 @@ html, body {
   box-shadow: 1px 1px 1px #9c9c9c !important;
 }
 
-.brand, .brand-l {
-  font-family: Tahoma, Verdana, Segoe, sans-serif;
-  font-weight: bold;
-  font-size: 50px;
-  color: #FFFFFF;
-  text-shadow: -1px 0 #4F2C4D, 0 1px #4F2C4D, 1px 0 #4F2C4D, 0 -1px #4F2C4D;
-  text-decoration: none;
-}
-
-.brand-l {
-  color: #ffffff !important;
-  text-shadow: -1px 0 #4F2C4D, 0 1px #4F2C4D, 1px 0 #4F2C4D, 0 -1px #4F2C4D;
+.brand {
+  margin-top: 5px;
+  padding-bottom: 10px;
 }
 
 .lahadam-explained {
@@ -40,6 +31,7 @@ html, body {
   padding-left: 3px;
   font-size: 22px;
   color: #ffffff;
+  text-shadow: -1px 0 #4F2C4D, 0 1px #4F2C4D, 1px 0 #4F2C4D, 0 -1px #4F2C4D;
 }
 
 .navbar-collapse.collapse {
@@ -56,10 +48,10 @@ margin-right: -15px !important;
 
 .navbar {
   margin-top: 130px;
-  background: #4F2C4D !important; 
+  background: #0577CA !important; 
   opacity: 0.95 !important;
   border: 1px solid #ffffff !important;
-  height: 50px;
+  height: 40px;
   box-shadow: 1px 1px 1px #9c9c9c !important;
   border-radius: 3px !important;
 }
@@ -85,7 +77,7 @@ margin-right: -15px !important;
   background: none !important;
 }
 #home-link {
-  margin-top: -7px;
+  margin-top: 0px !important;
 }
 
 .nav-search {
