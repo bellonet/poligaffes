@@ -1,5 +1,5 @@
 class AboutController < ApplicationController
-  before_filter { use_cover_photo 'about.jpg' }
+  before_filter { use_cover_photo 'about.png' }
 
   def index
   end

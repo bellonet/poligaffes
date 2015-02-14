@@ -1,7 +1,7 @@
 require 'poligaffes/stats/polistats'
 class StatsController < ApplicationController
 
-	before_filter { use_cover_photo 'stats.jpg' }
+	before_filter { use_cover_photo 'stats.png' }
 
 
   def index

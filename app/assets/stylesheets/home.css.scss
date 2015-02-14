@@ -15,79 +15,67 @@ html, body {
 }
 
 .home-header {
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 0px;
   font-size: 24px;
   text-align: left;
   margin-bottom: 20px;
-  border-bottom: 1px solid #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
   box-shadow: 1px 1px 1px #9c9c9c !important;
 }
 
-.brand {
-  margin-top: 5px;
-  padding-bottom: 10px;
-  height: 70px;
-}
-
 .lahadam-explained {
-  margin-top: -10px;
-  padding-right: 10px;
-  padding-left: 3px;
   font-size: 16px;
   color: #ffffff;
   text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
 }
 
-.navbar-collapse.collapse {
-  display: block!important;
+.navbar {
+  min-height: 40px !important;
+  height: 40px;
+  margin-top: 130px;
+  background: #0577CA !important; 
+  opacity: 0.95 !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: 1px 1px 1px #9c9c9c !important;
+  border-radius: 3px !important;
+}
+
+#home-link:hover {
+  background: none !important;
+}
+
+#home-link {
+  margin-top: -8px !important;
 }
 
 .navbar-nav>li, .navbar-nav {
   float: right !important;
 }
 
-.navbar-nav.navbar-right:last-child {
-  margin-right: -15px !important;
-}
-
-.navbar {
-  margin-top: 130px;
-  background: #0577CA !important; 
-  opacity: 0.95 !important;
-  border: 1px solid #ffffff !important;
-  height: 40px;
-  box-shadow: 1px 1px 1px #9c9c9c !important;
-  border-radius: 3px !important;
-}
-
 .navbar .nav {
-  padding-right: 5px;
+  margin-top: -4px;
+  padding-right: 10px;
 }
 
 .navbar .nav > li {
-  font-family: 'Oswald', sans-serif;
   font-size: 16px;
   padding-right: 5px;
 }
 
 .navbar-nav > li > a {
   color: #ffffff !important;
+  height: 45px;
 }
 
 .navbar-nav > li > a:hover {
   background-color: #4999D3 !important;
   border-radius: 10px;
 }
-#home-link:hover {
-  background: none !important;
-}
-#home-link {
-  margin-top: -8px !important;
-}
 
 .nav-search {
-  padding: 0px 490px 0px 0px;
+  padding-right: 500px;
+  margin-top: -2px;
 }
 
 .nav-pills > li > a {
