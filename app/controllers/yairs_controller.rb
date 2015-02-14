@@ -1,14 +1,14 @@
 class YairsController < ApplicationController
 
   before_filter :authorize, only: [:new, :edit, :destroy]
-  before_filter { use_cover_photo 'reps.png' }
+  before_filter { use_cover_photo 'reps.jpg' }
 
   def index
       @yair = Yair.where(field: params[:field])
       @yair = @yair.sort_by { |y| y.last_name }.paginate(page: params[:page], per_page: 20)
 
       if params[:field] == "figures"
-        use_cover_photo 'figures.png' 
+        use_cover_photo 'figures.jpg' 
       end
   end
 

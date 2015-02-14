@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   caches_action :index, cache_path: lambda { |e| "home-#{params[:deleted_page]}-#{params[:edited_page]}" }
 
-  before_filter { use_cover_photo 'knesset.png' }
+  before_filter { use_cover_photo 'knesset.jpg' }
 
   def index
     @deleted_posts = Post.not_empty.order(created_at: :desc).where(status: "deleted").paginate(page: params[:deleted_page], per_page: 5)
