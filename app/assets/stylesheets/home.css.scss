@@ -6,6 +6,10 @@ html, body {
   background-color: #DDDDDD !important;
 }
 
+* {
+  font-family: sans-serif;
+}
+
 .container {
   width: 1170px !important;
 }
@@ -23,27 +27,28 @@ html, body {
 .brand {
   margin-top: 5px;
   padding-bottom: 10px;
+  height: 70px;
 }
 
 .lahadam-explained {
   margin-top: -10px;
   padding-right: 10px;
   padding-left: 3px;
-  font-size: 22px;
+  font-size: 16px;
   color: #ffffff;
-  text-shadow: -1px 0 #4F2C4D, 0 1px #4F2C4D, 1px 0 #4F2C4D, 0 -1px #4F2C4D;
+  text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
 }
 
 .navbar-collapse.collapse {
-display: block!important;
+  display: block!important;
 }
 
 .navbar-nav>li, .navbar-nav {
-float: right !important;
+  float: right !important;
 }
 
 .navbar-nav.navbar-right:last-child {
-margin-right: -15px !important;
+  margin-right: -15px !important;
 }
 
 .navbar {
