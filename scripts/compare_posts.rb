@@ -56,7 +56,7 @@ SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
   latest_post_datetime = latest_raw_posts.first.timestamp
 
   latest_fb_posts = call_with_retries do
-    g.get_connections(acc.link, 'posts', :until => latest_post_datetime.to_i, :limit => @how_many_from_fb)
+    g.get_connections(acc.link, 'posts', :limit => @how_many_from_fb)
   end
   next unless latest_fb_posts # if too many errors
 

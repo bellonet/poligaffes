@@ -82,9 +82,6 @@ GEM
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-rails (3.1.2)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
     json (1.8.1)
     koala (1.10.1)
       addressable
@@ -176,8 +173,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.6.0)
@@ -200,7 +195,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   httparty
   jbuilder (~> 2.0)
-  jquery-rails
   koala
   mail_form
   paperclip (~> 4.2)
@@ -213,7 +207,6 @@ DEPENDENCIES
   simple_form
   spreadsheet
   spring
-  turbolinks
   uglifier (>= 1.3.0)
   will_paginate
   will_paginate-bootstrap
