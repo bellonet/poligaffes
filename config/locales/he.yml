@@ -37,7 +37,7 @@ he:
   representatives: ח"כים
   figures: אושיות
   stats:
-    title: מספרים
+    title: מִסְפרים
     deletes: מחיקות
     edits: עריכות
     weekly_top: שיאני השבוע
@@ -50,6 +50,7 @@ he:
 
   what_is_lahadam: מה זה להד״ם
   about: עלינו
+  searches: חיפושים
   bit_about: קצת עלינו
   contact: דברו אלינו
 
@@ -79,7 +80,6 @@ he:
   status: סטטוס
   deleted: שנמחק
   edited: שנערך
-
 
 
   date:
