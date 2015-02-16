@@ -34,7 +34,7 @@ module Poligaffes
                        FROM posts
                          JOIN raw_posts ON raw_posts.id = posts.raw_post_id
                          JOIN social_media_accounts ON raw_posts.social_media_account_id = social_media_accounts.id
-                         JOIN yairs ON yairs.id = social_media_accounts.id
+                         JOIN yairs ON yairs.id = social_media_accounts.yair_id
                        WHERE posts.status = %s
                          AND posts.created_at > %s
                        GROUP BY yairs.id
@@ -50,6 +50,7 @@ module Poligaffes
                           ORDER BY count(*) DESC
                           LIMIT 5;"
       def self.top_posts(type, days_ago)
+        ActiveRecord::Base
         if type == 'posts'
           ActiveRecord::Base::connection.execute(RAW_POSTS_REPORT_SQL % [ days_ago.days.ago ].map { |e| ActiveRecord::Base.sanitize(e) }).map { |e| e }
         else
