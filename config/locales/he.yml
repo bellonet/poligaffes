@@ -68,8 +68,8 @@ he:
   keep_reading: המשך לקרוא...
 
   latest_posts: פוסטים אחרונים
-  deleted_posts: פוסטים מחוקים
-  edited_posts: פוסטים ערוכים
+  deleted_posts: פוסטים שנמחקו
+  edited_posts: פוסטים שנערכו
   before: אחרי
   after: לפני
   latest_raw_posts: סטטוסים מתפרצים
