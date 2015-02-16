@@ -30,9 +30,4 @@ class RawPost < ActiveRecord::Base
   def is_type_of_image?
     attachment.content_type =~ %r(image)
   end
-
-  private
-  def clear_stats_cache
-    Rails.cache.delete 'weekly_activity-cache-key'
-  end
 end

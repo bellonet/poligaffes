@@ -36,10 +36,6 @@ class Post < ActiveRecord::Base
   end
 
   private
-  def clear_stats_cache
-    Rails.cache.delete_matched 'top-cache-key'
-  end
-
   def clear_post_page_cache
     Rails.cache.delete_matched "posts/#{self.id}"
   end
