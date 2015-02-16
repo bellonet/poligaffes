@@ -22,10 +22,10 @@
 
         <div class="tab-content">
           <div class="tab-pane active" id="tabDeleted">
-            <%= render @yair.posts.where(status: "deleted") %>
+            <%= render @yair.posts.not_empty.deleted %>
           </div>
           <div class="tab-pane" id="tabEdited">
-            <%= render @yair.posts.where(status: "edited") %>
+            <%= render @yair.posts.not_empty.edited.last_edit_only %>
           </div>
         </div>
       </div>
