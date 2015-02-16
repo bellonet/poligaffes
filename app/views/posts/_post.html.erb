@@ -39,7 +39,7 @@
       <% end %>
     <% elsif post.should_have_video? %> 
       <% if post.raw_post.attachment_file_name %>   
-        <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "metadata"%></div>
+        <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, controls: true, class: "post-attach" , preload: "none"%></div>
       <% else %>
         <div class="col-xs-12"><%= video_tag post.raw_post.attachment.url, height: "120", class: "post-attach", poster: "missing.jpg" %></div>
       <% end %>
