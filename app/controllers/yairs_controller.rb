@@ -1,4 +1,5 @@
 class YairsController < ApplicationController
+  caches_action :show
 
   before_filter :authorize, only: [:new, :edit, :destroy]
   before_filter { use_cover_photo 'reps.jpg' }

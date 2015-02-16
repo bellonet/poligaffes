@@ -3,7 +3,8 @@ class Post < ActiveRecord::Base
 
   after_save :clear_stats_cache
   after_save :clear_homepage_cache
-  after_save :clear_post_page
+  after_save :clear_post_page_cache
+  after_save :clear_yair_page_cache
 
   has_one :yair, through: :social_media_account
   has_one :social_media_account, through: :raw_post
@@ -39,7 +40,7 @@ class Post < ActiveRecord::Base
     Rails.cache.delete_matched 'top-cache-key'
   end
 
-  def clear_post_page
+  def clear_post_page_cache
     Rails.cache.delete_matched "posts/#{self.id}"
   end
 end
