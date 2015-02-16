@@ -11,7 +11,10 @@ class Post < ActiveRecord::Base
 
   validates :raw_post, presence: true
 
-  scope :not_empty, -> { joins(:raw_post).where("(raw_posts.post->>'story') ISNULL OR NOT (raw_posts.post->>'story') SIMILAR TO ?", "%(אוהב|הגיב|אהב)%") }
+  scope :not_empty,      -> { joins(:raw_post).where("(raw_posts.post->>'story') ISNULL OR NOT (raw_posts.post->>'story') SIMILAR TO ?", "%(אוהב|הגיב|אהב)%") }
+  scope :edited,         -> { where(status: 'edited') }
+  scope :deleted,        -> { where(status: 'deleted') }
+  scope :last_edit_only, -> { where("not exists (select 1 from posts as ip where ip.raw_post_id=posts.raw_post_id and ip.status='edited' and ip.created_at > posts.created_at)") }
 
   def should_have_photo?
   	self.raw_post.post["type"]=="photo"
