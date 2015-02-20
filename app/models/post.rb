@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
 
   def describe
     "פורסם ב- #{I18n.l raw_post.timestamp}: \n
-    #{body.truncate(100)}"
+    #{body ? body.truncate(100) : ''}"
   end
 
   def facebook_share_title
