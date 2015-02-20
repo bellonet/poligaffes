@@ -114,6 +114,22 @@ html, body {
   margin-bottom: 10px !important;
 }
 
+.test {
+  display: inline;  
+}
+
+.edited-red-explained {
+  display: inline;
+  background-color: #ffe6e6;
+  text-decoration: line-through;
+}
+
+.edited-green-explained {
+  display: inline;
+  background-color: #e6ffe6;
+  text-decoration: underline;
+}
+
 .post {
   border: 1px solid #c6c6c6;
   border-radius: 3px;

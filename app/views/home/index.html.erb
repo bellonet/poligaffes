@@ -29,6 +29,10 @@
 
     <div class="tab-content">
       <div class="tab-pane active" id="tabEdited">
+        <div class="test">*בפוסטים שנערכו תוכלו לראות </div>
+        <div class="edited-red-explained">באדום את כל מה שנמחק</div>
+        <div class="edited-green-explained">ובירוק את כל מה שהוסף</div>
+        <br><br>
         <%= render @edited_posts %>
         <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
       </div>
