@@ -10,7 +10,11 @@
         <div class="col-xs-4"><%= link_to post.yair.first_name + " " + post.yair.last_name, yair_path(post.yair), :class => "post-yair-link"%></div>
       </div>
 
-      <div class="col-xs-12 post-details"><%= t("status") + " " + t(post.status) + " אחרי " + distance_of_time_in_words(post.raw_post.timestamp, post.created_at) + ". " + t("posted_on") + " " + l(post.raw_post.timestamp) %></div>
+      <div class="col-xs-12 post-details"><%= t("post") + " " + t(post.status) + " אחרי " + distance_of_time_in_words(post.raw_post.timestamp, post.created_at) + ". " + t("posted_on") + " " + l(post.raw_post.timestamp) %></div>
+
+      <% if post.raw_post.posts.where(status: "edited").count > 1 %>
+        <div class="col-xs-12 post-details"><%= link_to ("הפוסט נערך #{post.raw_post.posts.count} פעמים"), post %></div>
+      <% end %>
 
     </div>
 
