@@ -63,8 +63,14 @@ SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
   ids_in_facebook      = Set.new latest_fb_posts.map { |p| p['id'] }
   facebook_posts       = Hash[latest_fb_posts.map { |p| [p['id'], p] }]
 
+  timestamps_in_facebook = Set.new latest_fb_posts.map { |p| p['created_time'] }
+
   latest_raw_posts.each do |raw_post|
     if ids_in_facebook.exclude? raw_post.post['id']
+      if timestamps_in_facebook.include? raw_post.post['created_time']
+        @logfile.write "looks like post id changed for post #{raw_post.post['id']}! Not marking for deletion based on timestamp."
+        next
+      end
       post_deleted(acc, raw_post)
     elsif facebook_posts[raw_post.post['id']]['message'] != raw_post.post['message']
       post_edited(acc, raw_post, facebook_posts[raw_post.post['id']])
