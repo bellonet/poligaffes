@@ -1,3 +1,15 @@
+<% content_for :head do %>
+  <meta property="og:url"             content="http://lahadam.co.il/stats/index" />
+  <meta property="og:title"           content="סטטיסטיקות - להד&quot;ם" />
+  <meta property="og:site_name"       content="להד&quot;ם" />
+  <meta property="og:description"     content="סטטיסטיקות על כל המחיקות של הפוליטיקאים בפייסבוק" />
+  <meta property="og:image"           content="<%= image_url 'fb-share-graph.jpg' %>" />
+<% end %>
+
+<%= content_for :title do %>
+מספרים - להד&quot;ם
+<% end %>
+
 <div class="row">
   <div class="col-xs-7 pull-right">
     <div id="stats-graph">
