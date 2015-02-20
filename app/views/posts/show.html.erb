@@ -1,9 +1,10 @@
 <% content_for :head do %>
-  <meta property="og:locale"          content="he_IL" />
-  <meta property="og:url"             content="<%=post_url(@post)  %>" />
-  <meta property="og:title"           content="<%= @post.facebook_share_title %>" />
-  <meta property="og:site_name"       content="להדם" />
-  <meta property="og:description"     content="<%= @post.describe %>" />
+  <meta property="og:locale"      content="he_IL" />
+  <meta property="og:url"         content="<%=post_url(@post)  %>" />
+  <meta property="og:title"       content="<%= @post.facebook_share_title %>" />
+  <meta property="og:site_name"   content="להד&quot;ם" />
+  <meta property="og:description" content="<%= @post.describe %>" />
+  <meta property="og:image"       content="<%= image_url @post.social_media_account.photo.url(:medium) %>" />
 <% end %>
 
 <div class="col-xs-6 col-xs-offset-3">

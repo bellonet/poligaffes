@@ -6,7 +6,7 @@ class SocialMediaAccount < ActiveRecord::Base
  	validates :name, presence: true, length: { minimum: 3 }
  	validates :site, presence: true, length: { minimum: 3 }
 
-  has_attached_file :photo, :styles => { :thumb => "100x100#" }, :default_url => 'missing_acc_photo.jpeg'
+  has_attached_file :photo, :styles => { :thumb => "100x100#", :medium => '200x200#' }, :default_url => 'missing_acc_photo.jpeg'
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   scope :tracking,     -> { where(track: true) }
