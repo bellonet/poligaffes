@@ -23,18 +23,18 @@
   
 	<div class="tabbable"> 
     <ul class="nav nav-pills">
-      <li class="active"><a href="#tabDeleted" data-toggle="tab"><%= t "deleted_posts" %></a></li>
-      <li><a href="#tabEdited" data-toggle="tab"><%= t "edited_posts" %></a></li>
+      <li class="active"><a href="#tabEdited" data-toggle="tab"><%= t "edited_posts" %></a></li>
+      <li><a href="#tabDeleted" data-toggle="tab"><%= t "deleted_posts" %></a></li>
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="tabDeleted">
-        <%= render @deleted_posts %>
-        <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page"  %>
-      </div>
-      <div class="tab-pane" id="tabEdited">
+      <div class="tab-pane active" id="tabEdited">
         <%= render @edited_posts %>
         <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
+      </div>
+      <div class="tab-pane" id="tabDeleted">
+        <%= render @deleted_posts %>
+        <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page"  %>
       </div>
     </div>
   </div>
