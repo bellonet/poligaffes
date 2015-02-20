@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="keywords" content="להדם, לא היו דברים מעולם, מחיקות, עריכות, פוסט, פייסבוק, פוליטיקאי, כנסת, מחק, ערך">
+    <meta name="description" content="להדם מציג את כל המחיקות והעריכות של הפוליטיקאים בפייסבוק, וכלים לניתוח ההתנהגות של חברי כנסת ברשתות חברתיות">
+    <meta property="og:locale" content="he_IL" />
+
     <title><%= content_for?(:title) ? yield(:title) : ('להד"ם') %></title>
     <%= yield :head %>
 
@@ -44,9 +48,16 @@
 
       <div class="home-header" id="content" style="background: url(<%= image_path(@cover_photo) %>) no-repeat left; background-size: 100%;">
 
-        <div class="col-xs-12"><a class="brand" href="/"><img src="<%= image_path 'lahadam1.png' %>"></a></div>
 
-        <div class="col-xs-12"><div class="lahadam-explained pull-right">כל המחיקות של הפוליטיקאים בפייסבוק</div></div>
+        <div class="col-xs-12">
+          <div class="pull-left"><%= link_to image_tag('lahadam-fb.png', class: 'lahadam-fb'), 'https://facebook.com/lahadam.co.il', target: '_blank' %></div>
+          <a class="brand" href="/"><img src="<%= image_path 'lahadam1.png' %>" alt="לא היו דברים מעולם"></a>
+        </div>
+
+
+        <div class="col-xs-12">
+          <div class="lahadam-explained pull-right">כל המחיקות של הפוליטיקאים בפייסבוק</div>
+        </div>
 
         <div class="navbar navbar-default navbar-static-top">
           <ul class="nav navbar-nav pull-right">
@@ -77,7 +88,7 @@
       <div class="container">
         <div id="user_footer">
           <br>
-          <div> לא היו דברים מעולם - <a href="mailto:bellonet@gmail.com"> צור קשר </a></div>
+          <div> לא היו דברים מעולם - <a href="https://facebook.com/lahadam.co.il"> צור קשר </a></div>
           <p>2015 &copy;</p>
         </div>
       </div>

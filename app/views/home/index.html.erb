@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <meta property="og:url"             content="http://lahadam.co.il" />
+  <meta property="og:title"           content="להד&quot;ם" />
+  <meta property="og:site_name"       content="להד&quot;ם" />
+  <meta property="og:description"     content="כל המחיקות של הפוליטיקאים בפייסבוק" />
+  <meta property="og:image"           content="<%= image_url 'fb-share-knesset.jpg' %>" />
+<% end %>
+
 <% if @yairs %>
   <h2 class="title"><%= t ("search_results") %></h2>
 	<%= render @yairs %>
