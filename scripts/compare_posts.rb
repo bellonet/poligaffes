@@ -66,7 +66,7 @@ SocialMediaAccount.tracking.where(site: 'Facebook').each do |acc|
     if facebook_posts_by_time.keys.exclude? raw_post.post['created_time']
       post_deleted(acc, raw_post)
     elsif facebook_posts_by_time[raw_post.post['created_time']]['message'] != raw_post.post['message']
-      post_edited(acc, raw_post, facebook_posts[raw_post.post['id']])
+      post_edited(acc, raw_post, facebook_posts_by_time[raw_post.post['created_time']])
     end
   end
   @logfile.write "\n"
