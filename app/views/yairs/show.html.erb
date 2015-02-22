@@ -18,7 +18,7 @@
 
   <div class="col-xs-3 latest-raw-posts yair-latest-raw-posts">
     <h4 class="title-small"><%= t "latest_raw_posts" %> </h4>
-    <p class="raw-small-title"> האחרונים של <%= @yair.last_name %> בפייסבוק </p>
+    <p class="raw-small-title"><%= "#{t 'latest_from'} #{@yair.last_name} #{t 'on_facebook'}" %></p>
     <%= render @latest_raw_posts %>
   </div>
 </div>
