@@ -18,43 +18,16 @@ class YairsController < ApplicationController
     render 'index'
   end
 
-  def edit
-    @yair = Yair.find(params[:id])
-  end
-
-  def update
-    @yair = Yair.find(params[:id])
- 
-    if @yair.update(yair_params)
-      redirect_to @yair
-    else
-      render 'edit'
-    end
-  end
-
-  def create
-    @yair = Yair.new(yair_params)
-    if @yair.save
-      redirect_to @yair
-    else
-      render 'new'
-    end
-  end
-
   def show
     @yair = Yair.find(params[:id])
     @social_media_accounts = Yair.find(params[:id]).social_media_accounts
     @length = 420
 
+    @deleted_posts = @yair.posts.not_empty.deleted.order(created_at: :desc).paginate(page: params[:deleted_page], per_page: 5)
+    @edited_posts  = @yair.posts.not_empty.edited.last_edit_only.order(created_at: :desc).paginate(page: params[:edited_page], per_page: 5)
+
     @latest_raw_posts = RawPost.all.order(created_at: :desc).limit(5)
 
-  end
-
-  def destroy
-    @yair = Yair.find(params[:id])
-    @yair.destroy
- 
-    redirect_to yairs_path
   end
 
   private

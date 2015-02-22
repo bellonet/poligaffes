@@ -34,11 +34,11 @@
         <div class="edited-green-explained">ובירוק את כל מה שהוסף</div>
         <br><br>
         <%= render @edited_posts %>
-        <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page", :params => { :anchor => 'tabEdited' }%>
+        <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page" %>
       </div>
       <div class="tab-pane" id="tabDeleted">
         <%= render @deleted_posts %>
-        <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page"  %>
+        <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page", :params => { :anchor => 'tabDeleted' }  %>
       </div>
     </div>
   </div>

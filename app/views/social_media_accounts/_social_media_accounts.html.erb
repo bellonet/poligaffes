@@ -22,10 +22,12 @@
 
         <div class="tab-content">
           <div class="tab-pane active" id="tabEdited">
-            <%= render @yair.posts.not_empty.edited.last_edit_only %>
+            <%= render @edited_posts %>
+            <%= will_paginate @edited_posts, renderer: BootstrapPagination::Rails, :param_name => "edited_page" %>
           </div>
           <div class="tab-pane" id="tabDeleted">
-            <%= render @yair.posts.not_empty.deleted %>
+            <%= render @deleted_posts %>
+            <%= will_paginate @deleted_posts, renderer: BootstrapPagination::Rails, :param_name => "deleted_page", :params => { :anchor => 'tabDeleted' }  %>
           </div>
         </div>
       </div>
@@ -46,10 +48,10 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id=<%="tabEdited_#{i}" %>>
-              <%= render acc.posts.where(status: "edited") %>
+              <%= render acc.posts.not_empty.edited.last_edit_only %>
             </div>
             <div class="tab-pane" id=<%="tabDeleted_#{i}" %>>
-              <%= render acc.posts.where(status: "deleted") %>
+              <%= render acc.posts.not_empty.deleted %>
             </div>
           </div>
         </div>

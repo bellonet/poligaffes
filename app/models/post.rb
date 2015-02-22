@@ -35,8 +35,12 @@ class Post < ActiveRecord::Base
     "להדם: #{yair.first_name} #{yair.last_name} #{status=='deleted' ? 'מחק/ה' : 'ערכ/ה'} סטטוס"
   end
 
+  # set per_page globally
+  WillPaginate.per_page = 5
+
   private
   def clear_post_page_cache
     Rails.cache.delete_matched "posts/#{self.id}"
   end
 end
+
