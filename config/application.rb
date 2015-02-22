@@ -20,7 +20,7 @@ module PoliGaffes
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :he
     config.time_zone = 'Asia/Jerusalem'
-    config.active_record.default_timezone = :local
+    config.active_record.default_timezone = :utc
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
