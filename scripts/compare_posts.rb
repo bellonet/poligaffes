@@ -7,7 +7,10 @@ include Poligaffes::Facebook::Errors
 
 def post_deleted(acc, raw_post)
   return if raw_post.posts.any? && raw_post.posts.last.status == 'deleted'
+  @logfile.puts "Deleted post:"
+  @logfile.puts raw_post.inspect
   @logfile.write "D"
+
   Post.create(
     body:                 raw_post.post['message'], 
     status:               'deleted',
@@ -17,6 +20,10 @@ end
 
 def post_edited(acc, raw_post, new_post)
   return if raw_post.posts.any? && raw_post.posts.last.body == new_post['message']
+  @logfile.puts "Edited post:"
+  @logfile.puts raw_post.inspect
+  @logfile.puts "New version:"
+  @logfile.puts new_post.inspect
   @logfile.write "E"
 
   Post.create(
