@@ -12,6 +12,7 @@
  *
  *= require metricsgraphics
  *= require rbootstrap
+ *= require bootstrap-datetimepicker
  *= require_tree .
  *= require_self
  */

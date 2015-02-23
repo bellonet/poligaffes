@@ -41,6 +41,8 @@ GEM
     av (0.8.0)
       cocaine
     bcrypt-ruby (3.1.1.rc1)
+    bootstrap3-datetimepicker-rails (4.0.0)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     capistrano (3.3.5)
       capistrano-stats (~> 1.1.0)
@@ -96,6 +98,8 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.5.0)
+    momentjs-rails (2.9.0)
+      railties (>= 3.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -188,6 +192,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   bcrypt-ruby (= 3.1.1.rc1)
+  bootstrap3-datetimepicker-rails (~> 4.0.0)
   capistrano-bundler
   capistrano-maintenance!
   capistrano-rails (~> 1.1.1)
@@ -197,6 +202,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   koala
   mail_form
+  momentjs-rails (>= 2.9.0)
   paperclip (~> 4.2)
   paperclip-av-transcoder
   pg

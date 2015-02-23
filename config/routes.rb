@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'about/index'
 
+  get 'searches/index'
+
   get 'home/index'
 
   get '/search', to: "home#search", as: 'search'
