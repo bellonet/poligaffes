@@ -2,6 +2,17 @@
 
 <p> בעמוד זה תוכלו לחפש פוסטים שנכתבו, נערכו או נמחקו לפי תאריך. </p>
 
+<%= form_for :searches do |f| %>
+  <p>
+	<%= f.select :post_type, options_for_select([['כל הסטטוסים', 1], ['סטטוסים ערוכים', 2], ['סטטוסים מחוקים', 3]]) %>
+  </p>
+
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
 <div class="container">
     <div class='col-md-3 pull-right'>
         <div class="form-group">
