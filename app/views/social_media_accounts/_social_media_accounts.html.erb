@@ -48,10 +48,12 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id=<%="tabEdited_#{i}" %>>
-              <%= render acc.posts.not_empty.edited.last_edit_only %>
+              <%= render @acc_edited_posts[acc.id] %>
+              <p>* מוצגים עד עשרה פוסטים אחרונים מהחשבון.</p>
             </div>
             <div class="tab-pane" id=<%="tabDeleted_#{i}" %>>
-              <%= render acc.posts.not_empty.deleted %>
+              <%= render @acc_deleted_posts[acc.id] %>
+              <p>* מוצגים עד עשרה פוסטים אחרונים מהחשבון.</p>
             </div>
           </div>
         </div>

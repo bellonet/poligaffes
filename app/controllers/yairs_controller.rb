@@ -26,6 +26,14 @@ class YairsController < ApplicationController
     @deleted_posts = @yair.posts.not_empty.deleted.order(created_at: :desc).paginate(page: params[:deleted_page], per_page: 5)
     @edited_posts  = @yair.posts.not_empty.edited.last_edit_only.order(created_at: :desc).paginate(page: params[:edited_page], per_page: 5)
 
+    @acc_deleted_posts = Hash.new
+    @acc_edited_posts = Hash.new
+
+    @social_media_accounts.each do |s|
+      @acc_deleted_posts[s.id] = s.posts.not_empty.deleted.order(created_at: :desc).last(10)
+      @acc_edited_posts[s.id]  = s.posts.not_empty.edited.last_edit_only.order(created_at: :desc).last(10)
+    end
+
     @latest_raw_posts = RawPost.all.order(created_at: :desc).limit(5)
 
   end
