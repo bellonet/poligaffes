@@ -12,6 +12,11 @@
   <div class="edited-red-explained">באדום את כל מה שנמחק</div>
   <div class="edited-green-explained">ובירוק את כל מה שהוסף</div>
   <%= render @posts %>
+  <br>
+  <%= link_to 'לכל הפוסטים האחרונים בלהד״ם',
+              home_index_path, class: 'btn btn-primary'  %>
+  <%= link_to "לכל הפוסטים האחרונים של #{@posts.first.yair.last_name}",
+              yair_path(@posts.first.yair), class: 'btn btn-primary'  %>
 </div>
 
 <script>
