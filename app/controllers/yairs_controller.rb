@@ -1,5 +1,6 @@
 class YairsController < ApplicationController
-  caches_action :show
+  
+  caches_action :show, cache_path: lambda { |e| "yair-#{params.hash}" }
 
   before_filter :authorize, only: [:new, :edit, :destroy]
   before_filter { use_cover_photo 'reps.jpg' }
